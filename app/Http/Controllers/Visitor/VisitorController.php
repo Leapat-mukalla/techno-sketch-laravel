@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Visitor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class VisitorController extends Controller
 {
