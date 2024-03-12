@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Role;
 
 class User extends Authenticatable
 {
@@ -62,5 +63,14 @@ class User extends Authenticatable
     public function scans()
     {
         return $this->hasOne(Scan::class);
+    }
+
+    public function hasAnyRole($roles)
+    {
+        if (is_array($roles)) {
+            return $this->roles->pluck('name')->intersect($roles)->count() > 0;
+        }
+
+        return $this->roles->pluck('name')->contains($roles);
     }
 }
