@@ -13,7 +13,8 @@ class VisitorController extends Controller
      */
     public function index()
     {
-        return view('visitors-home');
+        $qrCode = QrCode::generate(auth()->id());
+        return view('visitors-home', compact('qrCode'));
     }
 
     /**

@@ -1,1 +1,4 @@
-visitors home
+<div>visitors home</div>
+
+{!! $qrCode !!}
+
