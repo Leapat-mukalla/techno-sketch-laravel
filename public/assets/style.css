@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Graphik Arabic';
+    src: local('Graphik Arabic Regular'), local('Graphik-Arabic-Regular'),
+        url('/assets/font/GraphikArabic-Regular.woff2') format('woff2'),
+        url('/assets/font/GraphikArabic-Regular.woff') format('woff'),
+        url('/assets/font/GraphikArabic-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+*{
+    font-family: 'Graphik Arabic';
+    box-sizing: border-box;
+}
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+
+}

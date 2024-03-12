@@ -44,7 +44,5 @@ class UsersTableSeeder extends Seeder
         $user1->roles()->attach(Role::where('name', 'admin')->first()->id);
         $user2->roles()->attach(Role::where('name', 'admin')->first()->id);
         $user3->roles()->attach(Role::where('name', 'reception')->first()->id);
-
-        event(new Registered([$user1,$user2,$user3]));
     }
 }
