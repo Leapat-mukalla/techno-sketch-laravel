@@ -15,13 +15,16 @@ class LoginController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            if (Auth::user()->hasAnyRole(['admin'])) {
-                return redirect()->route('admin.home');
-            } elseif (Auth::user()->hasAnyRole(['reception'])) {
-                return redirect()->route('reception.home');
-            } else {
-                return redirect()->route('home');
-            }        }
+            return redirect()->back();
+
+            // if (Auth::user()->hasAnyRole(['admin'])) {
+            //     return redirect()->route('admin.home');
+            // } elseif (Auth::user()->hasAnyRole(['reception'])) {
+            //     return redirect()->route('reception.home');
+            // } else {
+            //     return redirect()->route('visitor.home');
+            // }
+         }
         return view('login');
     }
 
@@ -32,16 +35,12 @@ class LoginController extends Controller
         if(Auth::attempt($credentials, $remember)){
             // $request->session()->regenerate();
             if (Auth::user()->hasAnyRole(['admin'])) {
-                return view('layouts.main-admin');
-                // return redirect()->route('users')->withSuccess('اهلاً وسهلاً عزيزي.');
+                return redirect()->route('admin.home')->withSuccess('اهلاً وسهلاً عزيزي.');
             }elseif (Auth::user()->hasAnyRole(['reception'])) {
-                return view('reception-home');
-
-                // return redirect()->route('users')->withSuccess('اهلاً وسهلاً عزيزي.');
+                return redirect()->route('reception.home')->withSuccess('اهلاً وسهلاً عزيزي.');
             } else {
-                return view('visitors-home');
 
-                // return redirect()->route('home')->with('message', 'أهلاً وسهلاً عزيزي المستخدم، اتمنالك يوم سعيد!');
+                return redirect()->route('visitor.home')->with('message', 'أهلاً وسهلاً عزيزي المستخدم، اتمنالك يوم سعيد!');
             }
 
         }
