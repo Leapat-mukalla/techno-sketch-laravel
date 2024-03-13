@@ -9,6 +9,10 @@
     <!-- Placeholder for camera feed -->
     <video id="camera" width="640" height="480" autoplay></video>
     <button id="captureButton">Capture</button>
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button >logout</button>
+    </form>
 
     <script src="https://cdn.jsdelivr.net/npm/jsqr@latest/dist/jsQR.js"></script>
 
@@ -28,7 +32,11 @@
         // Initialize variables for video, canvas, and context
         var video = document.getElementById('camera');
         var canvas = document.createElement('canvas');
+        // Set the willReadFrequently attribute to true
+        canvas.willReadFrequently = true;
+
         var context = canvas.getContext('2d');
+
 
         // Listen for the 'loadedmetadata' event on the video element
         video.addEventListener('loadedmetadata', function() {
