@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Visitor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class VisitorController extends Controller
 {
@@ -12,7 +13,8 @@ class VisitorController extends Controller
      */
     public function index()
     {
-        return view('visitors-home');
+        $qrCode = QrCode::generate(auth()->id());
+        return view('visitors-home', compact('qrCode'));
     }
 
     /**

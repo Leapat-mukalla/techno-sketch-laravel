@@ -6,6 +6,7 @@ use App\Http\Controllers\Account\LoginController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Visitor\VisitorController;
 use App\Http\Controllers\Reception\ReceptionController;
+use App\Http\Controllers\Account\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
