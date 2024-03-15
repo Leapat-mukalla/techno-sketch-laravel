@@ -12,12 +12,53 @@ class ManageVisitorsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        // Retrieve sorting criteria from the request
+        $sortBy = $request->input('sort_by');
+
+        // Retrieve the search query from the request
+        $searchQuery = $request->input('search');
+
+
         // Retrieve all users who are in the visitor role along with their data
-        $users = User::whereHas('roles', function ($query) {
+        $query = User::whereHas('roles', function ($query) {
             $query->where('name', 'visitor');
-        })->with('VisitorsData')->paginate(10);
+        })->with('VisitorsData');
+
+        // Apply sorting based on the selected option
+        switch ($sortBy) {
+            case 'pending':
+                $query->whereHas('VisitorsData', function ($query) {
+                    $query->where('status', 'pending');
+                });
+                break;
+            case 'active':
+                $query->whereHas('VisitorsData', function ($query) {
+                    $query->where('status', 'active');
+                });
+                break;
+            case 'inactive':
+                $query->whereHas('VisitorsData', function ($query) {
+                    $query->where('status', 'inactive');
+                });
+                break;
+            default:
+                // No sorting request provided, return all visitors
+                break;
+        }
+
+        // Apply search filter if search query is provided
+        if ($searchQuery) {
+            $query->where(function ($query) use ($searchQuery) {
+                $query->where('name', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('phone', 'like', '%' . $searchQuery . '%');
+            });
+        }
+
+        // Paginate the sorted visitors
+        $users = $query->paginate(10);
+
         return view('admin.visitors-main', compact('users'));
     }
 

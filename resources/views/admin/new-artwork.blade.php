@@ -16,6 +16,7 @@
         </div>
         <div class="col-5 align-self-center">
 
+
         </div>
     </div>
 </div>
@@ -25,7 +26,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header bg-transparent">
-                <h4 class="card-title">اضافة عمل</h4>
+                {{-- <h4 class="card-title">اضافة عمل</h4> --}}
 
             </div>
             <div class="card-body">

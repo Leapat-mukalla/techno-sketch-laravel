@@ -40,6 +40,8 @@ Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home')
 Route::get('/admin/artworks/index', [ManageArtworksController::class, 'index'])->name('admin.artworks.index');
 Route::get('/admin/artworks/new', [ManageArtworksController::class, 'create'])->name('admin.artworks.new');
 Route::post('/admin/artworks/new', [ManageArtworksController::class, 'store']);
+Route::delete('admin/artworks/{id}', [ManageArtworksController::class, 'destroy'])->name('admin.artworks.delete');
+Route::put('/admin/artworks/{id}/edit', [ManageArtworksController::class, 'update'])->name('admin.artwork.edit');
 
 Route::get('/admin/visitors/index', [ManageVisitorsController::class, 'index'])->name('admin.visitors.index');
 Route::put('/admin/visitors/{id}/edit', [ManageVisitorsController::class, 'update'])->name('admin.visitor.edit');

@@ -45,7 +45,7 @@
   --bs-gray-900: #212529;
   --bs-primary: #335bff;
   --bs-secondary: #6c757d;
-  --bs-success: #22ca80;
+  --bs-success: #d6e8ff;
   --bs-info: #335bff;
   --bs-warning: #fdc16a;
   --bs-danger: #ff4f70;
@@ -54,9 +54,9 @@
   --bs-cyan: #01caf1;
   --bs-orange: #fb8c00;
   --bs-purple: #335bff;
-  --bs-primary-rgb: 95, 118, 232;
+  --bs-primary-rgb:  51, 91, 255;
   --bs-secondary-rgb: 108, 117, 125;
-  --bs-success-rgb: 34, 202, 128;
+  --bs-success-rgb: 214, 232, 255;
   --bs-info-rgb: 95, 118, 232;
   --bs-warning-rgb: 253, 193, 106;
   --bs-danger-rgb: 255, 79, 112;
@@ -65,9 +65,9 @@
   --bs-cyan-rgb: 1, 202, 241;
   --bs-orange-rgb: 251, 140, 0;
   --bs-purple-rgb: 95, 118, 232;
-  --bs-primary-text: #4c5eba;
+  --bs-primary-text: #112bff;
   --bs-secondary-text: #6c757d;
-  --bs-success-text: #1ba266;
+  --bs-success-text: #27272a;
   --bs-info-text: #017991;
   --bs-warning-text: #987440;
   --bs-danger-text: #cc3f5a;
@@ -75,7 +75,7 @@
   --bs-dark-text: #4F5467;
   --bs-primary-bg-subtle: #dfe4fa;
   --bs-secondary-bg-subtle: #e8eaec;
-  --bs-success-bg-subtle: #d3f4e6;
+  --bs-success-bg-subtle: #d6e8ff;
   --bs-info-bg-subtle: #ccf4fc;
   --bs-warning-bg-subtle: #fff3e1;
   --bs-danger-bg-subtle: #ffdce2;
@@ -83,7 +83,7 @@
   --bs-dark-bg-subtle: #ced4da;
   --bs-primary-border-subtle: #bfc8f6;
   --bs-secondary-border-subtle: #d6e8ff;
-  --bs-success-border-subtle: #a7eacc;
+  --bs-success-border-subtle: #5987ff;
   --bs-info-border-subtle: #99eaf9;
   --bs-warning-border-subtle: #fee6c3;
   --bs-danger-border-subtle: #ffb9c6;
@@ -17067,7 +17067,7 @@ strong {
 .custom-select-set {
   height: 44px;
   line-height: 25px;
-  padding: 10px 45px 13px 30px;
+  /* padding: 10px 45px 13px 30px; */
 }
 
 .dropdown-toggle::after {
