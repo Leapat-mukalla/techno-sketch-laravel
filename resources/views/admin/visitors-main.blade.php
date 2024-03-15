@@ -1,15 +1,42 @@
 @extends('layouts.main-admin')
 
 @section('content')
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-7 align-self-center">
+            <h4 class="page-title text-truncate text-dark font-weight-medium mb-1"> المستخدمين</h4>
+            <div class="d-flex align-items-center">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb m-0 p-0">
+                        <li class="breadcrumb-item"><a class="text-muted">إدارة المستخدمين</a></li>
+                        <li class="breadcrumb-item text-muted active" aria-current="page">المستخدمين</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="col-5 align-self-center">
+            <div class="customize-input float-start text-center">
+                <form method="GET" action="{{ route('admin.visitors.index') }}" id="sort-form">
+                    @csrf
+                    <select name="sort_by" onchange="document.getElementById('sort-form').submit()" class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius text-center">
+                        <option selected="">فرز</option>
+                        <option value="pending">قيد الانتظار</option>
+                        <option value="active">مقبول</option>
+                        <option value="inactive">مرفوض</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container-fluid">
 
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <div class="row align-items-center mb-4">
+                <div class="row align-items-center mt-2">
                     <div class="col-6">
-                        <h4 class="card-title">المستخدمين</h4>
                     </div>
                     <div class="col-6">
                         {{-- <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="بحث"> --}}
@@ -29,68 +56,21 @@
                                     </div>
                                     <div class="modal-body">
 
-                                        {{-- <form method="GET" action="{{ route('meetings') }}" id="search" class="ps-3 pe-3">
+                                        <form method="GET" action="{{ route('admin.visitors.index') }}" id="search" class="ps-3 pe-3">
                                             @csrf
-
                                             <div class="form-group mt-3 mb-3">
+                                                <label for="search" class="form-label">اسم المستخدم او الجوال</label>
                                                 <input type="text" class="form-control" name="search">
                                             </div>
-
                                             <div class="form-group mb-3 text-center">
                                                 <button class="btn btn-primary" type="submit">ابحث</button>
                                             </div>
                                         </form>
- --}}
-
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {{-- <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="تصفية النتائج"> --}}
-                            <button type="button" class="btn btn-info btn-circle float-start ms-2 " data-bs-toggle="modal"
-                            data-bs-target="#filter-modal">
-                                <i data-feather="filter" class="svg-icon"></i>
-                            </button>
-                        {{-- </span> --}}
-                        <div id="filter-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="topModalLabel">تصفية النتائج</h4>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-hidden="true"></button>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        {{-- <form method="POST" action="{{ route('meetings.filter') }}" id="filter" class="ps-3 pe-3">
-                                            @csrf
-                                            <div class="form-group mt-3">
-                                                <label for="meetingLabels" class="form-label">علامة مميزة</label>
-                                                <select multiple class="form-control" id="meetingLabels" name="labels[]">
-                                                    @foreach($userLabels as $label)
-                                                    <option value="{{ $label->id }}">{{ $label->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group mt-3 mb-3">
-                                                <label class="form-label" for="created_at">التاريخ</label>
-                                                <input type="date" class="form-control" value="2024-1-25" id="created_at" name="created_at">
-                                            </div>
-
-                                            <div class="form-group mb-3 text-center">
-                                                <button class="btn btn-primary" type="submit" >تصفية</button>
-                                                <button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal"
-                                                aria-hidden="true">الغاء</button>
-                                            </div>
-                                        </form> --}}
-
-
-                                    </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
 
 
                     </div>
