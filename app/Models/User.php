@@ -45,9 +45,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function visitor()
+    public function VisitorsData()
     {
-        return $this->hasOne(Visitor::class);
+        return $this->hasOne(VisitorsData::class);
     }
 
     public function roles()
@@ -60,9 +60,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Like::class);
     }
 
-    public function scans()
+    public function VisitorsScan()
     {
-        return $this->hasOne(Scan::class);
+        return $this->hasOne(VisitorsScan::class);
     }
 
     public function hasAnyRole($roles)
