@@ -21,4 +21,20 @@ class VisitorsData extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function getGenderAttribute($value)
+    {
+        return $value === 'male' ? 'ذكر' : 'أنثى';
+    }
+
+    public function getStatusAttribute($value)
+    {
+        switch ($value) {
+            case 'active':
+                return 'مقبول';
+            case 'inactive':
+                return 'مرفوض';
+            default:
+                return $value;
+        }
+    }
 }
