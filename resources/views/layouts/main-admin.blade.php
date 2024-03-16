@@ -69,33 +69,30 @@
                         </li>
 
                          </ul>
-                         {{-- <ul class="navbar-nav float-start me-auto ms-3 pe-1">
+                         <ul class="navbar-nav float-start me-auto ms-3 pe-1">
                             @php
                                 $currentUserName = \App\Services\AccountService::getCurrentUserName();
                                 @endphp
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle  cursor-pointer" href="javascript:void(0)" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <i data-feather="chevron-down"class="svg-icon"></i></span>
+                            <li class="nav-item ">
+                                <a class="nav-link ">
+                                {{-- <i data-feather="chevron-down"class="svg-icon"></i></span> --}}
 
                                     <span class="d-none d-lg-inline-block">اهلاً,</span>
                                     @if ($currentUserName)
                                         <span class="text-dark">{{ $currentUserName }}</span>
                                     @else
-                                        <span>Guest</span>
+                                        <span>زائر</span>
                                     @endif
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-start dropdown-menu-right  animated flipInY">
+                                {{-- <div class="dropdown-menu dropdown-menu-start dropdown-menu-right  animated flipInY">
                                     <a href="{{route('profile')}}" class="dropdown-item" href="javascript:void(0)">
                                         <i data-feather="settings" class="svg-icon me-2 ms-1"></i>
                                         الإعدادات
-
-
                                     </a>
-                                </div>
+                                </div> --}}
                             </li>
-                        </ul> --}}
+                        </ul>
                 </div>
             </nav>
         </header>

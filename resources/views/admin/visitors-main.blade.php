@@ -20,7 +20,6 @@
                     @csrf
                     <select name="sort_by" onchange="document.getElementById('sort-form').submit()" class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius text-center">
                         <option selected="">فرز</option>
-                        <option value="pending">قيد الانتظار</option>
                         <option value="active">مقبول</option>
                         <option value="inactive">مرفوض</option>
                     </select>
