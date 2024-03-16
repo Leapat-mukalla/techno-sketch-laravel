@@ -33,8 +33,6 @@ class VisitorsData extends Model
                 return 'مقبول';
             case 'inactive':
                 return 'مرفوض';
-            case 'pending':
-                return 'قيد الانتظار';
             default:
                 return $value;
         }

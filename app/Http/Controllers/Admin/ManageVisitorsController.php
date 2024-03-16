@@ -28,11 +28,6 @@ class ManageVisitorsController extends Controller
 
         // Apply sorting based on the selected option
         switch ($sortBy) {
-            case 'pending':
-                $query->whereHas('VisitorsData', function ($query) {
-                    $query->where('status', 'pending');
-                });
-                break;
             case 'active':
                 $query->whereHas('VisitorsData', function ($query) {
                     $query->where('status', 'active');
