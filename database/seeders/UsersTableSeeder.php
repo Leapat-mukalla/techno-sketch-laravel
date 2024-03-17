@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
 
         ]);
         $user3 = User::create([
-            'name' => 'reception',
+            'name' => 'الاستقبال',
             'email' => 'example@gmail.com',
             'password' => Hash::make('reception123456789'),
             'phone' => '739329553',
