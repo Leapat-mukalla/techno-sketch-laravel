@@ -21,13 +21,13 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         $user1 = User::create([
-            'name' => 'Ali',
+            'name' => 'علي',
             'email' => 'a.a.bamohammad@gmail.com',
             'phone' => '+201033929126',
             'password' => Hash::make('ali123456789'),
         ]);
         $user2 = User::create([
-            'name' => 'Luai',
+            'name' => 'لؤي',
             'email' => 'luai.alamoudi@gmail.com',
             'password' => Hash::make('luai123456789'),
             'phone' => '770339576',
