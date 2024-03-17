@@ -16206,6 +16206,11 @@ textarea.form-control-lg {
     margin-right: 260px;
 
   }
+  #main-wrapper[data-layout=vertical][data-sidebar-position=fixed][data-sidebartype=full] .topbar .top-navbar .navbar-collapse-visitor {
+    /* margin-left: 260px; */
+    margin-right: unset !important;
+
+  }
   #main-wrapper[data-layout=vertical][data-sidebar-position=fixed][data-sidebartype=mini-sidebar] .topbar .top-navbar .navbar-collapse {
     margin-left: 65px;
   }
