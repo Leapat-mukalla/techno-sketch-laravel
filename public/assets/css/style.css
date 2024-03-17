@@ -16159,6 +16159,9 @@ textarea.form-control-lg {
 #main-wrapper[data-layout=vertical][data-sidebartype=full] .page-wrapper {
   margin-right: 260px;
 }
+#main-wrapper[data-layout=vertical][data-sidebartype=full] .page-wrapper-visitor {
+    margin-right: unset !important;
+  }
 /* #main-wrapper[data-layout=vertical][data-sidebartype=full] .page-wrapper {
   margin-left: 260px;
 } */
