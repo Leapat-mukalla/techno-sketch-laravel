@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Carbon\Carbon;
 use App\Models\Event;
+use App\Models\VisitorsScan;
+use Illuminate\Support\Facades\Auth;
 
 class VisitorController extends Controller
 {
@@ -29,6 +31,11 @@ class VisitorController extends Controller
         // $qrCode = QrCode::generate(auth()->id());
         // Get the first (and presumably only) event from the database
         $event = Event::first();
+        // Get the current user's ID
+        $userId = Auth::id();
+
+        // Query the visitors_scans table to check if the current user's ID exists
+        $visitorScan = VisitorsScan::where('user_id', $userId)->exists();
 
         $from = [12, 35, 251]; // RGB values for the start color (#0c23fb)
         $to = [89, 135, 255];  // RGB values for the end color (#5987ff)
@@ -40,7 +47,7 @@ class VisitorController extends Controller
                         ->gradient($from[0], $from[1], $from[2], $to[0], $to[1], $to[2], 'diagonal')
                         ->margin(1)
                         ->generate(auth()->id());
-        return view('visitors-home', compact('qrCode','event'));
+        return view('visitors-home', compact('qrCode','event','visitorScan'));
     }
     // public function getCountdown()
     // {
@@ -55,6 +62,18 @@ class VisitorController extends Controller
     //     return response()->json(['remaining_time' => $remainingTime]);
     // }
 
+
+    public function getUpdatedVisitorsScan()
+    {
+        // Get the current user's ID
+        $userId = Auth::id();
+
+        // Query the visitors_scans table to check if the current user's ID exists
+        $visitorScan = VisitorsScan::where('user_id', $userId)->exists();
+
+        // Return the updated data as JSON
+        return response()->json(['visitorScan' => $visitorScan]);
+    }
     /**
      * Show the form for creating a new resource.
      */

@@ -105,6 +105,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col">
+                        @if(!$visitorScan)
+
                         <div id="countdown">
                             <span id="days">00</span> ايام
                             <span id="hours">00</span> ساعات
@@ -123,6 +125,15 @@
 
                             </div>
                         </div>
+                        @endif
+
+                        @if($visitorScan)
+                        <div class=" text-center" style=" ">
+                            <video class=" " id="camera" autoplay></video>
+                            <button class=" btn btn-primary " id="captureButton">التقاط</button>
+
+                        </div>
+                        @endif
                     </div>
 
                 </div>
@@ -184,6 +195,24 @@
 
         // Initial call to set countdown immediately
         updateCountdown();
+        function fetchUpdatedData() {
+            $.ajax({
+                url: '/getUpdatedVisitorsScan',
+                type: 'GET',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                },
+                success: function(response) {
+                    // Check if visitor status has changed
+                    if (response.visitorScan) {
+                        // Refresh the page or update specific content
+                        location.reload(); // Refresh the entire page
+                    }
+                }
+            });
+        }
+        // Poll for updated data every 30 seconds (adjust as needed)
+        setInterval(fetchUpdatedData, 30000);
     </script>
  </body>
  </html>
