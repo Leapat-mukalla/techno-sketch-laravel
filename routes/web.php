@@ -42,7 +42,7 @@ Route::get('/home', [VisitorController::class, 'index'])->name('visitor.home');
 
 Route::get('/reception/home', [ReceptionController::class, 'index'])->name('reception.home');
 Route::post('/checkUserId', [ReceptionController::class, 'checkUserId']);
-Route::post('/createVisitorScan', [ReceptionController::class, 'createVisitorScan']);
+Route::post('/createVisitorScan', [ReceptionController::class, 'createVisitorScan'])->name('createVisitorScan');
 
 
 
