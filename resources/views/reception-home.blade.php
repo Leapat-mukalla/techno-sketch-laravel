@@ -130,13 +130,13 @@
                                     </div>
 
                                 </form> --}}
-                                {{-- <div class=" " style=" ">
+                                <div class=" " style=" ">
                                     <video class=" " id="camera" autoplay></video>
-                                </div> --}}
+                                </div>
                             </div>
-                            {{-- <div class=" card-footer bg-transparent text-center">
+                            <div class=" card-footer bg-transparent text-center">
                                 <button class=" btn btn-primary " id="captureButton">التقاط</button>
-                            </div> --}}
+                            </div>
 
                         </div>
                     </div>
