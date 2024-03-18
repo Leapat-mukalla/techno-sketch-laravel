@@ -195,33 +195,7 @@
         // Listen for clicks on the "capture" button
         document.getElementById('captureButton').addEventListener('click', function() {
             // Start scanning for QR codes when the "capture" button is clicked
-            // scanQRCode();
-            $.ajax({
-                                    url: '/createVisitorScan',
-                                    type: 'POST',
-                                    data: {
-                                        _token: '{{ csrf_token() }}',
-                                        userId: 9
-                                    },
-                                    success: function() {
-                                        alert('Visitor attendance confirmed successfully.');
-                                    },
-                                    // error: function(xhr, status, error) {
-                                    //     console.error('Error creating visitor scan:', error);
-                                    //     alert('Error confirming visitor attendance. Please try again.');
-                                    // }
-                                    error: function(xhr, status, error) {
-                                    console.error('Error creating visitor scan:', error);
-                                    if (xhr.responseJSON && xhr.responseJSON.error) {
-                                        alert('Error confirming visitor attendance: ' + xhr.responseJSON.error);
-                                    } else {
-                                        alert('Error confirming visitor attendance. Please try again.');
-                                    }
-                                }
-                                });
-
-
-
+            scanQRCode();
         });
 
         function scanQRCode() {

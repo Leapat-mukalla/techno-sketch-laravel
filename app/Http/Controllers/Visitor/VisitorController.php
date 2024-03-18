@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use App\Models\Event;
 use App\Models\VisitorsScan;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Artwork;
 class VisitorController extends Controller
 {
     /**
@@ -74,6 +74,18 @@ class VisitorController extends Controller
         // Return the updated data as JSON
         return response()->json(['visitorScan' => $visitorScan]);
     }
+    public function getArtworkDetails(Request $request)
+    {
+        $artworkId = $request->input('artworkId');
+        $artwork = Artwork::find($artworkId);
+
+        if (!$artwork) {
+            return response()->json(['error' => 'Artwork not found'], 404);
+        }
+
+        return response()->json(['artwork' => $artwork]);
+
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -93,9 +105,10 @@ class VisitorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $artwork = Artwork::findOrFail($id);
+        return view('artworkDetails', ['artwork' => $artwork]);
     }
 
     /**
