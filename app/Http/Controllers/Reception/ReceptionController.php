@@ -28,15 +28,21 @@ class ReceptionController extends Controller
 
     public function createVisitorScan(Request $request)
     {
-        $userId = $request->input('userId');
+        try {
+            $userId = $request->input('userId');
 
-        // Create a new visitor scan entry
-        VisitorScan::create([
-            'user_id' => $userId,
-            // You can add more fields here if needed
-        ]);
+            // Create a new visitor scan entry
+            VisitorsScan::create([
+                'user_id' => $userId,
+            ]);
+            // return redirect()->back()->with('success', 'تم إضافة الحدث بنجاح.');
+            return response()->json(['message' => 'Visitor scan created successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to create visitor scan'], 500);
+            // return response()->json(['error' => $e->getMessage()], 500);
+            // return redirect()->back()->with('error', $e->getMessage());
 
-        return response()->json(['message' => 'Visitor scan created successfully']);
+        }
     }
     /**
      * Show the form for creating a new resource.

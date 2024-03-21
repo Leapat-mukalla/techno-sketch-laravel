@@ -102,6 +102,34 @@
                     <div class="col">
                         <div class="card card-block card-stretch card-height ">
                             <div class="card-body align-self-center">
+                                @if(session('error'))
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                                @endif
+
+                                <!-- Display validation errors -->
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
+                                {{-- <form method="POST" class="ps-3 pe-3 col-12 col-lg-6 col-md-6" action="{{ route('createVisitorScan') }}">
+                                    @csrf
+                                    <div class="form-group mb-3">
+                                        <input class="form-control" type="text"  name="user_id"
+                                            required value="9">
+                                    </div>
+                                    <div class="form-group mb-4  text-center d-grid gap-2">
+                                        <button class="btn btn-primary" type="submit">اضافة</button>
+                                        <button class="btn waves-effect waves-light btn-light " type="reset">الغاء</button>
+                                    </div>
+
+                                </form> --}}
                                 <div class=" " style=" ">
                                     <video class=" " id="camera" autoplay></video>
                                 </div>
@@ -183,10 +211,11 @@
             if (code) {
                 // If a QR code is detected, handle it
                 handleQRCode(code);
-            } else {
-                // If no QR code is detected, display a message to the user
-                alert('No QR code detected. Please try again.');
             }
+            // } else {
+                // If no QR code is detected, display a message to the user
+                // alert('No QR code detected. Please try again.');
+            // }
 
             // Call scanQRCode() recursively to continuously scan for QR codes
             requestAnimationFrame(scanQRCode);
@@ -199,13 +228,16 @@
                 alert('Invalid QR code data. Please try again.');
             } else {
                 // If the QR code data is valid, do whatever you want with it
-                // console.log('Detected QR code:', code.data);
+                console.log('Detected QR code:', code.data);
                 var userId = parseInt(code.data);
                 // Perform an AJAX request to check if the user ID exists in the database
                 $.ajax({
                     url: '/checkUserId',
                     type: 'POST',
-                    data: { userId: userId },
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        userId: userId
+                    },
                     success: function(response) {
                         if (response.exists) {
                             // If the user ID exists, ask for confirmation from the user
@@ -215,14 +247,25 @@
                                 $.ajax({
                                     url: '/createVisitorScan',
                                     type: 'POST',
-                                    data: { userId: userId },
+                                    data: {
+                                        _token: '{{ csrf_token() }}',
+                                        userId: userId
+                                    },
                                     success: function() {
                                         alert('Visitor attendance confirmed successfully.');
                                     },
+                                    // error: function(xhr, status, error) {
+                                    //     console.error('Error creating visitor scan:', error);
+                                    //     alert('Error confirming visitor attendance. Please try again.');
+                                    // }
                                     error: function(xhr, status, error) {
-                                        console.error('Error creating visitor scan:', error);
+                                    console.error('Error creating visitor scan:', error);
+                                    if (xhr.responseJSON && xhr.responseJSON.error) {
+                                        alert('Error confirming visitor attendance: ' + xhr.responseJSON.error);
+                                    } else {
                                         alert('Error confirming visitor attendance. Please try again.');
                                     }
+                                }
                                 });
                             }
                         } else {
