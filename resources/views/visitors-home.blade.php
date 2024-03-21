@@ -1,32 +1,37 @@
 @extends('layouts.main-visitors')
 
 @section('content')
-<div class="col-12 align-self-center mb-4 ">
-    <h4 style="color: #212529"> العد التنازلي للمعرض</h4>
-</div>
-<div class="col-12">
-    <div id="countdown">
-        <span id="days">00</span> ايام
-        <span id="hours">00</span> ساعات
-        <span id="minutes">00</span> دقائق
-        <span id="seconds">00</span> ثواني
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 align-self-center mb-4 ">
+            <h4 style="color: #212529"> العد التنازلي للمعرض</h4>
+        </div>
+        <div class="col-12">
+            <div id="countdown">
+                <span id="days">00</span> ايام
+                <span id="hours">00</span> ساعات
+                <span id="minutes">00</span> دقائق
+                <span id="seconds">00</span> ثواني
+            </div>
+        </div>
+        <div class="col-12 align-self-center mb-4 mt-5">
+            <h4 style="color: #212529">  رمز الاستجابة الخاصة بك</h4>
+        </div>
+        <div class="col-12">
+            <div class="card card-block card-stretch card-height ">
+                <div class="card-body  align-self-center">
+                    <div id="countdown"></div>
+                <div class=" ">
+                    {!! $qrCode !!}
+
+                </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<div class="col-12 align-self-center mb-4 mt-5">
-    <h4 style="color: #212529">  رمز الاستجابة الخاصة بك</h4>
-</div>
-<div class="col-12">
-    <div class="card card-block card-stretch card-height ">
-        <div class="card-body  align-self-center">
-            <div id="countdown"></div>
-        <div class=" ">
-            {!! $qrCode !!}
 
-        </div>
-
-        </div>
-    </div>
-</div>
 
 <script>
  function updateCountdown() {

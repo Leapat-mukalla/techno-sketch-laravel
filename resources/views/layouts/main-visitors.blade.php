@@ -108,8 +108,8 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
-                <div class="row">
+            {{-- <div class="container-fluid">
+                <div class="row"> --}}
                     @yield('content')
 
 
@@ -157,8 +157,8 @@
                         </div>
 
                         @endif --}}
-                </div>
-            </div>
+                {{-- </div> --}}
+            {{-- </div> --}}
 
              <footer class="footer text-center text-muted">
                  &copy; 2024 بواسطة <a href="#">تكنو سكيتش</a>

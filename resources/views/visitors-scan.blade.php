@@ -1,18 +1,33 @@
 @extends('layouts.main-visitors')
 
 @section('content')
-<div class="col-12 align-self-center mb-4 ">
-    <h4 style="color: #212529">قم بمسح رمز استجابة الأعمال الفنية</h4>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 align-self-center mb-4 ">
+            <h4 style="color: #212529">قم بمسح رمز استجابة الأعمال الفنية</h4>
+        </div>
+        <div class="col-12">
+            <div class=" d-flex flex-column align-items-center justify-content-center" style=" ">
+                <video class="w-100  " id="camera" autoplay style="  height: 55vh; object-fit: cover;"></video>
+                <button class=" btn btn-primary mt-2" id="captureButton">مسح</button>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="col-12">
-    <div class=" d-flex flex-column align-items-center justify-content-center" style=" ">
-        <video class="w-100  " id="camera" autoplay style="  height: 55vh;
 
-
-
-        object-fit: cover;"></video>
-        <button class=" btn btn-primary mt-2" id="captureButton">مسح</button>
-
+<!-- Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="errorModalLabel">حدث خطأ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Error message will be displayed here -->
+                <p id="errorMessage"></p>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -27,9 +42,11 @@
                         video.play();
                     })
                     .catch(function(err) {
-                        console.error('Error accessing camera:', err);
+                        // console.error('Error accessing camera:', err);
                         // Display error message to the user
-                        alert('Error accessing camera. Please check your camera permissions and try again.');
+                        // alert('Error accessing camera. Please check your camera permissions and try again.');
+                        displayErrorModal('حدث خطأ أثناء الوصول إلى الكاميرا. يرجى التحقق من أذونات الكاميرا والمحاولة مرة أخرى.');
+
                     });
 
                 // Initialize variables for video, canvas, and context
@@ -48,23 +65,23 @@
                 // Listen for clicks on the "capture" button
                 document.getElementById('captureButton').addEventListener('click', function() {
                     // Start scanning for QR codes when the "capture" button is clicked
-                    // scanQRCode();
-                    $.ajax({
-                            url: '/getArtworkDetails',
-                            type: 'GET',
-                            data: {
-                                artworkId: 3
-                            },
-                            success: function(response) {
-                                // Handle successful response
-                                // Redirect the user to the page with artwork details
-                                window.location.href = '/artworks/' + response.artwork.id;
-                            },
-                            error: function(xhr, status, error) {
-                                // Handle error
-                                console.error('Error fetching artwork details:', error);
-                            }
-                        });
+                    scanQRCode();
+                //     $.ajax({
+                //             url: '/getArtworkDetails',
+                //             type: 'GET',
+                //             data: {
+                //                 artworkId: 3
+                //             },
+                //             success: function(response) {
+                //                 // Handle successful response
+                //                 // Redirect the user to the page with artwork details
+                //                 window.location.href = '/artworks/' + response.artwork.id;
+                //             },
+                //             error: function(xhr, status, error) {
+                //                 // Handle error
+                //                 console.error('Error fetching artwork details:', error);
+                //             }
+                //         });
                 });
 
                 function scanQRCode() {
@@ -80,11 +97,13 @@
                     if (code) {
                         // If a QR code is detected, handle it
                         handleQRCode(code);
-                    }
-                    // } else {
+                    } else {
                         // If no QR code is detected, display a message to the user
                         // alert('No QR code detected. Please try again.');
-                    // }
+                        displayErrorModal('لم يتم اكتشاف رمز الاستجابة السريعة. حاول مرة اخرى.');
+                        // Stop scanning for QR codes
+                        return; // Exit the function
+                    }
 
                     // Call scanQRCode() recursively to continuously scan for QR codes
                     requestAnimationFrame(scanQRCode);
@@ -94,7 +113,10 @@
                     // Check if the QR code data is empty or not an integer
                     if (!code.data || isNaN(parseInt(code.data))) {
                         // Display a message to the user indicating that the QR code data is invalid
-                        alert('Invalid QR code data. Please try again.');
+                        // alert('Invalid QR code data. Please try again.');
+                        displayErrorModal('بيانات رمز الاستجابة السريعة غير صالحة. حاول مرة اخرى.');
+                        // Return to the previous state
+                        return;
                     } else {
                         // If the QR code data is valid, do whatever you want with it
                         console.log('Detected QR code:', code.data);
@@ -113,11 +135,29 @@
                             },
                             error: function(xhr, status, error) {
                                 // Handle error
-                                console.error('Error fetching artwork details:', error);
+                                // console.error('Error fetching artwork details:', error);
+                                displayErrorModal('حدث خطأ أثناء جلب تفاصيل العمل الفني. حاول مرة اخرى.');
                             }
                         });
 
                     }
                 }
+                // Function to display error message in modal
+                function displayErrorModal(message) {
+                    // Set the error message in the modal body
+                    document.getElementById('errorMessage').innerText = message;
+                    // Trigger the modal to display
+                    var modal = new bootstrap.Modal(document.getElementById('errorModal'));
+                    modal.show();
+                }
+
+                // Call this function to open the modal with the specified message
+                function openErrorModal(message) {
+                    // Display the button to trigger the modal
+                    document.getElementById('openModalButton').click();
+                    // Display the error message in the modal
+                    displayErrorModal(message);
+                }
 </script>
+
 @endsection
