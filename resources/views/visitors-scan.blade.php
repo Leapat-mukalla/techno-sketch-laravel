@@ -15,22 +15,6 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="errorModalLabel">حدث خطأ</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Error message will be displayed here -->
-                <p id="errorMessage"></p>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
 
         // Get access to the user's camera
@@ -65,7 +49,7 @@
                 // Listen for clicks on the "capture" button
                 document.getElementById('captureButton').addEventListener('click', function() {
                     // Start scanning for QR codes when the "capture" button is clicked
-                    // scanQRCode();
+                    scanQRCode();
                     $.ajax({
                             url: '/getArtworkDetails',
                             type: 'GET',
@@ -141,22 +125,6 @@
                         });
 
                     }
-                }
-                // Function to display error message in modal
-                function displayErrorModal(message) {
-                    // Set the error message in the modal body
-                    document.getElementById('errorMessage').innerText = message;
-                    // Trigger the modal to display
-                    var modal = new bootstrap.Modal(document.getElementById('errorModal'));
-                    modal.show();
-                }
-
-                // Call this function to open the modal with the specified message
-                function openErrorModal(message) {
-                    // Display the button to trigger the modal
-                    document.getElementById('openModalButton').click();
-                    // Display the error message in the modal
-                    displayErrorModal(message);
                 }
 </script>
 
