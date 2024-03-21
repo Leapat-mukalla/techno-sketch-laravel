@@ -27,95 +27,139 @@
         </div>
     </div>
     <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full" >
-    <header class="topbar" data-navbarbg="skin6">
-        <nav class="navbar top-navbar navbar-expand-lg">
-            <div class="navbar-header" data-logobg="skin6">
-                <a class="nav-toggler waves-effect waves-light d-block d-lg-none" href="javascript:void(0)">
-                    <i data-feather="menu" class="feather-icon"></i>
+         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full" >
+         <header class="topbar" data-navbarbg="skin6">
+             <nav class="navbar top-navbar navbar-expand-lg">
+                 <div class="navbar-header" data-logobg="skin6">
 
-                </a>
-                <!-- ============================================================== -->
-                <!-- Logo -->
-                <!-- ============================================================== -->
-                {{-- <div class="navbar-brand">
-                    <a href="#">
-                        <img src="{{asset('assets/images/logo.png')}}" alt="" class="img-fluid" style="max-width: 65%;margin-right: 21px;">
-                    </a>
-                </div> --}}
+                     <a class="nav-toggler waves-effect waves-light d-block d-lg-none" href="#">
+                         <i data-feather="menu" class="feather-icon"></i>
 
-                <a class="topbartoggler d-block d-lg-none waves-effect waves-light" href="javascript:void(0)"
-                    data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                   <i data-feather="more-horizontal" class="feather-icon"></i>
+                     </a>
+                     <!-- ============================================================== -->
+                     <!-- Logo -->
+                     <!-- ============================================================== -->
+                     <div class="navbar-brand">
+                         <a href="#">
+                             <img src="{{asset('assets/images/logo.png')}}" alt="" class="img-fluid" style="max-width: 55%;margin-right: 21px;">
+                         </a>
+                     </div>
 
-                </a>
-            </div>
+                     <a class="topbartoggler d-block d-lg-none waves-effect waves-light" href="javascript:void(0)"
+                         data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i data-feather="more-horizontal" class="feather-icon"></i>
 
-            <div class="navbar-collapse collapse navbar-collapse-visitor" id="navbarSupportedContent">
+                     </a>
+                 </div>
 
-                <ul class="navbar-nav float-end">
+                 <div class="navbar-collapse collapse navbar-collapse-visitor" id="navbarSupportedContent">
+
+                     <ul class="navbar-nav float-end">
 
 
-                     <li class="nav-item d-flex align-items-center">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                        <a class="nav-link dropdown-toggle" href="#" onclick="event.preventDefault(); this.closest('form').submit();">
-                            <i data-feather="power" class="svg-icon"></i>
-                        </a>
-                        </form>
-                    </li>
+                          <li class="nav-item d-flex align-items-center">
+                             <form method="POST" action="{{ route('logout') }}">
+                                 @csrf
+                             <a class="nav-link dropdown-toggle" href="#" onclick="event.preventDefault(); this.closest('form').submit();">
+                                 <i data-feather="power" class="svg-icon"></i>
+                             </a>
+                             </form>
+                         </li>
 
-                     </ul>
-                     <ul class="navbar-nav float-start me-auto ms-3 pe-1">
+                          </ul>
+                          <ul class="navbar-nav float-start me-auto ms-3 pe-1">
 
+
+                            @php
+                            $currentUserName = \App\Services\AccountService::getCurrentUserName();
+                            @endphp
 
                         <li class="nav-item ">
+                            <a class="nav-link ">
 
+                                <span class="d-none d-lg-inline-block">اهلاً,</span>
+                                @if ($currentUserName)
+                                    <span class="text-dark">{{ $currentUserName }}</span>
+                                @else
+                                    <span>زائر</span>
+                                @endif
+                            </a>
+                        </li>
+                         </ul>
+                 </div>
+             </nav>
+         </header>
+         <aside class="left-sidebar" data-sidebarbg="skin6">
+            <div class="scroll-sidebar" data-sidebarbg="skin6">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="sidebar-item">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf <!-- Add CSRF token -->
+                                <a class="sidebar-link sidebar-link" href="#" onclick="event.preventDefault(); this.closest('form').submit();">
+                                    <i data-feather="log-out" class="feather-icon"></i>
+                                    <span class="hide-menu">تسجيل الخروج</span>
+                                </a>
+                            </form>
                         </li>
                     </ul>
+                </nav>
             </div>
-        </nav>
-    </header>
+        </aside>
     <div class="page-wrapper page-wrapper-visitor" >
        <div class="page-breadcrumb">
            <div class="row">
-               <div class="col-7 align-self-center">
-                   @php
-                   $currentUserName = \App\Services\AccountService::getCurrentUserName();
-                   @endphp
-                   @if ($currentUserName)
-                   <h3 class="page-title text-nowrap text-dark font-weight-medium mb-1">    مرحباً، {{ $currentUserName }} 🧑🏻‍🎨💥</h3>
-                   @else
-                   <h3 class="page-title text-nowrap text-dark font-weight-medium mb-1">    مرحباً 🧑🏻‍🎨💥</h3>
-                   @endif
-                   {{-- <h3 class="page-title text-nowrap text-dark font-weight-medium mb-1">    مرحباً، {{ $currentUserName }} 🧑🏻‍🎨💥</h3> --}}
 
-               </div>
                <div class="col-5 align-self-center">
                </div>
            </div>
        </div>
        <div class="container-fluid">
-           <div class="row">
-            <h1>{{ $artwork->title }}</h1>
-            <img src="{{ asset($artwork->artwork_photo) }}" alt="Artwork Photo">
-            <p>Artist: {{ $artwork->artist }}</p>
-            <p>Description: {{ $artwork->description }}</p>
+            <div class="card">
+                <div class="card-header bg-transparent">
+                    <div class="row ">
+                        <div class="col-6">
+                            {{-- <div class="float-end"> --}}
+                                <h4 class="card-title">{{ $artwork->title }}</h4>
+                            {{-- </div> --}}
+                        </div>
+                        <div class="col-3">
 
-            {{-- <button id="likeButton" onclick="toggleLikeArtwork({{ $artwork->id }})">
-                <i data-feather="thumbs-up" class="feather-icon"></i> Like
-            </button> --}}
-            {{-- Render the like/dislike button based on response from AJAX call --}}
-            <button id="likeButton" onclick="toggleLikeArtwork({{ $artwork->id }})">
-                @if (isset($likedByUser) && $likedByUser)
-                <i data-feather="thumbs-down" class="feather-icon"></i> Dislike
-                @else
-                <i data-feather="thumbs-up" class="feather-icon"></i> Like
-                @endif
-            </button>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                        @if($likedByUser)
+                        <button  id="likeButton" onclick="toggleLikeArtwork({{ $artwork->id }})" type="button" class="btn btn-info" >
+                            <i data-feather="thumbs-up" class="feather-icon"></i>
+                        </button>
+                        @else
+                        <button  id="likeButton" onclick="toggleLikeArtwork({{ $artwork->id }})" type="button" class="btn btn-light" >
+                            <i data-feather="thumbs-up" class="feather-icon"></i>
+                        </button>
+                        @endif
+                        </div>
 
-           </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <img class="img-thumbnail" src="{{ route('photo', ['type' => 'artwork', 'filename' => $artwork->artwork_photo]) }}" alt="Artwork Photo">
+                        <div class="mt-2 ">
+                            <img class="rounded-circle" src="{{ route('photo', ['type' => 'artist', 'filename' => $artwork->artist_photo]) }}" width="35" height="35" alt="Artwork Photo">
+                            <span class="me-2 text-black">{{ $artwork->artist }}</span>
+                            <div class=" float-start d-flex justify-content-center align-items-center mt-1">
+                                <i data-feather="heart" class="feather-icon text-danger"></i>
+                                <sapn class="text-black me-2">{{$likeCount}}</sapn>
+                            </div>
+
+                        </div>
+                        <p class="mt-4"> {{ $artwork->description }}</p>
+                       </div>
+
+                </div>
+            </div>
+
        </div>
        <footer class="footer text-center text-muted">
         &copy; 2024 بواسطة <a href="#">تكنو سكيتش</a>
@@ -152,12 +196,14 @@
                     var likeButton = $('#likeButton');
                     if (response.liked) {
                         // Artwork is liked
-                        likeButton.attr('data-feather', 'thumbs-down');
+                        likeButton.removeClass('btn-light').addClass('btn-info');
+                        location.reload();
+
                     } else {
                         // Artwork is disliked
-                        likeButton.attr('data-feather', 'thumbs-up');
+                        likeButton.removeClass('btn-info').addClass('btn-light');
+                        location.reload();
                     }
-                    feather.replace(); // Refresh Feather icons
                 },
                 error: function(xhr, status, error) {
                     console.error('Error toggling like for artwork:', error);
@@ -167,3 +213,4 @@
     </script>
 </body>
 </html>
+

@@ -65,23 +65,23 @@
                 // Listen for clicks on the "capture" button
                 document.getElementById('captureButton').addEventListener('click', function() {
                     // Start scanning for QR codes when the "capture" button is clicked
-                    scanQRCode();
-                //     $.ajax({
-                //             url: '/getArtworkDetails',
-                //             type: 'GET',
-                //             data: {
-                //                 artworkId: 3
-                //             },
-                //             success: function(response) {
-                //                 // Handle successful response
-                //                 // Redirect the user to the page with artwork details
-                //                 window.location.href = '/artworks/' + response.artwork.id;
-                //             },
-                //             error: function(xhr, status, error) {
-                //                 // Handle error
-                //                 console.error('Error fetching artwork details:', error);
-                //             }
-                //         });
+                    // scanQRCode();
+                    $.ajax({
+                            url: '/getArtworkDetails',
+                            type: 'GET',
+                            data: {
+                                artworkId: 3
+                            },
+                            success: function(response) {
+                                // Handle successful response
+                                // Redirect the user to the page with artwork details
+                                window.location.href = '/artworks/' + response.artwork.id;
+                            },
+                            error: function(xhr, status, error) {
+                                // Handle error
+                                console.error('Error fetching artwork details:', error);
+                            }
+                        });
                 });
 
                 function scanQRCode() {

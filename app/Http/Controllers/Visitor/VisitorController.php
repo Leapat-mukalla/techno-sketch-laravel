@@ -56,6 +56,7 @@ class VisitorController extends Controller
         // Return the updated data as JSON
         return response()->json(['visitorScan' => $visitorScan]);
     }
+
     public function getArtworkDetails(Request $request)
     {
         $artworkId = $request->input('artworkId');
@@ -64,22 +65,11 @@ class VisitorController extends Controller
         if (!$artwork) {
             return response()->json(['error' => 'Artwork not found'], 404);
         }
+        return response()->json(['artwork' => $artwork]);
 
-        // Check if the authenticated user has liked the artwork
-        $likedByUser = false;
-        // $userId = Auth::id();
-        $user = auth()->user();
-        $like = Like::where('user_id',$user->id )
-                    ->where('artwork_id', $artworkId)
-                    ->first();
-        if ($like) {
-            $likedByUser = true;
-        }
-        // $likedByUser = auth()->user()->likes()->where('artwork_id', $artworkId)->exists();
-
-        return response()->json(['artwork' => $artwork, 'likedByUser' => $likedByUser]);
 
     }
+
     public function toggleLikeArtwork(Request $request)
     {
         $user = auth()->user(); // Assuming you have authentication set up
@@ -132,8 +122,10 @@ class VisitorController extends Controller
      */
     public function show($id)
     {
+        $likedByUser = auth()->user()->likes()->where('artwork_id', $id)->exists();
         $artwork = Artwork::findOrFail($id);
-        return view('artworkDetails', ['artwork' => $artwork]);
+        $likeCount = $artwork->likes()->count();
+        return view('artworkDetails', ['artwork' => $artwork,'likedByUser'=>$likedByUser,'likeCount' => $likeCount]);
     }
 
     public function scanShow()

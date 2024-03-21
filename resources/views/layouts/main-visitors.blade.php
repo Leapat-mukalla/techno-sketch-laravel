@@ -100,6 +100,25 @@
                  </div>
              </nav>
          </header>
+         <aside class="left-sidebar" data-sidebarbg="skin6">
+            <div class="scroll-sidebar" data-sidebarbg="skin6">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="sidebar-item">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf <!-- Add CSRF token -->
+                                <a class="sidebar-link sidebar-link" href="#" onclick="event.preventDefault(); this.closest('form').submit();">
+                                    <i data-feather="log-out" class="feather-icon"></i>
+                                    <span class="hide-menu">تسجيل الخروج</span>
+                                </a>
+                            </form>
+                        </li>
+
+
+                    </ul>
+                </nav>
+            </div>
+        </aside>
          <div class="page-wrapper page-wrapper-visitor" >
             <div class="page-breadcrumb">
                 <div class="row">

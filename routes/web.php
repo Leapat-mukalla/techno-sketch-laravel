@@ -36,6 +36,25 @@ Route::post('/logout', [LogoutController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
+    Route::get('photos/{type}/{filename}', function ($type, $filename) {
+        // Define the disk where the photos are stored
+        $disk = 'public';
+
+        // Define the directory based on the type of photo (artwork_photo or artist_photo)
+        $directory = ($type === 'artwork') ? 'artwork_photos' : 'artist_photos';
+
+        // Construct the full file path
+        $path = Storage::disk($disk)->path($directory . '/' . $filename);
+
+        // Check if the file exists
+        if (file_exists($path)) {
+            // Return the file as a response
+            return response()->file($path);
+        }
+
+        // If the file does not exist, abort with a 404 response
+        abort(404);
+    })->name('photo');
 
 Route::get('/home', [VisitorController::class, 'index'])->name('visitor.home');
 // Route::get('/countdown', [VisitorController::class, 'getCountdown'])->name('countdown');

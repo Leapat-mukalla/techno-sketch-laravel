@@ -4,15 +4,33 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 align-self-center mb-4 ">
-            <h4 style="color: #212529"> العد التنازلي للمعرض</h4>
+            <h4 style="color: #212529"> العد التنازلي للمعرض ⏳ </h4>
         </div>
-        <div class="col-12">
-            <div id="countdown">
+        <div class="col-12 text-center ">
+            {{-- <div id="countdown">
                 <span id="days">00</span> ايام
                 <span id="hours">00</span> ساعات
                 <span id="minutes">00</span> دقائق
                 <span id="seconds">00</span> ثواني
-            </div>
+            </div> --}}
+            <div id="countdown" class="d-flex justify-content-center align-items-center mt-3">
+                <div class="countdown-section">
+                  <span id="days" class="h1 days">-</span>
+                  <div class="text-center text-black-50">ايام</div>
+                </div>
+                <div class="countdown-section">
+                  <span id="hours" class="h1 hours">-</span>
+                  <div class="text-center text-black-50">ساعات</div>
+                </div>
+                <div class="countdown-section">
+                  <span id="minutes" class="h1 minutes">-</span>
+                  <div class="text-center text-black-50">دقائق</div>
+                </div>
+                <div class="countdown-section">
+                  <span id="seconds" class="h1 seconds">-</span>
+                  <div class="text-center text-black-50">ثواني</div>
+                </div>
+              </div>
         </div>
         <div class="col-12 align-self-center mb-4 mt-5">
             <h4 style="color: #212529">  رمز الاستجابة الخاصة بك</h4>
