@@ -17,6 +17,6 @@ class Artwork extends Model
     ];
     public function likes()
     {
-        return $this->belongsToMany(Like::class);
+        return $this->hasMany(Like::class);
     }
 }

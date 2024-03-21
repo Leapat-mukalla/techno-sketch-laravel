@@ -10,6 +10,8 @@ use App\Models\Event;
 use App\Models\VisitorsScan;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Artwork;
+use App\Models\Like;
+
 class VisitorController extends Controller
 {
     /**
@@ -83,8 +85,51 @@ class VisitorController extends Controller
             return response()->json(['error' => 'Artwork not found'], 404);
         }
 
-        return response()->json(['artwork' => $artwork]);
+        // Check if the authenticated user has liked the artwork
+        $likedByUser = false;
+        // $userId = Auth::id();
+        $user = auth()->user();
+        $like = Like::where('user_id',$user->id )
+                    ->where('artwork_id', $artworkId)
+                    ->first();
+        if ($like) {
+            $likedByUser = true;
+        }
+        // $likedByUser = auth()->user()->likes()->where('artwork_id', $artworkId)->exists();
 
+        return response()->json(['artwork' => $artwork, 'likedByUser' => $likedByUser]);
+
+    }
+    public function toggleLikeArtwork(Request $request)
+    {
+        $user = auth()->user(); // Assuming you have authentication set up
+
+        // Get the artwork ID from the request
+        $artworkId = $request->input('artworkId');
+
+        // Check if the user has already liked the artwork
+        $existingLike = Like::where('user_id', $user->id)
+                            ->where('artwork_id', $artworkId)
+                            ->first();
+
+        if ($existingLike) {
+            // User has already liked the artwork, so remove the like
+            Like::where('user_id', $existingLike->user_id)
+            ->where('artwork_id', $existingLike->artwork_id)
+            ->delete();
+
+            $liked = false; // Indicate that the artwork is no longer liked
+        } else {
+            // User hasn't liked the artwork yet, so add a like
+            Like::create([
+                'user_id' => $user->id,
+                'artwork_id' => $artworkId
+            ]);
+            $liked = true; // Indicate that the artwork is now liked
+        }
+
+        // You can return the updated like status as JSON response
+        return response()->json(['liked' => $liked]);
     }
     /**
      * Show the form for creating a new resource.

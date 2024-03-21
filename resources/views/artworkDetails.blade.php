@@ -102,6 +102,19 @@
             <img src="{{ asset($artwork->artwork_photo) }}" alt="Artwork Photo">
             <p>Artist: {{ $artwork->artist }}</p>
             <p>Description: {{ $artwork->description }}</p>
+
+            {{-- <button id="likeButton" onclick="toggleLikeArtwork({{ $artwork->id }})">
+                <i data-feather="thumbs-up" class="feather-icon"></i> Like
+            </button> --}}
+            {{-- Render the like/dislike button based on response from AJAX call --}}
+            <button id="likeButton" onclick="toggleLikeArtwork({{ $artwork->id }})">
+                @if (isset($likedByUser) && $likedByUser)
+                <i data-feather="thumbs-down" class="feather-icon"></i> Dislike
+                @else
+                <i data-feather="thumbs-up" class="feather-icon"></i> Like
+                @endif
+            </button>
+
            </div>
        </div>
        <footer class="footer text-center text-muted">
@@ -121,5 +134,36 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+    <script>
+        // Function to handle toggle like action
+        function toggleLikeArtwork(artworkId) {
+            $.ajax({
+                url: '/toggleLikeArtwork',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    artworkId: artworkId
+                },
+                success: function(response) {
+                    // Update UI to reflect toggle like action
+                    // Toggle between thumbs-up and thumbs-down icons based on response
+                    var likeButton = $('#likeButton');
+                    if (response.liked) {
+                        // Artwork is liked
+                        likeButton.attr('data-feather', 'thumbs-down');
+                    } else {
+                        // Artwork is disliked
+                        likeButton.attr('data-feather', 'thumbs-up');
+                    }
+                    feather.replace(); // Refresh Feather icons
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error toggling like for artwork:', error);
+                }
+            });
+        }
+    </script>
 </body>
 </html>
