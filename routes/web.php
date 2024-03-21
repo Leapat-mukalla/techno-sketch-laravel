@@ -43,6 +43,7 @@ Route::get('/getUpdatedVisitorsScan', [VisitorController::class, 'getUpdatedVisi
 Route::get('/getArtworkDetails', [VisitorController::class, 'getArtworkDetails'])->name('getArtworkDetails');
 Route::get('/artworks/{id}', [VisitorController::class, 'show'])->name('artworks.show');
 Route::post('/toggleLikeArtwork', [VisitorController::class, 'toggleLikeArtwork'])->name('toggleLikeArtwork');
+Route::get('/visitors-scan', [VisitorController::class, 'scanShow'])->name('visitors-scan');
 
 Route::get('/reception/home', [ReceptionController::class, 'index'])->name('reception.home');
 Route::post('/checkUserId', [ReceptionController::class, 'checkUserId']);

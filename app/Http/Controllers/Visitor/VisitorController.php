@@ -37,7 +37,7 @@ class VisitorController extends Controller
         $userId = Auth::id();
 
         // Query the visitors_scans table to check if the current user's ID exists
-        $visitorScan = VisitorsScan::where('user_id', $userId)->exists();
+        $visitorScan = VisitorsScan::where('user_id', $userId)->first();
 
         $from = [12, 35, 251]; // RGB values for the start color (#0c23fb)
         $to = [89, 135, 255];  // RGB values for the end color (#5987ff)
@@ -154,6 +154,11 @@ class VisitorController extends Controller
     {
         $artwork = Artwork::findOrFail($id);
         return view('artworkDetails', ['artwork' => $artwork]);
+    }
+
+    public function scanShow()
+    {
+        return view('visitors-scan');
     }
 
     /**
