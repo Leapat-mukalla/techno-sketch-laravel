@@ -21,12 +21,12 @@
 
         <div class="card-body">
             <div class="row">
-                <img class="img-thumbnail" src="{{ route('photo', ['type' => 'artwork', 'filename' => $artwork->artwork_photo]) }}" alt="Artwork Photo">
+                <img class="img-thumbnail" src="{{ Storage::disk('s3')->temporaryUrl($artwork->artwork_photo, '+2 minutes') }}"  alt="Artwork Photo">
+
                 <div class="mt-2 ">
-                    <img class="rounded-circle" src="{{ route('photo', ['type' => 'artist', 'filename' => $artwork->artist_photo]) }}" width="35" height="35" alt="Artwork Photo">
+                    <img class="rounded-circle" src="{{ Storage::disk('s3')->temporaryUrl($artwork->artist_photo, '+2 minutes') }}" width="35" height="35"   alt="Artwork Photo">
                     <span class="me-2 text-black">{{ $artwork->artist }}</span>
                     <div class=" float-start d-flex justify-content-center align-items-center mt-1">
-                        {{-- <i data-feather="heart" class="feather-icon text-danger"></i> --}}
                         @if($likedByUser)
                         <button  id="likeButton" onclick="toggleLikeArtwork({{ $artwork->id }})" type="button" class="btn" >
                             <i id="likeIcon" data-feather="thumbs-up" class="feather-icon text-primary"></i>

@@ -54,7 +54,7 @@
                             url: '/getArtworkDetails',
                             type: 'GET',
                             data: {
-                                artworkId: 3
+                                artworkId:4
                             },
                             success: function(response) {
                                 // Handle successful response

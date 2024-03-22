@@ -84,11 +84,20 @@
                                 <td class="border-top-0 border-bottom-0 font-14 ">{{ $loop->iteration }}</td>
                                 <td class="border-top-0 border-bottom-0  font-14">{{ $artwork->title }}</td>
                                 {{-- <td class="border-top-0 border-bottom-0  px-2 py-4 font-14">{{ $artwork->artwork_photo }}</td> --}}
-                                <td class="border-top-0 border-bottom-0   font-14"><img src="{{ asset('storage/artwork_photos/' . $artwork->artwork_photo) }}" width="45" height="40" alt="Artwork Photo">
+                                <td class="border-top-0 border-bottom-0   font-14">
+                                    {{-- <img src="{{ asset('storage/artwork_photos/' . $artwork->artwork_photo) }}" width="45" height="40" alt="Artwork Photo"> --}}
+                                    {{-- <img src="{{ Storage::disk('s3')->url($artwork->artwork_photo) }}" width="45" height="40" alt="Artwork Photo"> --}}
+                                    <img src="{{ Storage::disk('s3')->temporaryUrl($artwork->artwork_photo, '+2 minutes') }}" width="45" height="40" alt="Artwork Photo">
+
                                 </td>
                                 <td class="border-top-0 border-bottom-0  font-14">{{ $artwork->artist }}</td>
                                 {{-- <td class="border-top-0 border-bottom-0  px-2 py-4 font-14">{{ $artwork->artist_photo }}</td> --}}
-                                <td class="border-top-0 border-bottom-0  font-14"><img src="{{ asset('storage/artist_photos/' . $artwork->artist_photo) }}" width="45" height="40" alt="Artwork Photo">
+                                <td class="border-top-0 border-bottom-0  font-14">
+                                    {{-- <img src="{{ asset('storage/artist_photos/' . $artwork->artist_photo) }}" width="45" height="40" alt="Artwork Photo"> --}}
+                                    <img src="{{ Storage::disk('s3')->temporaryUrl($artwork->artist_photo, '+2 minutes') }}" width="45" height="40" alt="Artwork Photo">
+
+                                </td>
+
                                 <td class="border-top-0 border-bottom-0   font-14" >{{ $artwork->description }}</td>
                                 <td class="border-top-0 border-bottom-0  font-14"> {{ $artwork->like_count }}</td>
                                 <td class="font-weight-medium nowrap text-dark border-top-0 border-bottom-0 ">
