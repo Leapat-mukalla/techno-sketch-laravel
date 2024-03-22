@@ -99,15 +99,18 @@ class ManageArtworksController extends Controller
            $artworkFile = $request->file('artwork_photo');
            $artworkFilename = $this->generateFilename($request->title, $request->artist, $artworkFile->getClientOriginalExtension());
 
-           // Store the artwork_photo file in the storage directory
-           Storage::disk('public')->putFileAs('artwork_photos', $artworkFile, $artworkFilename);
+            // Store the artwork_photo file in the storage directory
+            //    Storage::disk('public')->putFileAs('artwork_photos', $artworkFile, $artworkFilename);
+            Storage::disk('s3')->putFileAs('', $artworkFile, $artworkFilename);
 
            // Handle artist_photo upload
            $artistFile = $request->file('artist_photo');
            $artistFilename = $this->generateArtistFilename($request->artist, $artistFile->getClientOriginalExtension());
 
            // Store the artist_photo file in the storage directory
-           Storage::disk('public')->putFileAs('artist_photos', $artistFile, $artistFilename);
+            //    Storage::disk('public')->putFileAs('artist_photos', $artistFile, $artistFilename);
+            Storage::disk('s3')->putFileAs('', $artistFile, $artistFilename);
+
 
            // Create the artwork record in the database
            Artwork::create([
@@ -127,7 +130,10 @@ class ManageArtworksController extends Controller
             // Storage::delete(['artwork_photos/' . $artworkFilename, 'artist_photos/' . $artistFilename]);
             // Delete uploaded files
             if ($artworkFilename && $artistFilename) {
-                Storage::delete(['artwork_photos/' . $artworkFilename, 'artist_photos/' . $artistFilename]);
+                // Storage::delete(['artwork_photos/' . $artworkFilename, 'artist_photos/' . $artistFilename]);
+                Storage::disk('s3')->delete([$artworkFilename, $artistFilename]);
+
+
             }
             // return redirect()->back()->with('error', 'حدث خطأ أثناء إضافة العمل. يرجى المحاولة مرة أخرى.');
             return redirect()->back()->with('error', $e->getMessage());
@@ -138,14 +144,14 @@ class ManageArtworksController extends Controller
     {
         $uniqueIdentifier = uniqid();
         // Generate a unique filename based on title, artist, and unique identifier
-        return "{$uniqueIdentifier}_{$title}_{$artist}.{$extension}";
+        return "artwork_{$uniqueIdentifier}_{$title}_{$artist}.{$extension}";
     }
 
     private function generateArtistFilename($artist, $extension)
     {
         $uniqueIdentifier = uniqid();
         // Generate a unique filename based on artist and unique identifier
-        return "{$uniqueIdentifier}_{$artist}.{$extension}";
+        return "artist_{$uniqueIdentifier}_{$artist}.{$extension}";
     }
 
     /**
@@ -204,20 +210,26 @@ class ManageArtworksController extends Controller
             if ($request->hasFile('artwork_photo')) {
                 // Delete the previous artwork photo
                 if ($artwork->artwork_photo) {
-                    Storage::disk('public')->delete('artwork_photos/' . $artwork->artwork_photo);
+                    // Storage::disk('public')->delete('artwork_photos/' . $artwork->artwork_photo);
+                    Storage::disk('s3')->delete($artwork->artwork_photo);
                 }
                 // Upload and store the new artwork photo
-                $artwork->artwork_photo = $request->file('artwork_photo')->store('artwork_photos', 'public');
+                // $artwork->artwork_photo = $request->file('artwork_photo')->store('artwork_photos', 'public');
+                $artwork->artwork_photo = $request->file('artwork_photo')->store('', 's3');
+
             }
 
             // Handle the artist photo
             if ($request->hasFile('artist_photo')) {
                 // Delete the previous artist photo
                 if ($artwork->artist_photo) {
-                    Storage::disk('public')->delete('artist_photos/' . $artwork->artist_photo);
+                    // Storage::disk('public')->delete('artist_photos/' . $artwork->artist_photo);
+                    Storage::disk('s3')->delete($artwork->artist_photo);
+
                 }
                 // Upload and store the new artist photo
-                $artwork->artist_photo = $request->file('artist_photo')->store('artist_photos', 'public');
+                // $artwork->artist_photo = $request->file('artist_photo')->store('artist_photos', 'public');
+                $artwork->artist_photo = $request->file('artist_photo')->store('', 's3');
             }
 
             // Save the updated artwork
@@ -234,10 +246,12 @@ class ManageArtworksController extends Controller
 
             // Delete uploaded files
             if (isset($artwork) && $artwork->artwork_photo) {
-                Storage::disk('public')->delete('artwork_photos/' . $artwork->artwork_photo);
+                // Storage::disk('public')->delete('artwork_photos/' . $artwork->artwork_photo);
+                Storage::disk('artwork_photos')->delete($artwork_photo);
             }
             if (isset($artwork) && $artwork->artist_photo) {
-                Storage::disk('public')->delete('artist_photos/' . $artwork->artist_photo);
+                // Storage::disk('public')->delete('artist_photos/' . $artwork->artist_photo);
+                Storage::disk('artist_photos')->delete($artist_photo);
             }
 
             // Redirect back with error message
@@ -259,7 +273,9 @@ class ManageArtworksController extends Controller
             $artwork = Artwork::findOrFail($id);
 
             // Delete the associated files from storage
-            Storage::disk('public')->delete(['artwork_photos/' . $artwork->artwork_photo, 'artist_photos/' . $artwork->artist_photo]);
+            // Storage::disk('public')->delete(['artwork_photos/' . $artwork->artwork_photo, 'artist_photos/' . $artwork->artist_photo]);
+            Storage::disk('s3')->delete($artwork->artist_photo);
+            Storage::disk('s3')->delete($artwork->artwork_photo);
 
             // Delete the artwork record from the database
             $artwork->delete();
