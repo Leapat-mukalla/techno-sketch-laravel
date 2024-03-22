@@ -103,7 +103,7 @@
                         return;
                     } else {
                         // If the QR code data is valid, do whatever you want with it
-                        console.log('Detected QR code:', code.data);
+                        // console.log('Detected QR code:', code.data);
                         var artworkId = parseInt(code.data);
                         // Perform an AJAX request to check if the user ID exists in the database
                         $.ajax({

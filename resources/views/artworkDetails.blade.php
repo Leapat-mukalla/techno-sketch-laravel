@@ -44,6 +44,9 @@
                </div>
 
         </div>
+        <div class="card-footer bg-transparent">
+            <a href="{{ route('visitors-scan') }}" class="btn btn-primary"> العودة الى المسح </a>
+        </div>
     </div>
 
 </div>
