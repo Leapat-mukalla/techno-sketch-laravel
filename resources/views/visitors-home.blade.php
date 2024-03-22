@@ -7,12 +7,6 @@
             <h4 style="color: #212529"> العد التنازلي للمعرض ⏳ </h4>
         </div>
         <div class="col-12 text-center ">
-            {{-- <div id="countdown">
-                <span id="days">00</span> ايام
-                <span id="hours">00</span> ساعات
-                <span id="minutes">00</span> دقائق
-                <span id="seconds">00</span> ثواني
-            </div> --}}
             <div id="countdown" class="d-flex justify-content-center align-items-center mt-3">
                 <div class="countdown-section">
                   <span id="days" class="h1 days">-</span>
@@ -49,8 +43,6 @@
         </div>
     </div>
 </div>
-
-
 <script>
  function updateCountdown() {
                 var eventDate = new Date("{{ $event->end_date }} {{ $event->end_time }}").getTime();

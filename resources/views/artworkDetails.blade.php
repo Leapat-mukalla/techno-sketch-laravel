@@ -50,6 +50,7 @@
     </div>
 
 </div>
+
 <script>
     // Function to handle toggle like action
     function toggleLikeArtwork(artworkId) {
@@ -63,7 +64,6 @@
             success: function(response) {
                 // Update UI to reflect toggle like action
                 // Toggle between thumbs-up and thumbs-down icons based on response
-                // var likeButton = $('#likeButton');
                 var likeButton = $('#likeButton');
                 if (response.liked) {
                     // Artwork is liked
@@ -78,8 +78,6 @@
             },
             error: function(xhr, status, error) {
                 displayErrorModal('حدث خطأ أثناء تنفيذ العملية. حاول مرة اخرى.');
-
-                // console.error('Error toggling like for artwork:', error);
             }
         });
     }
