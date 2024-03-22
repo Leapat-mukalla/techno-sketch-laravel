@@ -39,9 +39,6 @@ class ReceptionController extends Controller
             return response()->json(['message' => 'Visitor scan created successfully']);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Failed to create visitor scan'], 500);
-            // return response()->json(['error' => $e->getMessage()], 500);
-            // return redirect()->back()->with('error', $e->getMessage());
-
         }
     }
     /**

@@ -16,8 +16,6 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <title>إدارة تكنو سكتش</title>
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
-
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 </head>
 <body>
@@ -85,12 +83,6 @@
                                         <span>زائر</span>
                                     @endif
                                 </a>
-                                {{-- <div class="dropdown-menu dropdown-menu-start dropdown-menu-right  animated flipInY">
-                                    <a href="{{route('profile')}}" class="dropdown-item" href="javascript:void(0)">
-                                        <i data-feather="settings" class="svg-icon me-2 ms-1"></i>
-                                        الإعدادات
-                                    </a>
-                                </div> --}}
                             </li>
                         </ul>
                 </div>
@@ -160,18 +152,12 @@
         </div>
 
     </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.1/feather.min.js"></script>
       <script src="{{asset('assets/js/custom.js')}}"></script>
       <script src="{{asset('assets/js/sidebarmenu.js')}}"></script>
       <script src="{{asset('assets/js/app-style-switcher.min.js')}}"></script>
-
       <script src="{{asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-
 </body>
 </html>

@@ -79,7 +79,6 @@ class RegisterationController extends Controller
             $validatedData['age'] = $this->convertToEnglishNumerals($validatedData['age']);
             DB::beginTransaction();
 
-
             $user = User::create([
                 'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
@@ -94,17 +93,14 @@ class RegisterationController extends Controller
             ]);
             $user->roles()->attach(Role::where('name', 'visitor')->first()->id);
             DB::commit();
-
-            // return redirect()->route('home')->with('message','أهلاً وسهلاً عميلنا الجديد.');
-            return view('welcome');
+            return view('visitors-home');
 
         } catch (\Illuminate\Validation\ValidationException $e) {
             DB::rollBack();
             return redirect()->back()->withErrors($e->errors())->withInput();
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error', $e->getMessage());
-            // return redirect()->back()->with('error', 'فشل التسجيل! حاول مرة أخرى.');
+            return redirect()->back()->with('error', 'فشل التسجيل! حاول مرة أخرى.');
         }
     }
 

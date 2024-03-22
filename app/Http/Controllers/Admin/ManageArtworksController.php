@@ -85,10 +85,6 @@ class ManageArtworksController extends Controller
                 'artist.string' => 'يجب أن يكون اسم الفنان نصًا.',
                 'artist_photo.image' =>'يجب أن تكون صورة الفنان من نوع صورة.',
                 'description.string' => 'يجب أن يكون الوصف نصًا.',
-
-                // 'artwork_photo.max' => 'يجب ألا يتجاوز حجم الصورة 2048 كيلو بات.',
-                // 'artist_photo.max' => 'يجب ألا يتجاوز حجم الصورة 2048 كيلو بات.',
-
                 'artwork_photo.mimes' => 'يجب ان تكون صيغة الصورة احدى هذه الأنواع: jpeg, png, jpg.',
                 'artist_photo.mimes' => 'يجب ان تكون صيغة الصورة احدى هذه الأنواع: jpeg, png, jpg.',
             ]);
@@ -100,7 +96,6 @@ class ManageArtworksController extends Controller
            $artworkFilename = $this->generateFilename($request->title, $request->artist, $artworkFile->getClientOriginalExtension());
 
             // Store the artwork_photo file in the storage directory
-            //    Storage::disk('public')->putFileAs('artwork_photos', $artworkFile, $artworkFilename);
             Storage::disk('s3')->putFileAs('', $artworkFile, $artworkFilename);
 
            // Handle artist_photo upload
@@ -108,7 +103,6 @@ class ManageArtworksController extends Controller
            $artistFilename = $this->generateArtistFilename($request->artist, $artistFile->getClientOriginalExtension());
 
            // Store the artist_photo file in the storage directory
-            //    Storage::disk('public')->putFileAs('artist_photos', $artistFile, $artistFilename);
             Storage::disk('s3')->putFileAs('', $artistFile, $artistFilename);
 
 
@@ -130,7 +124,6 @@ class ManageArtworksController extends Controller
             // Storage::delete(['artwork_photos/' . $artworkFilename, 'artist_photos/' . $artistFilename]);
             // Delete uploaded files
             if ($artworkFilename && $artistFilename) {
-                // Storage::delete(['artwork_photos/' . $artworkFilename, 'artist_photos/' . $artistFilename]);
                 Storage::disk('s3')->delete([$artworkFilename, $artistFilename]);
 
 
@@ -210,11 +203,9 @@ class ManageArtworksController extends Controller
             if ($request->hasFile('artwork_photo')) {
                 // Delete the previous artwork photo
                 if ($artwork->artwork_photo) {
-                    // Storage::disk('public')->delete('artwork_photos/' . $artwork->artwork_photo);
                     Storage::disk('s3')->delete($artwork->artwork_photo);
                 }
                 // Upload and store the new artwork photo
-                // $artwork->artwork_photo = $request->file('artwork_photo')->store('artwork_photos', 'public');
                 $artwork->artwork_photo = $request->file('artwork_photo')->store('', 's3');
 
             }
@@ -223,12 +214,10 @@ class ManageArtworksController extends Controller
             if ($request->hasFile('artist_photo')) {
                 // Delete the previous artist photo
                 if ($artwork->artist_photo) {
-                    // Storage::disk('public')->delete('artist_photos/' . $artwork->artist_photo);
                     Storage::disk('s3')->delete($artwork->artist_photo);
 
                 }
                 // Upload and store the new artist photo
-                // $artwork->artist_photo = $request->file('artist_photo')->store('artist_photos', 'public');
                 $artwork->artist_photo = $request->file('artist_photo')->store('', 's3');
             }
 
@@ -273,7 +262,6 @@ class ManageArtworksController extends Controller
             $artwork = Artwork::findOrFail($id);
 
             // Delete the associated files from storage
-            // Storage::disk('public')->delete(['artwork_photos/' . $artwork->artwork_photo, 'artist_photos/' . $artwork->artist_photo]);
             Storage::disk('s3')->delete($artwork->artist_photo);
             Storage::disk('s3')->delete($artwork->artwork_photo);
 

@@ -21,10 +21,6 @@ use App\Http\Controllers\Admin\ManageVisitorsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/register', [RegisterationController::class, 'index'])->name('register');
 Route::post('/register', [RegisterationController::class, 'store']);
 
@@ -56,8 +52,7 @@ Route::middleware('auth')->group(function () {
 
     });
     Route::group(['middleware' => 'role:visitor'], function () {
-        Route::get('/home', [VisitorController::class, 'index'])->name('visitor.home');
-        // Route::get('/countdown', [VisitorController::class, 'getCountdown'])->name('countdown');
+        Route::get('/', [VisitorController::class, 'index'])->name('visitor.home');
         Route::get('/getUpdatedVisitorsScan', [VisitorController::class, 'getUpdatedVisitorsScan'])->name('GetUpdatedVisitorsScan');
         Route::get('/getArtworkDetails', [VisitorController::class, 'getArtworkDetails'])->name('getArtworkDetails');
         Route::get('/artworks/{id}', [VisitorController::class, 'show'])->name('artworks.show');
