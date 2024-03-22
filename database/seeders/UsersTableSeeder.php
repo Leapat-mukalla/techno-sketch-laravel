@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
         $user1 = User::create([
             'name' => 'علي',
             'email' => 'a.a.bamohammad@gmail.com',
-            'phone' => '+201033929126',
+            'phone' => '781123256',
             'password' => Hash::make('ali123456789'),
         ]);
         $user2 = User::create([
