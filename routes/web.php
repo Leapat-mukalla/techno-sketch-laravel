@@ -36,18 +36,25 @@ Route::post('/logout', [LogoutController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
+    Route::get('photos/{type}/{filename}', function ($type, $filename) {
+        // Define the disk where the photos are stored
+        $disk = 'public';
 
-Route::get('/home', [VisitorController::class, 'index'])->name('visitor.home');
-// Route::get('/countdown', [VisitorController::class, 'getCountdown'])->name('countdown');
-Route::get('/getUpdatedVisitorsScan', [VisitorController::class, 'getUpdatedVisitorsScan'])->name('GetUpdatedVisitorsScan');
-Route::get('/getArtworkDetails', [VisitorController::class, 'getArtworkDetails'])->name('getArtworkDetails');
-Route::get('/artworks/{id}', [VisitorController::class, 'show'])->name('artworks.show');
-Route::post('/toggleLikeArtwork', [VisitorController::class, 'toggleLikeArtwork'])->name('toggleLikeArtwork');
+        // Define the directory based on the type of photo (artwork_photo or artist_photo)
+        $directory = ($type === 'artwork') ? 'artwork_photos' : 'artist_photos';
 
-Route::get('/reception/home', [ReceptionController::class, 'index'])->name('reception.home');
-Route::post('/checkUserId', [ReceptionController::class, 'checkUserId']);
-Route::post('/createVisitorScan', [ReceptionController::class, 'createVisitorScan'])->name('createVisitorScan');
+        // Construct the full file path
+        $path = Storage::disk($disk)->path($directory . '/' . $filename);
 
+        // Check if the file exists
+        if (file_exists($path)) {
+            // Return the file as a response
+            return response()->file($path);
+        }
+
+        // If the file does not exist, abort with a 404 response
+        abort(404);
+    })->name('photo');
 
 
 Route::middleware('auth')->group(function () {
@@ -68,7 +75,22 @@ Route::middleware('auth')->group(function () {
 
 
     });
-    Route::group(['middleware' => 'role:visitor'], function () {});
-    Route::group(['middleware' => 'role:reception'], function () {});
+    Route::group(['middleware' => 'role:visitor'], function () {
+        Route::get('/home', [VisitorController::class, 'index'])->name('visitor.home');
+        // Route::get('/countdown', [VisitorController::class, 'getCountdown'])->name('countdown');
+        Route::get('/getUpdatedVisitorsScan', [VisitorController::class, 'getUpdatedVisitorsScan'])->name('GetUpdatedVisitorsScan');
+        Route::get('/getArtworkDetails', [VisitorController::class, 'getArtworkDetails'])->name('getArtworkDetails');
+        Route::get('/artworks/{id}', [VisitorController::class, 'show'])->name('artworks.show');
+        Route::post('/toggleLikeArtwork', [VisitorController::class, 'toggleLikeArtwork'])->name('toggleLikeArtwork');
+        Route::get('/visitors-scan', [VisitorController::class, 'scanShow'])->name('visitors-scan');
+
+
+    });
+    Route::group(['middleware' => 'role:reception'], function () {
+        Route::get('/reception/home', [ReceptionController::class, 'index'])->name('reception.home');
+        Route::post('/checkUserId', [ReceptionController::class, 'checkUserId']);
+        Route::post('/createVisitorScan', [ReceptionController::class, 'createVisitorScan'])->name('createVisitorScan');
+
+    });
 
 });

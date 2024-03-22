@@ -19,18 +19,7 @@ class VisitorController extends Controller
      */
     public function index()
     {
-        // // Generate the QR code with the user's ID
-        // $qrCode = QrCode::format('png')
-        // ->size(300)
-        // ->errorCorrection('H')
-        // ->merge(asset('assets/images/logo.png'), 0.3, true)
-        // ->generate(auth()->id());
 
-        // // Convert the QR code data to a base64 encoded image
-        // $qrCodeData = 'data:image/png;base64,' . base64_encode($qrCode);
-
-        // return view('visitors-home', compact('qrCodeData'));
-        // $qrCode = QrCode::generate(auth()->id());
         // Get the first (and presumably only) event from the database
         $event = Event::first();
         // Get the current user's ID
@@ -38,7 +27,9 @@ class VisitorController extends Controller
 
         // Query the visitors_scans table to check if the current user's ID exists
         $visitorScan = VisitorsScan::where('user_id', $userId)->exists();
-
+        if ($visitorScan) {
+            return view('visitors-scan');
+        }
         $from = [12, 35, 251]; // RGB values for the start color (#0c23fb)
         $to = [89, 135, 255];  // RGB values for the end color (#5987ff)
 
@@ -49,21 +40,10 @@ class VisitorController extends Controller
                         ->gradient($from[0], $from[1], $from[2], $to[0], $to[1], $to[2], 'diagonal')
                         ->margin(1)
                         ->generate(auth()->id());
+
+
         return view('visitors-home', compact('qrCode','event','visitorScan'));
     }
-    // public function getCountdown()
-    // {
-    //     // Get the first (and presumably only) event from the database
-    //     $event = Event::first();
-
-    //     // Calculate the remaining time until the event starts
-    //     $eventDateTime = Carbon::parse($event->start_date . ' ' . $event->start_time);
-    //     $now = Carbon::now();
-    //     $remainingTime = $eventDateTime->diffInSeconds($now);
-
-    //     return response()->json(['remaining_time' => $remainingTime]);
-    // }
-
 
     public function getUpdatedVisitorsScan()
     {
@@ -76,6 +56,7 @@ class VisitorController extends Controller
         // Return the updated data as JSON
         return response()->json(['visitorScan' => $visitorScan]);
     }
+
     public function getArtworkDetails(Request $request)
     {
         $artworkId = $request->input('artworkId');
@@ -84,22 +65,11 @@ class VisitorController extends Controller
         if (!$artwork) {
             return response()->json(['error' => 'Artwork not found'], 404);
         }
+        return response()->json(['artwork' => $artwork]);
 
-        // Check if the authenticated user has liked the artwork
-        $likedByUser = false;
-        // $userId = Auth::id();
-        $user = auth()->user();
-        $like = Like::where('user_id',$user->id )
-                    ->where('artwork_id', $artworkId)
-                    ->first();
-        if ($like) {
-            $likedByUser = true;
-        }
-        // $likedByUser = auth()->user()->likes()->where('artwork_id', $artworkId)->exists();
-
-        return response()->json(['artwork' => $artwork, 'likedByUser' => $likedByUser]);
 
     }
+
     public function toggleLikeArtwork(Request $request)
     {
         $user = auth()->user(); // Assuming you have authentication set up
@@ -152,8 +122,15 @@ class VisitorController extends Controller
      */
     public function show($id)
     {
+        $likedByUser = auth()->user()->likes()->where('artwork_id', $id)->exists();
         $artwork = Artwork::findOrFail($id);
-        return view('artworkDetails', ['artwork' => $artwork]);
+        $likeCount = $artwork->likes()->count();
+        return view('artworkDetails', ['artwork' => $artwork,'likedByUser'=>$likedByUser,'likeCount' => $likeCount]);
+    }
+
+    public function scanShow()
+    {
+        return view('visitors-scan');
     }
 
     /**
