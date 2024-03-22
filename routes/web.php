@@ -56,19 +56,6 @@ Route::post('/logout', [LogoutController::class, 'logout'])
         abort(404);
     })->name('photo');
 
-Route::get('/home', [VisitorController::class, 'index'])->name('visitor.home');
-// Route::get('/countdown', [VisitorController::class, 'getCountdown'])->name('countdown');
-Route::get('/getUpdatedVisitorsScan', [VisitorController::class, 'getUpdatedVisitorsScan'])->name('GetUpdatedVisitorsScan');
-Route::get('/getArtworkDetails', [VisitorController::class, 'getArtworkDetails'])->name('getArtworkDetails');
-Route::get('/artworks/{id}', [VisitorController::class, 'show'])->name('artworks.show');
-Route::post('/toggleLikeArtwork', [VisitorController::class, 'toggleLikeArtwork'])->name('toggleLikeArtwork');
-Route::get('/visitors-scan', [VisitorController::class, 'scanShow'])->name('visitors-scan');
-
-Route::get('/reception/home', [ReceptionController::class, 'index'])->name('reception.home');
-Route::post('/checkUserId', [ReceptionController::class, 'checkUserId']);
-Route::post('/createVisitorScan', [ReceptionController::class, 'createVisitorScan'])->name('createVisitorScan');
-
-
 
 Route::middleware('auth')->group(function () {
     Route::group(['middleware' => 'role:admin'], function () {
@@ -88,7 +75,22 @@ Route::middleware('auth')->group(function () {
 
 
     });
-    Route::group(['middleware' => 'role:visitor'], function () {});
-    Route::group(['middleware' => 'role:reception'], function () {});
+    Route::group(['middleware' => 'role:visitor'], function () {
+        Route::get('/home', [VisitorController::class, 'index'])->name('visitor.home');
+        // Route::get('/countdown', [VisitorController::class, 'getCountdown'])->name('countdown');
+        Route::get('/getUpdatedVisitorsScan', [VisitorController::class, 'getUpdatedVisitorsScan'])->name('GetUpdatedVisitorsScan');
+        Route::get('/getArtworkDetails', [VisitorController::class, 'getArtworkDetails'])->name('getArtworkDetails');
+        Route::get('/artworks/{id}', [VisitorController::class, 'show'])->name('artworks.show');
+        Route::post('/toggleLikeArtwork', [VisitorController::class, 'toggleLikeArtwork'])->name('toggleLikeArtwork');
+        Route::get('/visitors-scan', [VisitorController::class, 'scanShow'])->name('visitors-scan');
+
+
+    });
+    Route::group(['middleware' => 'role:reception'], function () {
+        Route::get('/reception/home', [ReceptionController::class, 'index'])->name('reception.home');
+        Route::post('/checkUserId', [ReceptionController::class, 'checkUserId']);
+        Route::post('/createVisitorScan', [ReceptionController::class, 'createVisitorScan'])->name('createVisitorScan');
+
+    });
 
 });
