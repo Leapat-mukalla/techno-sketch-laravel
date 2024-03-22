@@ -15,12 +15,17 @@
     <link rel="mask-icon" href="{{asset('assets/favicon/safari-pinned-tab.svg')}}" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <title>التسجيل</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+    <title>تسجيل الدخول</title>
     <!-- Custom CSS -->
-    <link href="{{asset('assets/style.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    <style>
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
 
 </head>
 <body>
@@ -29,14 +34,13 @@
 
         <div class="card col-12 col-lg-6  col-md-9 ">
             <div class="card-body">
-                {{-- <div class="text-center mt-2 mb-4">
+                <div class="text-center mt-2 mb-4">
                     <a  class="text-success">
-                        <span><img class="me-2" src="{{asset('assets/img/logo.png')}}"
-                                alt="" height="40"><img
-                                src="../assets/images/logo-text.png" alt=""
-                                height="18"></span>
+                        <span>
+                            <img class="me-2" src="{{asset('assets/images/logo.png')}}" alt="" height="120">
+                        </span>
                     </a>
-                </div> --}}
+                </div>
                 @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
@@ -74,7 +78,7 @@
                     <div class="form-group mb-3">
                         <label class="form-label" for="phone">رقم الجوال</label>
                         <input class="form-control" type="text" name="phone" id="phone" value="{{ old('phone') }}"
-                        pattern="^(77|78|73|70)[0-9]{7}$" maxlength="9" placeholder="739329553">
+                        pattern="^(77|78|73|70)[0-9]{7}$" maxlength="9" placeholder="" required>
                     </div>
 
 
@@ -84,6 +88,14 @@
                         <input class="form-control" name="password" type="password" required
                         minlength="8" maxlength="250" id="password" placeholder="">
                     </div>
+                    <div class="form-group mb-3">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input"
+                                id="remember" name="remember">
+                            <label class="form-label" class="custom-control-label"
+                                for="remember">تذكرني </label>
+                        </div>
+                    </div>
 
                     <div class="form-group mb-3 text-center">
                         <button class="btn btn-primary" id="submitButton" type="submit">الدخول</button>
@@ -91,7 +103,7 @@
 
                 </form>
                 <div class="form-group text-center">
-                      لدي حساب بالفعل ؟ <a href="" class="">تسجيل الدخول</a>
+                    لا يوجد لدي حساب ؟ <a href="{{route('register')}}" class="">التسجيل</a>
                 </div>
 
             </div>
