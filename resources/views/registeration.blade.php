@@ -19,7 +19,13 @@
 
     <!-- Custom CSS -->
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-
+    <style>
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
     <div class="container center-content">
