@@ -27,8 +27,45 @@ video.addEventListener('loadedmetadata', function() {
    canvas.height = video.videoHeight;
 });
 
+// Function to hide the error modal
+function hideErrorModal() {
+    // Hide the Bootstrap modal
+    var modal = document.getElementById('errorModal');
+    var bootstrapModal = bootstrap.Modal.getInstance(modal);
+    if (bootstrapModal) {
+        bootstrapModal.hide();
+    }
+}
+
+// Function to reset the application state
+function resetAppState() {
+    // Hide any error modal
+    hideErrorModal();
+
+    // Reset video element
+    var video = document.getElementById('camera');
+    video.pause();
+    video.srcObject = null;
+
+    // Reset canvas and context
+    var canvas = document.createElement('canvas');
+    canvas.willReadFrequently = true; // Set the willReadFrequently attribute to true
+    var context = canvas.getContext('2d');
+
+    // Listen for the 'loadedmetadata' event on the video element
+    video.addEventListener('loadedmetadata', function() {
+        // Set the canvas dimensions to match the video dimensions
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+    });
+}
+
+
 // Listen for clicks on the "capture" button
 document.getElementById('captureButton').addEventListener('click', function() {
+    // Reset application state before scanning for QR code
+    resetAppState();
+
    // Start scanning for QR codes when the "capture" button is clicked
    scanQRCode();
 });
@@ -50,7 +87,8 @@ function scanQRCode() {
                // If no QR code is detected, display a message to the user
                displayErrorModal('لم يتم اكتشاف رمز الاستجابة السريعة. حاول مرة اخرى.');
                // Stop scanning for QR codes
-               return; // Exit the function
+            //    return; // Exit the function
+                resetAppState()
            }
 
    // Call scanQRCode() recursively to continuously scan for QR codes
@@ -63,7 +101,8 @@ function handleQRCode(code) {
        // Display a message to the user indicating that the QR code data is invalid
        displayErrorModal('بيانات رمز الاستجابة السريعة غير صالحة. حاول مرة اخرى.');
        // Return to the previous state
-       return;
+    //    return;
+        resetAppState();
 
    } else {
        // If the QR code data is valid, do whatever you want with it
@@ -98,6 +137,7 @@ function handleQRCode(code) {
                                console.error('Error creating visitor scan:', error);
                                alert('An error occurred while confirming visitor attendance. Please try again later.');
                                displayErrorModal('حدث خطأ أثناء تأكيد حضور الزائر. الرجاء معاودة المحاولة في وقت لاحق.');
+                               resetAppState()
                            }
                        })
                        });
@@ -106,11 +146,13 @@ function handleQRCode(code) {
                    // If the user ID does not exist, display an error message to the user
                    alert('User with ID ' + userId + ' not found. Please try again.');
                    displayErrorModal('لم يتم العثور على مستخدم بهذا المعرف . حاول مرة اخرى.');
+                   resetAppState()
                }
            },
            error: function(xhr, status, error) {
 
                displayErrorModal('حدث خطأ أثناء التحقق من معرف المستخدم. حاول مرة اخرى.');
+               resetAppState()
            }
        });
 
