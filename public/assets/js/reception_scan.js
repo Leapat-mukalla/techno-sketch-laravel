@@ -27,45 +27,9 @@ video.addEventListener('loadedmetadata', function() {
    canvas.height = video.videoHeight;
 });
 
-// Function to hide the error modal
-function hideErrorModal() {
-    // Hide the Bootstrap modal
-    var modal = document.getElementById('errorModal');
-    var bootstrapModal = bootstrap.Modal.getInstance(modal);
-    if (bootstrapModal) {
-        bootstrapModal.hide();
-    }
-}
-
-// Function to reset the application state
-function resetAppState() {
-    // Hide any error modal
-    hideErrorModal();
-
-    // Reset video element
-    var video = document.getElementById('camera');
-    video.pause();
-    video.srcObject = null;
-
-    // Reset canvas and context
-    var canvas = document.createElement('canvas');
-    canvas.willReadFrequently = true; // Set the willReadFrequently attribute to true
-    var context = canvas.getContext('2d');
-
-    // Listen for the 'loadedmetadata' event on the video element
-    video.addEventListener('loadedmetadata', function() {
-        // Set the canvas dimensions to match the video dimensions
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-    });
-}
-
 
 // Listen for clicks on the "capture" button
 document.getElementById('captureButton').addEventListener('click', function() {
-    // Reset application state before scanning for QR code
-    resetAppState();
-
    // Start scanning for QR codes when the "capture" button is clicked
    scanQRCode();
 });
@@ -87,8 +51,7 @@ function scanQRCode() {
                // If no QR code is detected, display a message to the user
                displayErrorModal('لم يتم اكتشاف رمز الاستجابة السريعة. حاول مرة اخرى.');
                // Stop scanning for QR codes
-            //    return; // Exit the function
-                resetAppState()
+               return; // Exit the function
            }
 
    // Call scanQRCode() recursively to continuously scan for QR codes
@@ -101,8 +64,7 @@ function handleQRCode(code) {
        // Display a message to the user indicating that the QR code data is invalid
        displayErrorModal('بيانات رمز الاستجابة السريعة غير صالحة. حاول مرة اخرى.');
        // Return to the previous state
-    //    return;
-        resetAppState();
+       return;
 
    } else {
        // If the QR code data is valid, do whatever you want with it
@@ -137,7 +99,6 @@ function handleQRCode(code) {
                                console.error('Error creating visitor scan:', error);
                                alert('An error occurred while confirming visitor attendance. Please try again later.');
                                displayErrorModal('حدث خطأ أثناء تأكيد حضور الزائر. الرجاء معاودة المحاولة في وقت لاحق.');
-                               resetAppState()
                            }
                        })
                        });
@@ -146,50 +107,85 @@ function handleQRCode(code) {
                    // If the user ID does not exist, display an error message to the user
                    alert('User with ID ' + userId + ' not found. Please try again.');
                    displayErrorModal('لم يتم العثور على مستخدم بهذا المعرف . حاول مرة اخرى.');
-                   resetAppState()
                }
            },
            error: function(xhr, status, error) {
 
                displayErrorModal('حدث خطأ أثناء التحقق من معرف المستخدم. حاول مرة اخرى.');
-               resetAppState()
            }
        });
 
    }
 }
+
+// Function to reset the video stream
+function resetVideoStream() {
+    var video = document.getElementById('camera');
+    if (video.srcObject) {
+        var tracks = video.srcObject.getTracks();
+        tracks.forEach(function(track) {
+            track.stop();
+        });
+        video.srcObject = null;
+    }
+
+    // Re-establish the video stream
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+    .then(function(stream) {
+        // Set the camera stream as the source for the video element
+        var video = document.getElementById('camera');
+        video.srcObject = stream;
+        video.play();
+    })
+    .catch(function(err) {
+        console.error('Error accessing camera:', err);
+        displayErrorModal('حدث خطأ أثناء الوصول إلى الكاميرا. يرجى التحقق من أذونات الكاميرا والمحاولة مرة أخرى.');
+    });
+}
 // Function to display error message in modal
 function displayErrorModal(message) {
-               // Set the error message in the modal body
-               document.getElementById('errorMessage').innerText = message;
-               // Trigger the modal to display
-               var modal = new bootstrap.Modal(document.getElementById('errorModal'));
-               modal.show();
-           }
+    // Set the error message in the modal body
+    document.getElementById('errorMessage').innerText = message;
+    // Trigger the modal to display
+    var modal = new bootstrap.Modal(document.getElementById('errorModal'));
 
-           // Call this function to open the modal with the specified message
-           function openErrorModal(message) {
-               // Display the button to trigger the modal
-               document.getElementById('openModalButton').click();
-               // Display the error message in the modal
-               displayErrorModal(message);
-           }
+
+       // Add event listener for modal hidden event
+       modal._element.addEventListener('hidden.bs.modal', function () {
+        // Reset the video stream
+        resetVideoStream();
+
+        // Remove the event listener to avoid memory leaks
+        modal._element.removeEventListener('hidden.bs.modal', arguments.callee);
+    });
+
+
+    modal.show();
+}
+
+// Call this function to open the modal with the specified message
+function openErrorModal(message) {
+    // Display the button to trigger the modal
+    document.getElementById('openModalButton').click();
+    // Display the error message in the modal
+    displayErrorModal(message);
+}
 // Function to display confirmation modal
 function displayConfirmationModal(message, confirmCallback) {
-// Set the confirmation message in the modal body
-document.getElementById('confirmationMessage').innerText = message;
-// Set the confirm callback function for the confirm button click
-$('#confirmButton').off('click').on('click', confirmCallback);
-// Trigger the confirmation modal to display
-var modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-modal.show();
+    // Set the confirmation message in the modal body
+    document.getElementById('confirmationMessage').innerText = message;
+    // Set the confirm callback function for the confirm button click
+    $('#confirmButton').off('click').on('click', confirmCallback);
+    // Trigger the confirmation modal to display
+    var modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+    modal.show();
 }
 
 // Function to display success modal
 function displaySuccessModal(message) {
-// Set the success message in the modal body
-document.getElementById('successMessage').innerText = message;
-// Trigger the success modal to display
-var modal = new bootstrap.Modal(document.getElementById('successModal'));
-modal.show();
+    // Set the success message in the modal body
+    document.getElementById('successMessage').innerText = message;
+    // Trigger the success modal to display
+    var modal = new bootstrap.Modal(document.getElementById('successModal'));
+    modal.show();
 }
