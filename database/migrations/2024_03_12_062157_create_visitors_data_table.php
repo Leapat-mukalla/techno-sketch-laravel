@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('visitors_data', function (Blueprint $table) {
             $table->id();
-            $table->integer('age');
+            $table->string('age');
             $table->enum('gender', ['male', 'female']);
             $table->string('address')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
