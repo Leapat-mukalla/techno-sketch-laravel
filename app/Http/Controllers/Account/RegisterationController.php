@@ -29,16 +29,6 @@ class RegisterationController extends Controller
         //
     }
 
-
-    private function convertToEnglishNumerals($arabicNumerals)
-    {
-        // Define a mapping of Arabic numerals to English numerals
-        $arabicNumeralsMap = ['٠' => '0', '١' => '1', '٢' => '2', '٣' => '3', '٤' => '4', '٥' => '5', '٦' => '6', '٧' => '7', '٨' => '8', '٩' => '9'];
-
-        // Replace Arabic numerals with their English equivalents
-        return strtr($arabicNumerals, $arabicNumeralsMap);
-    }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -51,7 +41,7 @@ class RegisterationController extends Controller
                 'phone' => ['required', 'regex:/^(77|78|73|70)[0-9]{7}$/','unique:users'],
                 'password' => 'required|min:8|confirmed',
                 'gender' => 'required',
-                'age' => 'required|numeric',
+                'age' => ['required', 'regex:/[0-9٠-٩]+/'],
                 'address' => 'string|max:250'
             ], [
                 'name.required' => 'يرجى إدخال الاسم.',
@@ -71,14 +61,11 @@ class RegisterationController extends Controller
                 'gender.required' => 'يرجى إدخال الحنس.',
 
                 'age.required' => 'يرجى إدخال العمر.',
-                'age.numeric' => '  العمر يجب أن يكون رقماً .',
+                'age.regex' => '  العمر يجب أن يكون رقماً .',
 
                 'address.max' => 'يجب ألا يتجاوز العنوان 250 حرفًا.',
 
             ]);
-            $validatedData['age'] = $this->convertToEnglishNumerals($validatedData['age']);
-            // Convert Arabic numerals to English numerals for phone number validation
-            $validatedData['phone'] = $this->convertToEnglishNumerals($validatedData['phone']);
             DB::beginTransaction();
 
             $user = User::create([
