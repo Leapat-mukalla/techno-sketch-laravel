@@ -100,7 +100,9 @@ class RegisterationController extends Controller
             return redirect()->back()->withErrors($e->errors())->withInput();
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error', 'فشل التسجيل! حاول مرة أخرى.');
+            // return redirect()->back()->with('error', 'فشل التسجيل! حاول مرة أخرى.');
+            return redirect()->back()->with('error', $e->getMessage());
+
         }
     }
 
