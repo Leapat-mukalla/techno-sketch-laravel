@@ -64,15 +64,14 @@ function handleQRCode(code) {
        // Display a message to the user indicating that the QR code data is invalid
        displayErrorModal('بيانات رمز الاستجابة السريعة غير صالحة. حاول مرة اخرى.');
        // Return to the previous state
-       return;
-
+    //    return;
    } else {
        // If the QR code data is valid, do whatever you want with it
        var userId = parseInt(code.data);
        // Perform an AJAX request to check if the user ID exists in the database
        $.ajax({
            url: '/checkUserId',
-           type: 'POST',
+           type: 'GET',
            data: {
                _token: '{{ csrf_token() }}',
                userId: userId
@@ -85,7 +84,7 @@ function handleQRCode(code) {
                        // If confirmed, create a new entry in the visitors table
                        $.ajax({
                            url: '/createVisitorScan',
-                           type: 'POST',
+                           type: 'GET',
                            data: {
                                _token: '{{ csrf_token() }}',
                                userId: userId
@@ -97,7 +96,7 @@ function handleQRCode(code) {
 
                            error: function(xhr, status, error) {
                                console.error('Error creating visitor scan:', error);
-                               alert('An error occurred while confirming visitor attendance. Please try again later.');
+                            //    alert('An error occurred while confirming visitor attendance. Please try again later.');
                                displayErrorModal('حدث خطأ أثناء تأكيد حضور الزائر. الرجاء معاودة المحاولة في وقت لاحق.');
                            }
                        })
@@ -105,7 +104,7 @@ function handleQRCode(code) {
 
                } else {
                    // If the user ID does not exist, display an error message to the user
-                   alert('User with ID ' + userId + ' not found. Please try again.');
+                //    alert('User with ID ' + userId + ' not found. Please try again.');
                    displayErrorModal('لم يتم العثور على مستخدم بهذا المعرف . حاول مرة اخرى.');
                }
            },
@@ -119,6 +118,29 @@ function handleQRCode(code) {
 }
 
 // Function to reset the video stream
+// function resetVideoStream() {
+//     var video = document.getElementById('camera');
+//     if (video.srcObject) {
+//         var tracks = video.srcObject.getTracks();
+//         tracks.forEach(function(track) {
+//             track.stop();
+//         });
+//         video.srcObject = null;
+//     }
+
+//     // Re-establish the video stream
+//     navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+//     .then(function(stream) {
+//         // Set the camera stream as the source for the video element
+//         var video = document.getElementById('camera');
+//         video.srcObject = stream;
+//         video.play();
+//     })
+//     .catch(function(err) {
+//         console.error('Error accessing camera:', err);
+//         displayErrorModal('حدث خطأ أثناء الوصول إلى الكاميرا. يرجى التحقق من أذونات الكاميرا والمحاولة مرة أخرى.');
+//     });
+// }
 function resetVideoStream() {
     var video = document.getElementById('camera');
     if (video.srcObject) {
@@ -135,13 +157,20 @@ function resetVideoStream() {
         // Set the camera stream as the source for the video element
         var video = document.getElementById('camera');
         video.srcObject = stream;
-        video.play();
+
+        // Wait for the loadedmetadata event before playing
+        video.addEventListener('loadedmetadata', function() {
+            video.play();
+            // Remove the event listener to avoid memory leaks
+            video.removeEventListener('loadedmetadata', arguments.callee);
+        });
     })
     .catch(function(err) {
         console.error('Error accessing camera:', err);
         displayErrorModal('حدث خطأ أثناء الوصول إلى الكاميرا. يرجى التحقق من أذونات الكاميرا والمحاولة مرة أخرى.');
     });
 }
+
 // Function to display error message in modal
 function displayErrorModal(message) {
     // Set the error message in the modal body
