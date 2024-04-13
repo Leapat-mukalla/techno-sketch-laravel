@@ -48,7 +48,7 @@ class RegisterationController extends Controller
             $validatedData = $request->validate([
                 'name' => 'required|string|max:250',
                 'email' => 'email|max:250',
-                'phone' => 'required|regex:/^(77|78|73|70)[0-9]{7}$/|unique:users',
+                'phone' => ['required', 'regex:/^(77|78|73|70)[0-9]{7}$/','unique:users'],
                 'password' => 'required|min:8|confirmed',
                 'gender' => 'required',
                 'age' => 'required|numeric',
