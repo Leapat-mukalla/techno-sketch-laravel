@@ -77,6 +77,8 @@ class RegisterationController extends Controller
 
             ]);
             $validatedData['age'] = $this->convertToEnglishNumerals($validatedData['age']);
+            // Convert Arabic numerals to English numerals for phone number validation
+            $validatedData['phone'] = $this->convertToEnglishNumerals($validatedData['phone']);
             DB::beginTransaction();
 
             $user = User::create([
