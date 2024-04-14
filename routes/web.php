@@ -58,14 +58,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/artworks/{id}', [VisitorController::class, 'show'])->name('artworks.show');
         Route::post('/toggleLikeArtwork', [VisitorController::class, 'toggleLikeArtwork'])->name('toggleLikeArtwork');
         Route::get('/visitors-scan', [VisitorController::class, 'scanShow'])->name('visitors-scan');
-
-
     });
     Route::group(['middleware' => 'role:reception'], function () {
         Route::get('/reception/home', [ReceptionController::class, 'index'])->name('reception.home');
         Route::get('/checkUserId', [ReceptionController::class, 'checkUserId']);
         Route::get('/createVisitorScan', [ReceptionController::class, 'createVisitorScan'])->name('createVisitorScan');
-
     });
 
 });

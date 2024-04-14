@@ -9,7 +9,7 @@ use App\Models\Role;
 use App\Models\VisitorsData;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
+use Auth;
 
 class RegisterationController extends Controller
 {
