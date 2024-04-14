@@ -82,8 +82,13 @@ class RegisterationController extends Controller
             ]);
             $user->roles()->attach(Role::where('name', 'visitor')->first()->id);
             DB::commit();
-            return view('visitors-home');
-
+            $credentials = $request->only('phone', 'password');
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
+                return redirect()->route('visitor.home')->with('message','أهلاً وسهلاً عميلنا الجديد.');
+                // return view('visitors-home');
+            }
+            return redirect()->route('login')->with('error', 'فشل الدخول التلقائي! سجل الدخول مرة أخرى.');
         } catch (\Illuminate\Validation\ValidationException $e) {
             DB::rollBack();
             return redirect()->back()->withErrors($e->errors())->withInput();
