@@ -27,9 +27,11 @@ class LoginController extends Controller
         $remember = $request->has('remember');
         if(Auth::attempt($credentials, $remember)){
             $user = Auth::user(); // Retrieve the authenticated user
+
             // Check if the user has the "visitor" role
             if ($user->hasAnyRole(['visitor'])) {
                 $visitorData = $user->VisitorsData;
+
                 // Check if the visitor's status is "active"
                 if ($visitorData && $visitorData->status === 'active') {
                     // Redirect to visitor's home page
@@ -38,17 +40,14 @@ class LoginController extends Controller
                     // Redirect with error message if status is not "active"
                     return redirect()->route('login')->withErrors(['error' => 'حسابك غير نشط.']);
                 }
-            }elseif (Auth::user()->hasAnyRole(['admin'])) {
+            } elseif ($user->hasAnyRole(['admin'])) {
                 return redirect()->route('admin.home');
-            }elseif (Auth::user()->hasAnyRole(['reception'])) {
+            } elseif ($user->hasAnyRole(['reception'])) {
                 return redirect()->route('reception.home');
-            }else {
+            } else {
                 return redirect()->route('login')->withErrors(['error' => 'فشلت عملية المصادقة. يرجى التحقق من بيانات الحساب الخاصة بك.']);
             }
-
-        }
-        else {
-
+        } else {
             return redirect()->route('login')->withErrors(['error' => 'فشلت عملية المصادقة. يرجى التحقق من بيانات الحساب الخاصة بك.']);
         }
     }
