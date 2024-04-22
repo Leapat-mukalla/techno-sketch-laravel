@@ -50,6 +50,10 @@ function scanQRCode() {
      // alert('No QR code detected. Please try again.');
      displayErrorModal('لم يتم اكتشاف رمز الاستجابة السريعة. حاول مرة اخرى.');
      // Stop scanning for QR codes
+
+       // Reset the video stream and canvas
+       resetVideoStream();
+       context.clearRect(0, 0, canvas.width, canvas.height);
      return; // Exit the function
  }
 
