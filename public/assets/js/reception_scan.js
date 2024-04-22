@@ -64,7 +64,7 @@ function handleQRCode(code) {
        // Display a message to the user indicating that the QR code data is invalid
        displayErrorModal('بيانات رمز الاستجابة السريعة غير صالحة. حاول مرة اخرى.');
        // Return to the previous state
-    //    return;
+       return;
    } else {
        // If the QR code data is valid, do whatever you want with it
        var userId = parseInt(code.data);
@@ -117,59 +117,6 @@ function handleQRCode(code) {
    }
 }
 
-// Function to reset the video stream
-// function resetVideoStream() {
-//     var video = document.getElementById('camera');
-//     if (video.srcObject) {
-//         var tracks = video.srcObject.getTracks();
-//         tracks.forEach(function(track) {
-//             track.stop();
-//         });
-//         video.srcObject = null;
-//     }
-
-//     // Re-establish the video stream
-//     navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-//     .then(function(stream) {
-//         // Set the camera stream as the source for the video element
-//         var video = document.getElementById('camera');
-//         video.srcObject = stream;
-//         video.play();
-//     })
-//     .catch(function(err) {
-//         console.error('Error accessing camera:', err);
-//         displayErrorModal('حدث خطأ أثناء الوصول إلى الكاميرا. يرجى التحقق من أذونات الكاميرا والمحاولة مرة أخرى.');
-//     });
-// }
-function resetVideoStream() {
-    var video = document.getElementById('camera');
-    if (video.srcObject) {
-        var tracks = video.srcObject.getTracks();
-        tracks.forEach(function(track) {
-            track.stop();
-        });
-        video.srcObject = null;
-    }
-
-    // Re-establish the video stream
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-    .then(function(stream) {
-        // Set the camera stream as the source for the video element
-        var video = document.getElementById('camera');
-        video.srcObject = stream;
-
-        // Wait for the loadedmetadata event before playing
-        video.addEventListener('loadedmetadata', function() {
-            video.play();
-            // Remove the event listener to avoid memory leaks
-            video.removeEventListener('loadedmetadata', arguments.callee);
-        });
-    })
-    .catch(function(err) {
-        console.error('Error accessing camera:', err);
-        displayErrorModal('حدث خطأ أثناء الوصول إلى الكاميرا. يرجى التحقق من أذونات الكاميرا والمحاولة مرة أخرى.');
-    });
-}
 
 // Function to display error message in modal
 function displayErrorModal(message) {
@@ -177,18 +124,11 @@ function displayErrorModal(message) {
     document.getElementById('errorMessage').innerText = message;
     // Trigger the modal to display
     var modal = new bootstrap.Modal(document.getElementById('errorModal'));
-
-
-       // Add event listener for modal hidden event
+    // Add event listener for modal hidden event
        modal._element.addEventListener('hidden.bs.modal', function () {
-        // Reset the video stream
-        resetVideoStream();
-
         // Remove the event listener to avoid memory leaks
         modal._element.removeEventListener('hidden.bs.modal', arguments.callee);
     });
-
-
     modal.show();
 }
 

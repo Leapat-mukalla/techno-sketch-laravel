@@ -64,8 +64,7 @@ function handleQRCode(code) {
      // alert('Invalid QR code data. Please try again.');
      displayErrorModal('بيانات رمز الاستجابة السريعة غير صالحة. حاول مرة اخرى.');
      // Return to the previous state
-    //  return;
-    window.location.href = '/visitors-scan'
+     return;
 
  } else {
      // If the QR code data is valid, do whatever you want with it
