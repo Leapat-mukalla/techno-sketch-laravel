@@ -9,6 +9,7 @@ use App\Http\Controllers\Reception\ReceptionController;
 use App\Http\Controllers\Account\LogoutController;
 use App\Http\Controllers\Admin\ManageArtworksController;
 use App\Http\Controllers\Admin\ManageVisitorsController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ use App\Http\Controllers\Admin\ManageVisitorsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [HomeController::class, 'index'])->name('landing.page');
 
 Route::get('/register', [RegisterationController::class, 'index'])->name('register');
 Route::post('/register', [RegisterationController::class, 'store']);
@@ -52,7 +54,7 @@ Route::middleware('auth')->group(function () {
 
     });
     Route::group(['middleware' => 'role:visitor'], function () {
-        Route::get('/', [VisitorController::class, 'index'])->name('visitor.home');
+        Route::get('/home', [VisitorController::class, 'index'])->name('visitor.home');
         Route::get('/getUpdatedVisitorsScan', [VisitorController::class, 'getUpdatedVisitorsScan'])->name('GetUpdatedVisitorsScan');
         Route::get('/getArtworkDetails', [VisitorController::class, 'getArtworkDetails'])->name('getArtworkDetails');
         Route::get('/artworks/{id}', [VisitorController::class, 'show'])->name('artworks.show');
