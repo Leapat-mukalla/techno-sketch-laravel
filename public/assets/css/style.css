@@ -178,6 +178,16 @@ body {
 }
 
 /* _________________custom by samaha__________________________ */
+.hero{
+    background-image: url('../../assets/images/leapat.png');
+    width: 100%;
+    min-height: 30vh;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
 .summary h3, .summary h2{
     --bs-text-opacity: 1;
     color: rgba(var(--bs-dark-rgb), var(--bs-text-opacity)) !important;
@@ -16186,6 +16196,9 @@ textarea.form-control-lg {
 #main-wrapper[data-layout=vertical][data-sidebartype=full] .page-wrapper-visitor {
     /* margin-right: unset !important; */
   }
+  #main-wrapper[data-layout=vertical][data-sidebartype=full] .page-wrapper-landing {
+    margin-right: unset !important;
+  }
 /* #main-wrapper[data-layout=vertical][data-sidebartype=full] .page-wrapper {
   margin-left: 260px;
 } */
@@ -16203,6 +16216,9 @@ textarea.form-control-lg {
 #main-wrapper[data-layout=vertical][data-header-position=fixed] .page-wrapper {
   padding-top: 80px;
 }
+#main-wrapper[data-layout=vertical][data-header-position=fixed] .page-wrapper-landing {
+    padding-top: unset !important;
+  }
 #main-wrapper[data-layout=vertical][data-boxed-layout=boxed] {
   max-width: 1200px;
   margin: 0 auto;
