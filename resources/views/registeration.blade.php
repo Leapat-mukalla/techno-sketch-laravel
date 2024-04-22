@@ -106,7 +106,7 @@
                     <div class="form-group mb-3">
                         <label class="form-label" for="email">البريد الالكتروني</label>
                         <input class="form-control" type="email" id="email"  name="email" value="{{ old('email') }}"
-                        maxlength="250"  placeholder="john@deo.com">
+                        maxlength="250"  placeholder="">
                     </div>
 
                     <div class="form-group mb-3">
