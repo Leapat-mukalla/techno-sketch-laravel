@@ -50,10 +50,6 @@ function scanQRCode() {
      // alert('No QR code detected. Please try again.');
      displayErrorModal('لم يتم اكتشاف رمز الاستجابة السريعة. حاول مرة اخرى.');
      // Stop scanning for QR codes
-
-       // Reset the video stream and canvas
-       resetVideoStream();
-       context.clearRect(0, 0, canvas.width, canvas.height);
      return; // Exit the function
  }
 
@@ -68,7 +64,9 @@ function handleQRCode(code) {
      // alert('Invalid QR code data. Please try again.');
      displayErrorModal('بيانات رمز الاستجابة السريعة غير صالحة. حاول مرة اخرى.');
      // Return to the previous state
-     return;
+    //  return;
+    window.location.href = '/visitors-scan'
+
  } else {
      // If the QR code data is valid, do whatever you want with it
      var artworkId = parseInt(code.data);
