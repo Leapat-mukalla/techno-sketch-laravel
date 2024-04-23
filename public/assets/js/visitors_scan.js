@@ -59,11 +59,13 @@ function scanQRCode() {
 
 function handleQRCode(code) {
   // Check if the QR code data is empty or starts with '/artworks'
-  if (code.data && code.data.startsWith('/artworks')) {
-        // If the QR code data starts with '/artworks', redirect the user to the artwork page
-        window.location.href = code.data;
-    } else {
-        // Display an error modal to the user indicating that the QR code data is invalid
-        displayErrorModal('بيانات رمز الاستجابة السريعة غير صالحة. حاول مرة اخرى.');
-    }
+  if (!code.data || !code.data.startsWith('/artworks')) {
+    // Display an error modal to the user indicating that the QR code data is invalid
+    displayErrorModal('بيانات رمز الاستجابة السريعة غير صالحة. حاول مرة اخرى.');
+    // Return to the previous state
+    return;
+}
+
+// If the QR code data is valid, redirect the user to the artwork page
+window.location.href = code.data;
 }
