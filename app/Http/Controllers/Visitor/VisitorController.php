@@ -57,18 +57,18 @@ class VisitorController extends Controller
         return response()->json(['visitorScan' => $visitorScan]);
     }
 
-    public function getArtworkDetails(Request $request)
-    {
-        $artworkId = $request->input('artworkId');
-        $artwork = Artwork::find($artworkId);
+    // public function getArtworkDetails(Request $request)
+    // {
+    //     $artworkId = $request->input('artworkId');
+    //     $artwork = Artwork::find($artworkId);
 
-        if (!$artwork) {
-            return response()->json(['error' => 'Artwork not found'], 404);
-        }
-        return response()->json(['artwork' => $artwork]);
+    //     if (!$artwork) {
+    //         return response()->json(['error' => 'Artwork not found'], 404);
+    //     }
+    //     return response()->json(['artwork' => $artwork]);
 
 
-    }
+    // }
 
     public function toggleLikeArtwork(Request $request)
     {

@@ -157,6 +157,11 @@
                                             <i data-feather="trash" class="svg-icon" ></i>
                                         </a>
                                     </span>
+                                    <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="نسخ الرابط">
+                                        <a href="#" class="ms-2" onclick="copyArtworkURL({{ $artwork->id }})">
+                                            <i data-feather="clipboard" class="svg-icon" ></i>
+                                        </a>
+                                    </span>
 
 
 
@@ -211,5 +216,85 @@
     </div>
 </div>
 </div>
+<div class="toast-container position-fixed bottom-0 start-0 p-3 ">
+    <div class="toast align-items-start text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex align-items-center">
+        <button type="button" class="btn-close btn-close-white me-2 " data-bs-dismiss="toast" aria-label="Close"></button>
 
+        <div class="toast-body">
+          <span class="toast-message"></span>
+        </div>
+      </div>
+    </div>
+</div>
+<script>
+// function copyArtworkURL(artworkId) {
+//     // Construct the artwork URL
+//     var artworkURL = "/artworks/" + artworkId;
+//     var toastMessage = document.querySelector('.toast-message');
+//     var toast = new bootstrap.Toast(document.querySelector('.toast'));
+
+//     // Create a temporary textarea element to hold the URL
+//     var textarea = document.createElement('textarea');
+//     textarea.value = artworkURL;
+
+//     // Append the textarea to the body
+//     document.body.appendChild(textarea);
+
+//     // Select the URL inside the textarea
+//     textarea.select();
+
+//     // Copy the URL to the clipboard
+//     document.execCommand('copy');
+
+//     // Remove the textarea from the body
+//     document.body.removeChild(textarea);
+
+//     // Show a message indicating that the URL has been copied (optional)
+//     // alert("تم نسخ رابط العمل بنجاح: " +artworkURL);
+
+//     toastMessage.innerText = 'تم نسخ رابط العمل بنجاح.';
+//     toast.show();
+// }
+function copyArtworkURL(artworkId) {
+    try {
+        // Construct the artwork URL
+        var artworkURL = "/artworks/" + artworkId;
+        var toastMessage = document.querySelector('.toast-message');
+        var toast = new bootstrap.Toast(document.querySelector('.toast'));
+
+        // Create a temporary textarea element to hold the URL
+        var textarea = document.createElement('textarea');
+        textarea.value = artworkURL;
+
+        // Append the textarea to the body
+        document.body.appendChild(textarea);
+
+        // Select the URL inside the textarea
+        textarea.select();
+
+        // Copy the URL to the clipboard
+        var successful = document.execCommand('copy');
+
+        // Remove the textarea from the body
+        document.body.removeChild(textarea);
+
+        if (successful) {
+            // Show a message indicating that the URL has been copied
+            toastMessage.innerText = 'تم نسخ رابط العمل بنجاح.';
+            toast.show();
+        } else {
+            // Show a message indicating that the URL could not be copied
+            toastMessage.innerText = 'فشل في نسخ رابط العمل.';
+            toast.show();
+        }
+    } catch (error) {
+        // Show a message indicating the error
+        console.error('Error copying artwork URL:', error);
+        toastMessage.innerText = 'حدث خطأ أثناء نسخ رابط العمل.';
+        toast.show();
+    }
+}
+
+</script>
 @endsection

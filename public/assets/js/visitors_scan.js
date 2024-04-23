@@ -58,35 +58,12 @@ function scanQRCode() {
 }
 
 function handleQRCode(code) {
- // Check if the QR code data is empty or not an integer
- if (!code.data || isNaN(parseInt(code.data))) {
-     // Display a message to the user indicating that the QR code data is invalid
-     // alert('Invalid QR code data. Please try again.');
-     displayErrorModal('بيانات رمز الاستجابة السريعة غير صالحة. حاول مرة اخرى.');
-     // Return to the previous state
-     return;
-
- } else {
-     // If the QR code data is valid, do whatever you want with it
-     var artworkId = parseInt(code.data);
-     // Perform an AJAX request to check if the user ID exists in the database
-     $.ajax({
-         url: '/getArtworkDetails',
-         type: 'GET',
-         data: {
-             artworkId: artworkId
-         },
-         success: function(response) {
-             // Handle successful response
-             // Redirect the user to the page with artwork details
-             window.location.href = '/artworks/' + response.artwork.id;
-         },
-         error: function(xhr, status, error) {
-             // Handle error
-             // console.error('Error fetching artwork details:', error);
-             displayErrorModal('حدث خطأ أثناء جلب تفاصيل العمل الفني. حاول مرة اخرى.');
-         }
-     });
-
- }
+  // Check if the QR code data is empty or starts with '/artworks'
+  if (code.data && code.data.startsWith('/artworks')) {
+        // If the QR code data starts with '/artworks', redirect the user to the artwork page
+        window.location.href = code.data;
+    } else {
+        // Display an error modal to the user indicating that the QR code data is invalid
+        displayErrorModal('بيانات رمز الاستجابة السريعة غير صالحة. حاول مرة اخرى.');
+    }
 }
