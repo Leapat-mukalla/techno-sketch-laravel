@@ -59,13 +59,26 @@ function scanQRCode() {
 
 function handleQRCode(code) {
   // Check if the QR code data is empty or starts with '/artworks'
-  if (!code.data || !code.data.startsWith('/artworks')) {
+  if (!code.data || !code.data.startsWith('https://technosketch.art/artworks/')) {
     // Display an error modal to the user indicating that the QR code data is invalid
     displayErrorModal('بيانات رمز الاستجابة السريعة غير صالحة. حاول مرة اخرى.');
     // Return to the previous state
     return;
 }
 
-// If the QR code data is valid, redirect the user to the artwork page
-window.location.href = code.data;
+    // Extract the id part from the QR code data
+    var id = code.data.substring('https://technosketch.art/artworks/'.length);
+
+    // If the id is not a valid number, display an error modal
+    if (isNaN(parseInt(id))) {
+        displayErrorModal('بيانات رمز الاستجابة السريعة غير صالحة. حاول مرة اخرى.');
+        // Return to the previous state
+        return;
+    }
+
+    // Construct the URL to redirect to
+    var redirectURL = '/artworks/' + id;
+
+    // Redirect the user to the artwork page
+    window.location.href = redirectURL;
 }

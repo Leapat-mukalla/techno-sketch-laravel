@@ -259,7 +259,7 @@
 function copyArtworkURL(artworkId) {
     try {
         // Construct the artwork URL
-        var artworkURL = "/artworks/" + artworkId;
+        var artworkURL = "https://technosketch.art/artworks/" + artworkId;
         var toastMessage = document.querySelector('.toast-message');
         var toast = new bootstrap.Toast(document.querySelector('.toast'));
 
