@@ -210,6 +210,12 @@
                     </div>
                 </div>
             </div>
+            <h5 class="page-title text-nowrap text-dark font-weight-medium mb-3">📊 إجمالي زوار المعرض</h5>
+            @if($visitorCount)
+                <div>{{$visitorCount}} <span>زائراً</span></div>
+            @else
+                <div>لايوجد زوار</div>
+            @endif
         </div>
         <div class="col-lg-6 col-md-6">
             <h5 class="page-title text-nowrap text-dark font-weight-medium mb-3">⬆️ الأعمال الأكثر إعجاباً</h5>

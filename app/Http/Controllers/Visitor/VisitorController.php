@@ -11,6 +11,8 @@ use App\Models\VisitorsScan;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Artwork;
 use App\Models\Like;
+use App\Models\VisitorsData;
+
 
 class VisitorController extends Controller
 {

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Artwork;
 use App\Models\Event;
+use App\Models\VisitorsData;
+
 class AdminController extends Controller
 {
     /**
@@ -14,6 +16,10 @@ class AdminController extends Controller
      */
     public function index()
     {
+        // Get the count of users where is_visitor == true
+        $visitorCount = VisitorsData::where('is_visitor', true)->count();
+
+        // Query for artworks with like count
         $artworks = DB::table('artworks')
         ->leftJoin('likes', 'artworks.id', '=', 'likes.artwork_id')
         ->select('artworks.*', DB::raw('COUNT(likes.artwork_id) as like_count'))
@@ -22,7 +28,7 @@ class AdminController extends Controller
         ->get(); // Execute the query and fetch the results
         $events = Event::all();
         $firstEvent = $events->first();
-        return view('admin.home', compact('artworks', 'firstEvent'));
+        return view('admin.home', compact('artworks', 'firstEvent','visitorCount'));
     }
 
     /**
