@@ -14,7 +14,8 @@ class VisitorsData extends Model
         'age',
         'gender',
         'address',
-        'status'
+        'status',
+        'is_visitor'
     ];
 
     public function user()

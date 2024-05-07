@@ -25,9 +25,5 @@ class RolesTableSeeder extends Seeder
             'name' => 'visitor',
             'label' => 'Regular User',
         ]);
-        Role::create([
-            'name' => 'reception',
-            'label' => 'Reception User',
-        ]);
     }
 }

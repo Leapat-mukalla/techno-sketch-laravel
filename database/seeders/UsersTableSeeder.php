@@ -33,16 +33,8 @@ class UsersTableSeeder extends Seeder
             'phone' => '770339576',
 
         ]);
-        $user3 = User::create([
-            'name' => 'الاستقبال',
-            'email' => 'example@gmail.com',
-            'password' => Hash::make('reception123456789'),
-            'phone' => '739329553',
-
-        ]);
 
         $user1->roles()->attach(Role::where('name', 'admin')->first()->id);
         $user2->roles()->attach(Role::where('name', 'admin')->first()->id);
-        $user3->roles()->attach(Role::where('name', 'reception')->first()->id);
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('gender', ['male', 'female']);
             $table->string('address')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->boolean('is_visitor')->default(false);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
