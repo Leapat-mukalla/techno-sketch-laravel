@@ -5,7 +5,6 @@ use App\Http\Controllers\Account\RegisterationController;
 use App\Http\Controllers\Account\LoginController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Visitor\VisitorController;
-use App\Http\Controllers\Reception\ReceptionController;
 use App\Http\Controllers\Account\LogoutController;
 use App\Http\Controllers\Admin\ManageArtworksController;
 use App\Http\Controllers\Admin\ManageVisitorsController;
@@ -60,11 +59,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/artworks/{id}', [VisitorController::class, 'show'])->name('artworks.show');
         Route::post('/toggleLikeArtwork', [VisitorController::class, 'toggleLikeArtwork'])->name('toggleLikeArtwork');
         Route::get('/visitors-scan', [VisitorController::class, 'scanShow'])->name('visitors-scan');
-    });
-    Route::group(['middleware' => 'role:reception'], function () {
-        Route::get('/reception/home', [ReceptionController::class, 'index'])->name('reception.home');
-        Route::get('/checkUserId', [ReceptionController::class, 'checkUserId']);
-        Route::get('/createVisitorScan', [ReceptionController::class, 'createVisitorScan'])->name('createVisitorScan');
     });
 
 });
