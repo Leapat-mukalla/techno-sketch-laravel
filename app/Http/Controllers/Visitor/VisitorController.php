@@ -78,9 +78,14 @@ class VisitorController extends Controller
      */
     public function show($id)
     {
+        $user = auth()->user();
         $likedByUser = auth()->user()->likes()->where('artwork_id', $id)->exists();
         $artwork = Artwork::findOrFail($id);
         $likeCount = $artwork->likes()->count();
+        // Check if the user is a visitor and update their status if necessary
+        if (!$user->VisitorsData || !$user->VisitorsData->is_visitor) {
+            $user->VisitorsData()->update(['is_visitor' => true]);
+        }
         return view('artworkDetails', ['artwork' => $artwork,'likedByUser'=>$likedByUser,'likeCount' => $likeCount]);
     }
 
