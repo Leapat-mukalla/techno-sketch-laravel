@@ -28,9 +28,7 @@ class LoginController extends Controller
             $user = Auth::user();
             if ($user->hasAnyRole(['admin'])) {
                 return redirect()->route('admin.home');
-            } elseif ($user->hasAnyRole(['reception'])) {
-                return redirect()->route('reception.home');
-            } else {
+            }  else {
                 return redirect()->route('visitor.home');
             }
         } else {
