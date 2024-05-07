@@ -22,53 +22,9 @@ class VisitorController extends Controller
 
         // Get the first (and presumably only) event from the database
         $event = Event::first();
-        // Get the current user's ID
-        $userId = Auth::id();
 
-        // Query the visitors_scans table to check if the current user's ID exists
-        $visitorScan = VisitorsScan::where('user_id', $userId)->exists();
-        if ($visitorScan) {
-            return view('visitors-scan');
-        }
-        $from = [12, 35, 251]; // RGB values for the start color (#0c23fb)
-        $to = [89, 135, 255];  // RGB values for the end color (#5987ff)
-
-        // Generate the QR code with a gradient background
-        $qrCode = QrCode::size(200)
-                        ->style('dot')
-                        ->eye('circle')
-                        ->gradient($from[0], $from[1], $from[2], $to[0], $to[1], $to[2], 'diagonal')
-                        ->margin(1)
-                        ->generate(auth()->id());
-
-
-        return view('visitors-home', compact('qrCode','event','visitorScan'));
+        return view('visitors-home', compact('event'));
     }
-
-    public function getUpdatedVisitorsScan()
-    {
-        // Get the current user's ID
-        $userId = Auth::id();
-
-        // Query the visitors_scans table to check if the current user's ID exists
-        $visitorScan = VisitorsScan::where('user_id', $userId)->exists();
-
-        // Return the updated data as JSON
-        return response()->json(['visitorScan' => $visitorScan]);
-    }
-
-    // public function getArtworkDetails(Request $request)
-    // {
-    //     $artworkId = $request->input('artworkId');
-    //     $artwork = Artwork::find($artworkId);
-
-    //     if (!$artwork) {
-    //         return response()->json(['error' => 'Artwork not found'], 404);
-    //     }
-    //     return response()->json(['artwork' => $artwork]);
-
-
-    // }
 
     public function toggleLikeArtwork(Request $request)
     {
@@ -128,10 +84,6 @@ class VisitorController extends Controller
         return view('artworkDetails', ['artwork' => $artwork,'likedByUser'=>$likedByUser,'likeCount' => $likeCount]);
     }
 
-    public function scanShow()
-    {
-        return view('visitors-scan');
-    }
 
     /**
      * Show the form for editing the specified resource.

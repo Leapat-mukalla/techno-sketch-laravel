@@ -26,21 +26,7 @@
                 </div>
               </div>
         </div>
-        <div class="col-12 align-self-center mb-4 mt-5">
-            <h4 style="color: #212529">  رمز الاستجابة الخاصة بك</h4>
-        </div>
-        <div class="col-12">
-            <div class="card card-block card-stretch card-height ">
-                <div class="card-body  align-self-center">
-                    <div id="countdown"></div>
-                <div class=" ">
-                    {!! $qrCode !!}
 
-                </div>
-
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <script>
@@ -82,27 +68,5 @@
 
         // Update countdown every second
         setInterval(updateCountdown, 1000);
-
-
-    function fetchUpdatedData() {
-        $.ajax({
-            url: '/getUpdatedVisitorsScan',
-            type: 'GET',
-            data: {
-                _token: '{{ csrf_token() }}',
-            },
-            success: function(response) {
-                // Check if visitor status has changed
-                if (response.visitorScan) {
-                    // Refresh the page or update specific content
-                    // location.reload(); // Refresh the entire page
-                    window.location.href = '/visitors-scan'
-
-                }
-            }
-        });
-    }
-    // Poll for updated data every 30 seconds (adjust as needed)
-    setInterval(fetchUpdatedData, 30000);
 </script>
 @endsection
