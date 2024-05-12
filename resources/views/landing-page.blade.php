@@ -22,58 +22,52 @@
 <body>
     <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full"  >
-    <div class="page-wrapper page-wrapper-landing" >
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-5 align-self-center">
-                </div>
-            </div>
-        </div>
+    <div class="page-wrapper page-wrapper-landing " >
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 align-self-center mb-4 ">
-                    {{-- <h4 style="color: #212529">قم بمسح رمز استجابة الزوار</h4> --}}
-                </div>
-                <div class="col-12 col-lg-12 col-md-6">
-                    <div class="hero" >
+        <div class="container-fluid-landing">
+            <div class="row landing-sec1 landing-sec1-pattren">
+                <img src="{{asset('assets/images/pattren.png')}}" alt="" class="pattren">
+                <img src="{{asset('assets/images/logo.png')}}"   alt="" class="logo">
+                <img src="{{asset('assets/images/Ellipse 48.png')}}" alt="" class="circle">
+                <div class="container-fluid-inner">
+                    <div class="col-12 col-lg-12 col-md-6 z-1 position-relative">
+
+                        <p class="mt-5 text-white w-85" style="font-weight: 400; font-size:16px;" >
+                            مرحبا بك لعالم تكنوسكيتش الرقمي، حيث التقنية والفن يأخذانك لآفاق جديدة خلابة. في تجربة تقنية فنية فريدة من نوعها
+                        </p>
+                        <p class="mt-5 text-white" style="font-weight: 500; font-size:16px;" >ماذا تنتظر؟ احجز مقعدك</p>
                     </div>
-                    <p class=" mt-4">
-                        نسعى في "ليبات" للوصول لمجتمع يتم فيه استخدام التكنولوجيا لتحقــــيق قفزات وتحــــــــــــولات رقــــميـــــــــة مـلـمـــوســـــــــة.
-                        نرىمستقبــــًلايقــــودهالشبـابالمبتكــر،
-                        يقـــــدمحلـــوًلاجديــــدةومبتكـرةللتحديات العالميـــــــة فـــــي مجــــــالات الــــصحـــــــة، البيئــــة، التعليــــــم، الفـــــــــــــن والثقـــــــافة.
-                    </p>
-                </div>
-                <div class="col-12 text-center mt-4">
-                    @if($event)
-                        <div id="countdown" class="d-flex justify-content-center align-items-center mt-3">
-                            <div class="countdown-section">
-                            <span id="days" class="h1 days">-</span>
-                            <div class="text-center text-black-50">ايام</div>
+                    {{-- <div class="col-12 text-center mt-4">
+                        @if($event)
+                            <div id="countdown" class="d-flex justify-content-center align-items-center mt-3">
+                                <div class="countdown-section">
+                                <span id="days" class="h1 days">-</span>
+                                <div class="text-center text-black-50">ايام</div>
+                                </div>
+                                <div class="countdown-section">
+                                <span id="hours" class="h1 hours">-</span>
+                                <div class="text-center text-black-50">ساعات</div>
+                                </div>
+                                <div class="countdown-section">
+                                <span id="minutes" class="h1 minutes">-</span>
+                                <div class="text-center text-black-50">دقائق</div>
+                                </div>
+                                <div class="countdown-section">
+                                <span id="seconds" class="h1 seconds">-</span>
+                                <div class="text-center text-black-50">ثواني</div>
+                                </div>
                             </div>
-                            <div class="countdown-section">
-                            <span id="hours" class="h1 hours">-</span>
-                            <div class="text-center text-black-50">ساعات</div>
-                            </div>
-                            <div class="countdown-section">
-                            <span id="minutes" class="h1 minutes">-</span>
-                            <div class="text-center text-black-50">دقائق</div>
-                            </div>
-                            <div class="countdown-section">
-                            <span id="seconds" class="h1 seconds">-</span>
-                            <div class="text-center text-black-50">ثواني</div>
-                            </div>
+                        @else
+                        <div>لا يوجد حدث متاح حالياً</div>
+                        @endif
+                    </div> --}}
+                    <div class="col-12 col-lg-12 col-md-6 text-center">
+                        <div class="form-group text-center d-grid gap-2 mt-5 m-5">
+                            <a href="{{ route('register') }}" class="btn btn-light z-1" role="button" style="border-radius: 8px; padding:8px 58px 8px 58px;"> إنشاء حساب</a>
+                            <a href="{{ route('login') }}" class="btn btn-light2 z-1" role="button"  style="border-radius: 8px; padding:8px 58px 8px 58px;">تسجيل الدخول</a>
                         </div>
-                    @else
-                      <div>لا يوجد حدث متاح حالياً</div>
-                    @endif
-                </div>
-                <div class="col-12 col-lg-12 col-md-6 text-center ">
-                    <div class="form-group text-center d-grid gap-2  mt-5">
-                        <a href="{{ route('register') }}" class="btn btn-primary" role="button">سجل الآن</a>
-                        <a href="{{ route('login') }}" class="btn btn-outline-primary" role="button">دخول</a>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
