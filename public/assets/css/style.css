@@ -31,11 +31,11 @@
     font-family: 'Graphik Arabic Regular', sans-serif;
 } */
 .medium-font {
-    font-family: 'Graphik Arabic Medium', sans-serif;
+    font-family: 'Graphik Arabic Medium', sans-serif !important;
     /* font-size: 16px; */
 }
 .bold-font {
-    font-family: 'Graphik Arabic Bold', sans-serif;
+    font-family: 'Graphik Arabic Bold', sans-serif !important;
     /* font-size: 16px; */
 }
 .topbar .dropdown-menu .with-arrow > span {

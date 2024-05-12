@@ -63,8 +63,8 @@
                     </div> --}}
                     <div class="col-12 col-lg-12 col-md-6 text-center">
                         <div class="form-group text-center d-grid gap-2 mt-5 m-5">
-                            <a href="{{ route('register') }}" class="btn btn-light z-1" role="button" style="border-radius: 8px; padding:8px 58px 8px 58px;"> إنشاء حساب</a>
-                            <a href="{{ route('login') }}" class="btn btn-light2 z-1" role="button"  style="border-radius: 8px; padding:8px 58px 8px 58px;">تسجيل الدخول</a>
+                            <a href="{{ route('register') }}" class="btn btn-light z-1 medium-font" role="button" style="border-radius: 8px; padding:8px 58px 8px 58px;"> إنشاء حساب</a>
+                            <a href="{{ route('login') }}" class="btn btn-light2 z-1 medium-font" role="button"  style="border-radius: 8px; padding:8px 58px 8px 58px;">تسجيل الدخول</a>
                         </div>
 
                     </div>
