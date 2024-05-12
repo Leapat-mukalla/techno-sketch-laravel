@@ -35,7 +35,7 @@
                         <p class="mt-5 text-white w-85" style="font-weight: 400; font-size:16px;" >
                             مرحبا بك لعالم تكنوسكيتش الرقمي، حيث التقنية والفن يأخذانك لآفاق جديدة خلابة. في تجربة تقنية فنية فريدة من نوعها
                         </p>
-                        <p class="mt-5 text-white" style="font-weight: 500; font-size:16px;" >ماذا تنتظر؟ احجز مقعدك</p>
+                        <p class="mt-5 text-white medium-font" >ماذا تنتظر؟ احجز مقعدك</p>
                     </div>
                     {{-- <div class="col-12 text-center mt-4">
                         @if($event)
