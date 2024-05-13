@@ -218,6 +218,12 @@ body {
 .landing-sec1 .pattren{
     height: 195.03px;
 }
+.landing-sec3 .pattren{
+    width: 100%;
+    height: 40% !important;
+
+
+}
 .landing-sec1 .logo{
     filter: brightness(0) invert(1);
     top: 143px;
@@ -227,19 +233,19 @@ body {
     transform: translate(-50%, -50%);
     left: 50%;
 }
-.landing-sec1{
+.landing-sec1, .landing-sec3{
     background-color: #161616;
     position: relative;
 }
-.landing-sec1 .circle{
-    /* clip-path: ellipse(4rem 50% at left center); */
-    /* background-color: #0C23FB; */
+.landing-sec1 .circle ,.landing-sec3 .circle{
     top: 50%;
     position: absolute;
     height: 100%;
-    /* width: 290px !important; */
     transform: translate(-50%, -50%);
     left: 35%;
+}
+.landing-sec3 .circle{
+    left: 60% !important;
 }
 .landing-sec2 .countdown{
     background: linear-gradient(98.54deg, rgba(255, 255, 255, 0.6) 8.07%, rgba(12, 35, 251, 0.6) 153.65%);
@@ -252,6 +258,7 @@ body {
 }
 .landing-sec2 .sec2-icon-bg{
     width: 68px !important;
+    min-width: 68px;
     height: 63px !important;
     border-radius: 8px;
     box-shadow: 2px 8px 20px 0px rgba(12, 35, 251, .2);

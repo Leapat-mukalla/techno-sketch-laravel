@@ -25,7 +25,7 @@
     <div class="page-wrapper page-wrapper-landing " >
 
         <div class="container-fluid-landing">
-            <div class="row landing-sec1 landing-sec1-pattren">
+            <div class="row landing-sec1">
                 <img src="{{asset('assets/images/pattren.png')}}" alt="" class="pattren">
                 <img src="{{asset('assets/images/logo.png')}}"   alt="" class="logo">
                 <img src="{{asset('assets/images/Ellipse 48.png')}}" alt="" class="circle">
@@ -73,11 +73,12 @@
                                 </div>
                             </div>
                         @else
-                        <div>لا يوجد حدث متاح حالياً</div>
+                        <h3 class="medium-font"> انطلق المعرض!</h3>
+                        <p> استمتع بتجربة فنية لاتنسى</p>
                         @endif
                     </div>
-                        <div class="row d-flex flex-wrap justify-content-center step-row mt-5 row-gap-2">
-                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center ftco-animate fadeInUp ftco-animated">
+                        <div class="row d-flex flex-wrap justify-content-center step-row mt-5 row-gap-2" style="margin: 0 auto;">
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center">
                                 <div class="d-flex flex-col column-gap-3">
                                     <div class="d-flex justify-content-center align-items-center bg-white sec2-icon-bg">
                                         <img src="{{asset('assets/images/enter 2.png')}}" width="35px" alt="">
@@ -88,17 +89,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center ftco-animate fadeInUp ftco-animated">
-                                <div class="d-flex flex-col column-gap-3">
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center">
+                                <div class="d-flex flex-col column-gap-3 flex-md-row-reverse flex-lg-row-reverse">
                                     <div class="">
                                         <h3 class="bold-font text-black text-end">اكتشف المزيد</h3>
-                                        <p class="text-end" style="width: 318px;">امسح رمز الاستجابة السريعة الموضوع على كل لوحة لمعرفة المزيد عن فناني تكنوسكيتش وأعمالهم</p>
+                                        <p class="text-end">امسح رمز الاستجابة السريعة الموضوع على كل لوحة لمعرفة المزيد عن فناني تكنوسكيتش وأعمالهم</p>
                                     </div>
                                     <div class="d-flex justify-content-center align-items-center bg-white sec2-icon-bg">
                                         <img src="{{asset('assets/images/qr-code 2.png')}}" width="35px" alt="">
                                     </div>
                                 </div>
-                            </div> <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center ftco-animate fadeInUp ftco-animated">
+                            </div>
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center">
                                 <div class="d-flex flex-col column-gap-3">
                                     <div class="d-flex justify-content-center align-items-center bg-white sec2-icon-bg">
                                         <img src="{{asset('assets/images/like 2.png')}}" width="35px" alt="">
@@ -109,7 +111,29 @@
                                     </div>
                                 </div>
                             </div>
-
+                    </div>
+                </div>
+            </div>
+            <div class="row landing-sec3 " style="height: 180px;">
+                <img src="{{asset('assets/images/pattren2.png')}}" alt="" class="pattren">
+                <img src="{{asset('assets/images/Ellipse 49.png')}}" alt="" class="circle">
+                <div class="container-fluid-inner position-absolute" style="padding: 18px 35px 35px 35px !important;">
+                    <div class="col-12 col-lg-12 col-md-6 z-1 position-relative">
+                        <h3 class=" text-white" >إحصائيات تكنوسكيتش</h3>
+                    </div>
+                    <div class="col-12 col-lg-12 col-md-6 z-1 position-relative d-flex column-gap-5 mt-3 pt-3 justify-content-center align-items-center">
+                        <div class=" d-flex justify-content-center align-items-start flex-column">
+                            <span class="bold-font " style="font-size: 45px; color:#0C23FB;">15</span>
+                            <p class=" text-white">فنان تشكيلي</p>
+                        </div>
+                        <div class=" d-flex justify-content-center align-items-start flex-column column-gap-1">
+                            <span class="bold-font" style="font-size: 45px; color:#0C23FB;">20</span>
+                            <p class=" text-white">عمل فني</p>
+                        </div>
+                        <div class=" d-flex justify-content-center align-items-start flex-column column-gap-1">
+                            <span class="bold-font" style="font-size: 45px; color:#0C23FB;">125</span>
+                            <p class=" text-white text-truncate">زائر لمعرض تكنوسكيتش</p>
+                        </div>
                     </div>
                 </div>
             </div>
