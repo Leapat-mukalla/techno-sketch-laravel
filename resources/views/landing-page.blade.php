@@ -76,7 +76,40 @@
                         <div>لا يوجد حدث متاح حالياً</div>
                         @endif
                     </div>
-                    <div class="col-12 col-lg-12 col-md-6 text-center">
+                        <div class="row d-flex flex-wrap justify-content-center step-row mt-5 row-gap-2">
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center ftco-animate fadeInUp ftco-animated">
+                                <div class="d-flex flex-col column-gap-3">
+                                    <div class="d-flex justify-content-center align-items-center bg-white sec2-icon-bg">
+                                        <img src="{{asset('assets/images/enter 2.png')}}" width="35px" alt="">
+                                    </div>
+                                    <div class="">
+                                        <h3 class="bold-font text-black text-end">انضم إلى معرضنا</h3>
+                                        <p class="text-end">قم بإنشاء حساب لحجز مقعدك والانضمام لمعرض تكنوسكيتش</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center ftco-animate fadeInUp ftco-animated">
+                                <div class="d-flex flex-col column-gap-3">
+                                    <div class="">
+                                        <h3 class="bold-font text-black text-end">اكتشف المزيد</h3>
+                                        <p class="text-end" style="width: 318px;">امسح رمز الاستجابة السريعة الموضوع على كل لوحة لمعرفة المزيد عن فناني تكنوسكيتش وأعمالهم</p>
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center bg-white sec2-icon-bg">
+                                        <img src="{{asset('assets/images/qr-code 2.png')}}" width="35px" alt="">
+                                    </div>
+                                </div>
+                            </div> <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center ftco-animate fadeInUp ftco-animated">
+                                <div class="d-flex flex-col column-gap-3">
+                                    <div class="d-flex justify-content-center align-items-center bg-white sec2-icon-bg">
+                                        <img src="{{asset('assets/images/like 2.png')}}" width="35px" alt="">
+                                    </div>
+                                    <div class="">
+                                        <h3 class="bold-font text-black text-end">أبدِ إعجابك</h3>
+                                        <p class="text-end">أظهر دعمك لفناني تكنوسكيتش من خلال إبداء الإعجاب بأعمالهم</p>
+                                    </div>
+                                </div>
+                            </div>
+
                     </div>
                 </div>
             </div>
