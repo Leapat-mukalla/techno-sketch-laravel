@@ -32,41 +32,51 @@
                 <div class="container-fluid-inner">
                     <div class="col-12 col-lg-12 col-md-6 z-1 position-relative">
 
-                        <p class="mt-5 text-white w-85" style="font-weight: 400; font-size:16px;" >
+                        <p class="mt-5 text-white w-85">
                             مرحبا بك لعالم تكنوسكيتش الرقمي، حيث التقنية والفن يأخذانك لآفاق جديدة خلابة. في تجربة تقنية فنية فريدة من نوعها
                         </p>
                         <p class="mt-5 text-white medium-font" >ماذا تنتظر؟ احجز مقعدك</p>
                     </div>
-                    {{-- <div class="col-12 text-center mt-4">
+
+                    <div class="col-12 col-lg-12 col-md-6 text-center ">
+                        <div class="form-group text-center d-grid gap-2 mt-5 m-5">
+                            <a href="{{ route('register') }}" class="btn btn-light z-1 medium-font btn-r-p-custom" role="button" > إنشاء حساب</a>
+                            <a href="{{ route('login') }}" class="btn btn-light2 z-1 medium-font btn-r-p-custom" role="button" >تسجيل الدخول</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row landing-sec2">
+                <div class="container-fluid-inner">
+                    <div class="col-12 col-lg-12 col-md-6 position-relative">
+                        <p class="text-black medium-font" >معرض تكنوسكيتش</p>
+                    </div>
+                    <div class="col-12 text-center mt-3">
                         @if($event)
-                            <div id="countdown" class="d-flex justify-content-center align-items-center mt-3">
-                                <div class="countdown-section">
+                            <div id="countdown" class="d-flex justify-content-center align-items-center mt-3 countdown" >
+                                <div class="countdown-section" >
                                 <span id="days" class="h1 days">-</span>
-                                <div class="text-center text-black-50">ايام</div>
+                                <div class="text-center mt-2 ">أيام</div>
                                 </div>
                                 <div class="countdown-section">
                                 <span id="hours" class="h1 hours">-</span>
-                                <div class="text-center text-black-50">ساعات</div>
+                                <div class="text-center mt-2 ">ساعات</div>
                                 </div>
                                 <div class="countdown-section">
                                 <span id="minutes" class="h1 minutes">-</span>
-                                <div class="text-center text-black-50">دقائق</div>
+                                <div class="text-center mt-2 ">دقائق</div>
                                 </div>
                                 <div class="countdown-section">
                                 <span id="seconds" class="h1 seconds">-</span>
-                                <div class="text-center text-black-50">ثواني</div>
+                                <div class="text-center mt-2 ">ثواني</div>
                                 </div>
                             </div>
                         @else
                         <div>لا يوجد حدث متاح حالياً</div>
                         @endif
-                    </div> --}}
+                    </div>
                     <div class="col-12 col-lg-12 col-md-6 text-center">
-                        <div class="form-group text-center d-grid gap-2 mt-5 m-5">
-                            <a href="{{ route('register') }}" class="btn btn-light z-1 medium-font" role="button" style="border-radius: 8px; padding:8px 58px 8px 58px;"> إنشاء حساب</a>
-                            <a href="{{ route('login') }}" class="btn btn-light2 z-1 medium-font" role="button"  style="border-radius: 8px; padding:8px 58px 8px 58px;">تسجيل الدخول</a>
-                        </div>
-
                     </div>
                 </div>
             </div>
