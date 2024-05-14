@@ -38,7 +38,7 @@
                         <p class="mt-5 text-white medium-font" >ماذا تنتظر؟ احجز مقعدك</p>
                     </div>
 
-                    <div class="col-12 col-lg-12 col-md-6 text-center ">
+                    <div class="col-12 col-lg-6 col-md-6 text-center ">
                         <div class="form-group text-center d-grid gap-2 mt-5 m-5">
                             <a href="{{ route('register') }}" class="btn btn-light z-1 medium-font btn-r-p-custom" role="button" > إنشاء حساب</a>
                             <a href="{{ route('login') }}" class="btn btn-light2 z-1 medium-font btn-r-p-custom" role="button" >تسجيل الدخول</a>
@@ -52,7 +52,7 @@
                     <div class="col-12 col-lg-12 col-md-6 position-relative">
                         <p class="text-black medium-font" >معرض تكنوسكيتش</p>
                     </div>
-                    <div class="col-12 text-center mt-3">
+                    <div id="event-container" class="col-12 text-center mt-3">
                         @if($event)
                             <div id="countdown" class="d-flex justify-content-center align-items-center mt-3 countdown" >
                                 <div class="countdown-section" >
@@ -73,8 +73,8 @@
                                 </div>
                             </div>
                         @else
-                        <h3 class="medium-font"> انطلق المعرض!</h3>
-                        <p> استمتع بتجربة فنية لاتنسى</p>
+                        <h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
+                        <p> انتظرونا قريبا لنتحفكم بتجربة فنية لاتنسى</p>
                         @endif
                     </div>
                         <div class="row d-flex flex-wrap justify-content-center step-row mt-5 row-gap-2" style="margin: 0 auto;">
@@ -114,27 +114,43 @@
                     </div>
                 </div>
             </div>
-            <div class="row landing-sec3 " style="height: 180px;">
+            <div class="row landing-sec3 position-relative " style="height: 230px;">
                 <img src="{{asset('assets/images/pattren2.png')}}" alt="" class="pattren">
                 <img src="{{asset('assets/images/Ellipse 49.png')}}" alt="" class="circle">
-                <div class="container-fluid-inner position-absolute" style="padding: 18px 35px 35px 35px !important;">
-                    <div class="col-12 col-lg-12 col-md-6 z-1 position-relative">
-                        <h3 class=" text-white" >إحصائيات تكنوسكيتش</h3>
+                <div class="container-fluid-inner" style="padding: 0px 35px 0px 35px !important;">
+                    <div class="col-12 col-lg-12 col-md-6 z-1 position-absolute top-0 pt-4 ">
+                        <p class=" text-white" >إحصائيات تكنوسكيتش</p>
                     </div>
-                    <div class="col-12 col-lg-12 col-md-6 z-1 position-relative d-flex column-gap-5 mt-3 pt-3 justify-content-center align-items-center">
-                        <div class=" d-flex justify-content-center align-items-start flex-column">
-                            <span class="bold-font " style="font-size: 45px; color:#0C23FB;">15</span>
-                            <p class=" text-white">فنان تشكيلي</p>
+                    <div class="col-12 col-lg-12 col-md-6 z-1 d-flex column-gap-5 justify-content-center align-items-cente pb-5">
+                        <div class=" d-flex  align-items-start flex-column">
+                            <span class="bold-font z-1" style="font-size: 45px; color:#0C23FB;">15</span>
+                            <div class=" text-white z-1">فنان تشكيلي</div>
                         </div>
-                        <div class=" d-flex justify-content-center align-items-start flex-column column-gap-1">
-                            <span class="bold-font" style="font-size: 45px; color:#0C23FB;">20</span>
-                            <p class=" text-white">عمل فني</p>
+                        <div class=" d-flex  align-items-start flex-column column-gap-1">
+                            <span class="bold-font z-1" style="font-size: 45px; color:#0C23FB;">20</span>
+                            <div class=" text-white z-1">عمل فني</div>
                         </div>
-                        <div class=" d-flex justify-content-center align-items-start flex-column column-gap-1">
-                            <span class="bold-font" style="font-size: 45px; color:#0C23FB;">125</span>
-                            <p class=" text-white text-truncate">زائر لمعرض تكنوسكيتش</p>
+                        <div class=" d-flex align-items-start flex-column column-gap-1">
+                            <span class="bold-font z-1" style="font-size: 45px; color:#0C23FB;">{{$visitorCount}}</span>
+                            <div class=" text-white z-1">زائر لمعرض تكنوسكيتش</div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="row landing-sec2">
+                <div class="container-fluid-inner">
+                    <div class="col-12 col-lg-12 col-md-6 position-relative">
+                        <p class="text-black medium-font" >شركاء تكنوسكيتش</p>
+                    </div>
+                    <div class="col-12 d-flex justify-content-start justify-content-lg-center align-items-center mt-3 me-3">
+                        <img src="{{asset('assets/images/Leapat.png')}}" width="100" alt="" class="">
+                        <img src="{{asset('assets/images/Seraj.png')}}" width="100" alt="" class="">
+                        <img src="{{asset('assets/images/HCF.png')}}" width="100" alt="" class="">
+                    </div>
+                    <div class=" d-flex me-3 mt-2 justify-content-lg-center">
+                        يتم تنفيذ مشروع "تكنوسكيتش" من قبل مبادرة سراج ومبادرة ليبات ضمن إطار برنامج منح مسارات اليمن المقدم من مؤسسة حضرموت للثقافة.
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -160,6 +176,7 @@
 
 
     <script>
+   document.addEventListener("DOMContentLoaded", function() {
         @if($event)
         function updateCountdown() {
             var eventDate = new Date("{{ $event->end_date }} {{ $event->end_time }}").getTime();
@@ -174,7 +191,10 @@
                 // Check if the event has ended
                 if (now > eventDate) {
                     // Display a message indicating that the event has ended
-                    document.getElementById("countdown").innerHTML = "انتهى العد التنازلي";
+                    document.getElementById("countdown").style.display = "none";
+                    document.getElementById("event-container").innerHTML = `
+                    <h3 class="medium-font">انطلق المعرض!</h3>
+                    <p>استمتع بتجربة فنية لا تُنسى</p>`;
                 } else {
                     // Calculate the remaining time until the event ends
                     var distance = eventDate - now;
@@ -192,6 +212,9 @@
             } else {
                 // Hide the countdown timer if the event has not started yet
                 document.getElementById("countdown").style.display = "none";
+
+                document.getElementById("event-container").innerHTML = `<h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
+                        <p> انتظرونا قريبا لنتحفكم بتجربة فنية لاتنسى</p>`;
             }
         }
         // Call the updateCountdown function immediately
@@ -200,6 +223,7 @@
         // Update countdown every second
         setInterval(updateCountdown, 1000);
         @endif
+    });
     </script>
 
 
