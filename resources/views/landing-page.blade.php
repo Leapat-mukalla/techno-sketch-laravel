@@ -22,56 +22,133 @@
 <body>
     <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full"  >
-    <div class="page-wrapper page-wrapper-landing" >
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-5 align-self-center">
+    <div class="page-wrapper page-wrapper-landing " >
+
+        <div class="container-fluid-landing">
+            <div class="row landing-sec1">
+                <img src="{{asset('assets/images/pattren.png')}}" alt="" class="pattren">
+                <img src="{{asset('assets/images/logo.png')}}"   alt="" class="logo">
+                <img src="{{asset('assets/images/Ellipse 48.png')}}" alt="" class="circle">
+                <div class="container-fluid-inner">
+                    <div class="col-12 col-lg-12 col-md-6 z-1 position-relative">
+
+                        <p class="mt-5 text-white w-85">
+                            مرحبا بك لعالم تكنوسكيتش الرقمي، حيث التقنية والفن يأخذانك لآفاق جديدة خلابة. في تجربة تقنية فنية فريدة من نوعها
+                        </p>
+                        <p class="mt-5 text-white medium-font" >ماذا تنتظر؟ احجز مقعدك</p>
+                    </div>
+
+                    <div class="col-12 col-lg-6 col-md-6 text-center ">
+                        <div class="form-group text-center d-grid gap-2 mt-5 m-5">
+                            <a href="{{ route('register') }}" class="btn btn-light z-1 medium-font btn-r-p-custom" role="button" > إنشاء حساب</a>
+                            <a href="{{ route('login') }}" class="btn btn-light2 z-1 medium-font btn-r-p-custom" role="button" >تسجيل الدخول</a>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 align-self-center mb-4 ">
-                    {{-- <h4 style="color: #212529">قم بمسح رمز استجابة الزوار</h4> --}}
-                </div>
-                <div class="col-12 col-lg-12 col-md-6">
-                    <div class="hero" >
+            <div class="row landing-sec2">
+                <div class="container-fluid-inner">
+                    <div class="col-12 col-lg-12 col-md-6 position-relative">
+                        <p class="text-black medium-font" >معرض تكنوسكيتش</p>
                     </div>
-                    <p class=" mt-4">
-                        نسعى في "ليبات" للوصول لمجتمع يتم فيه استخدام التكنولوجيا لتحقــــيق قفزات وتحــــــــــــولات رقــــميـــــــــة مـلـمـــوســـــــــة.
-                        نرىمستقبــــًلايقــــودهالشبـابالمبتكــر،
-                        يقـــــدمحلـــوًلاجديــــدةومبتكـرةللتحديات العالميـــــــة فـــــي مجــــــالات الــــصحـــــــة، البيئــــة، التعليــــــم، الفـــــــــــــن والثقـــــــافة.
-                    </p>
+                    <div id="event-container" class="col-12 text-center mt-3">
+                        @if($event)
+                            <div id="countdown" class="d-flex justify-content-center align-items-center mt-3 countdown" >
+                                <div class="countdown-section" >
+                                <span id="days" class="h1 days">-</span>
+                                <div class="text-center mt-2 ">أيام</div>
+                                </div>
+                                <div class="countdown-section">
+                                <span id="hours" class="h1 hours">-</span>
+                                <div class="text-center mt-2 ">ساعات</div>
+                                </div>
+                                <div class="countdown-section">
+                                <span id="minutes" class="h1 minutes">-</span>
+                                <div class="text-center mt-2 ">دقائق</div>
+                                </div>
+                                <div class="countdown-section">
+                                <span id="seconds" class="h1 seconds">-</span>
+                                <div class="text-center mt-2 ">ثواني</div>
+                                </div>
+                            </div>
+                        @else
+                        <h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
+                        <p> انتظرونا قريبا لنتحفكم بتجربة فنية لاتنسى</p>
+                        @endif
+                    </div>
+                        <div class="row d-flex flex-wrap justify-content-center step-row mt-5 row-gap-2" style="margin: 0 auto;">
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center">
+                                <div class="d-flex flex-col column-gap-3">
+                                    <div class="d-flex justify-content-center align-items-center bg-white sec2-icon-bg">
+                                        <img src="{{asset('assets/images/enter 2.png')}}" width="35px" alt="">
+                                    </div>
+                                    <div class="">
+                                        <h3 class="bold-font text-black text-end">انضم إلى معرضنا</h3>
+                                        <p class="text-end">قم بإنشاء حساب لحجز مقعدك والانضمام لمعرض تكنوسكيتش</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center">
+                                <div class="d-flex flex-col column-gap-3 flex-md-row-reverse flex-lg-row-reverse">
+                                    <div class="">
+                                        <h3 class="bold-font text-black text-end">اكتشف المزيد</h3>
+                                        <p class="text-end">امسح رمز الاستجابة السريعة الموضوع على كل لوحة لمعرفة المزيد عن فناني تكنوسكيتش وأعمالهم</p>
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center bg-white sec2-icon-bg">
+                                        <img src="{{asset('assets/images/qr-code 2.png')}}" width="35px" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center">
+                                <div class="d-flex flex-col column-gap-3">
+                                    <div class="d-flex justify-content-center align-items-center bg-white sec2-icon-bg">
+                                        <img src="{{asset('assets/images/like 2.png')}}" width="35px" alt="">
+                                    </div>
+                                    <div class="">
+                                        <h3 class="bold-font text-black text-end">أبدِ إعجابك</h3>
+                                        <p class="text-end">أظهر دعمك لفناني تكنوسكيتش من خلال إبداء الإعجاب بأعمالهم</p>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
                 </div>
-                <div class="col-12 text-center mt-4">
-                    @if($event)
-                        <div id="countdown" class="d-flex justify-content-center align-items-center mt-3">
-                            <div class="countdown-section">
-                            <span id="days" class="h1 days">-</span>
-                            <div class="text-center text-black-50">ايام</div>
-                            </div>
-                            <div class="countdown-section">
-                            <span id="hours" class="h1 hours">-</span>
-                            <div class="text-center text-black-50">ساعات</div>
-                            </div>
-                            <div class="countdown-section">
-                            <span id="minutes" class="h1 minutes">-</span>
-                            <div class="text-center text-black-50">دقائق</div>
-                            </div>
-                            <div class="countdown-section">
-                            <span id="seconds" class="h1 seconds">-</span>
-                            <div class="text-center text-black-50">ثواني</div>
-                            </div>
+            </div>
+            <div class="row landing-sec3 position-relative " style="height: 230px;">
+                <img src="{{asset('assets/images/pattren2.png')}}" alt="" class="pattren">
+                <img src="{{asset('assets/images/Ellipse 49.png')}}" alt="" class="circle">
+                <div class="container-fluid-inner" style="padding: 0px 35px 0px 35px !important;">
+                    <div class="col-12 col-lg-12 col-md-6 z-1 position-absolute top-0 pt-4 ">
+                        <p class=" text-white" >إحصائيات تكنوسكيتش</p>
+                    </div>
+                    <div class="col-12 col-lg-12 col-md-6 z-1 d-flex column-gap-5 justify-content-center align-items-cente pb-5">
+                        <div class=" d-flex  align-items-start flex-column">
+                            <span class="bold-font z-1" style="font-size: 45px; color:#0C23FB;">15</span>
+                            <div class=" text-white z-1">فنان تشكيلي</div>
                         </div>
-                    @else
-                      <div>لا يوجد حدث متاح حالياً</div>
-                    @endif
+                        <div class=" d-flex  align-items-start flex-column column-gap-1">
+                            <span class="bold-font z-1" style="font-size: 45px; color:#0C23FB;">20</span>
+                            <div class=" text-white z-1">عمل فني</div>
+                        </div>
+                        <div class=" d-flex align-items-start flex-column column-gap-1">
+                            <span class="bold-font z-1" style="font-size: 45px; color:#0C23FB;">{{$visitorCount}}</span>
+                            <div class=" text-white z-1">زائر لمعرض تكنوسكيتش</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-12 col-lg-12 col-md-6 text-center ">
-                    <div class="form-group text-center d-grid gap-2  mt-5">
-                        <a href="{{ route('register') }}" class="btn btn-primary" role="button">سجل الآن</a>
-                        <a href="{{ route('login') }}" class="btn btn-outline-primary" role="button">دخول</a>
+            </div>
+            <div class="row landing-sec2">
+                <div class="container-fluid-inner">
+                    <div class="col-12 col-lg-12 col-md-6 position-relative">
+                        <p class="text-black medium-font" >شركاء تكنوسكيتش</p>
+                    </div>
+                    <div class="col-12 d-flex justify-content-start justify-content-lg-center align-items-center mt-3 me-3">
+                        <img src="{{asset('assets/images/Leapat.png')}}" width="100" alt="" class="">
+                        <img src="{{asset('assets/images/Seraj.png')}}" width="100" alt="" class="">
+                        <img src="{{asset('assets/images/HCF.png')}}" width="100" alt="" class="">
+                    </div>
+                    <div class=" d-flex me-3 mt-2 justify-content-lg-center">
+                        يتم تنفيذ مشروع "تكنوسكيتش" من قبل مبادرة سراج ومبادرة ليبات ضمن إطار برنامج منح مسارات اليمن المقدم من مؤسسة حضرموت للثقافة.
                     </div>
 
                 </div>
@@ -99,6 +176,7 @@
 
 
     <script>
+   document.addEventListener("DOMContentLoaded", function() {
         @if($event)
         function updateCountdown() {
             var eventDate = new Date("{{ $event->end_date }} {{ $event->end_time }}").getTime();
@@ -113,7 +191,10 @@
                 // Check if the event has ended
                 if (now > eventDate) {
                     // Display a message indicating that the event has ended
-                    document.getElementById("countdown").innerHTML = "انتهى العد التنازلي";
+                    document.getElementById("countdown").style.display = "none";
+                    document.getElementById("event-container").innerHTML = `
+                    <h3 class="medium-font">انطلق المعرض!</h3>
+                    <p>استمتع بتجربة فنية لا تُنسى</p>`;
                 } else {
                     // Calculate the remaining time until the event ends
                     var distance = eventDate - now;
@@ -131,6 +212,9 @@
             } else {
                 // Hide the countdown timer if the event has not started yet
                 document.getElementById("countdown").style.display = "none";
+
+                document.getElementById("event-container").innerHTML = `<h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
+                        <p> انتظرونا قريبا لنتحفكم بتجربة فنية لاتنسى</p>`;
             }
         }
         // Call the updateCountdown function immediately
@@ -139,6 +223,7 @@
         // Update countdown every second
         setInterval(updateCountdown, 1000);
         @endif
+    });
     </script>
 
 

@@ -21,11 +21,11 @@ class VisitorController extends Controller
      */
     public function index()
     {
-
         // Get the first (and presumably only) event from the database
         $event = Event::first();
+        $visitorCount = VisitorsData::count();
 
-        return view('visitors-home', compact('event'));
+        return view('visitors-home', compact('event','visitorCount'));
     }
 
     public function toggleLikeArtwork(Request $request)

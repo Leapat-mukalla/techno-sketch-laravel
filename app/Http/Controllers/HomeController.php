@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\VisitorsData;
 
 class HomeController extends Controller
 {
@@ -15,7 +16,9 @@ class HomeController extends Controller
     {
         // Get the first (and presumably only) event from the database
         $event = Event::first();
-        return view('landing-page', compact('event'));
+        $visitorCount = VisitorsData::count();
+
+        return view('landing-page', compact('event','visitorCount'));
 
     }
 
