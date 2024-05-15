@@ -112,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row landing-sec3 position-relative " style="height: 230px;">
+            <div class="row landing-sec3 position-relative " style="    padding-bottom: 20px;">
                 <img src="{{asset('assets/images/pattren2.png')}}" alt="" class="pattren">
                 <img src="{{asset('assets/images/Ellipse 49.png')}}" alt="" class="circle">
                 <div class="container-fluid-inner" style="padding: 0px 35px 0px 35px !important;">
@@ -187,20 +187,28 @@
             var eventDate = new Date("{{ $event->end_date }} {{ $event->end_time }}").getTime();
             var eventStart = new Date("{{ $event->start_date }} {{ $event->start_time }}").getTime();
             var now = new Date().getTime();
-
+            const countdown = document.getElementById("countdown");
             // Check if the current time is after the start of the event
             if (now >= eventStart) {
+
                 // Display the countdown timer
-                document.getElementById("countdown").style.display = "block";
+                if(countdown){
+                    countdown.style.display = "block";
+
+                }
 
                 // Check if the event has ended
                 if (now > eventDate) {
                     // Display a message indicating that the event has ended
-                    document.getElementById("countdown").style.display = "none";
+                    if(countdown){
+                        countdown.style.display = "none";
+                    }
                     document.getElementById("event-container").innerHTML = `
                     <h3 class="medium-font">انطلق المعرض!</h3>
                     <p>استمتع بتجربة فنية لا تُنسى</p>`;
+                    return;
                 } else {
+
                     // Calculate the remaining time until the event ends
                     var distance = eventDate - now;
                     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -213,10 +221,11 @@
                     document.getElementById("hours").innerText = hours;
                     document.getElementById("minutes").innerText = minutes;
                     document.getElementById("seconds").innerText = seconds;
+
                 }
             } else {
                 // Hide the countdown timer if the event has not started yet
-                document.getElementById("countdown").style.display = "none";
+                countdown.style.display = "none";
 
                 document.getElementById("event-container").innerHTML = `<h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
                         <p> انتظرونا قريبا لنتحفكم بتجربة فنية لاتنسى</p>`;
