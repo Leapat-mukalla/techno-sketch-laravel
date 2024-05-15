@@ -267,6 +267,10 @@ body {
 .w-85 {
     width: 85% !important;
 }
+.static-container .num{
+    font-size: 45px !important;
+    color:#0C23FB !important;
+}
 .btn-r-p-custom{
     border-radius: 8px !important;
     padding:8px 58px 8px 58px !important;
