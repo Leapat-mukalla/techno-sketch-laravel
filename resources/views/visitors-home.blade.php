@@ -129,16 +129,21 @@ document.addEventListener("DOMContentLoaded", function() {
             var eventDate = new Date("{{ $event->end_date }} {{ $event->end_time }}").getTime();
             var eventStart = new Date("{{ $event->start_date }} {{ $event->start_time }}").getTime();
             var now = new Date().getTime();
+            const countdown_container = document.getElementById("countdown-container");
 
             // Check if the current time is after the start of the event
             if (now >= eventStart) {
                 // Display the countdown timer
-                document.getElementById("countdown-container").style.display = "block";
+                if(countdown_container){
+                    countdown_container.style.display = "block";
+                }
 
                 // Check if the event has ended
                 if (now > eventDate) {
                     // Display a message indicating that the event has ended
-                    document.getElementById("countdown-container").style.display = "none";
+                    if(countdown_container){
+                        countdown_container.style.display = "none";
+                    }
                     document.getElementById("countdown").innerHTML = `
                     <div class="d-flex column-gap-2 justify-content-center align-items-center p-2">
                         <p class=" text-white">تعرف على فنانينا وأعمالهم بشكل مفصل عن طريق مسح رمز الاستجابة السريعة QR Code الموضوع بجانب كل عمل فني</p>
@@ -166,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Hide the countdown timer if the event has not started yet
                 document.getElementById("countdown").style.display = "none";
 
-                document.getElementById("event-container").innerHTML = `<h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
+                countdown_container.innerHTML = `<h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
                         <p> انتظرونا قريبا لنتحفكم بتجربة فنية لاتنسى</p>`;
             }
         }
@@ -174,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function() {
         updateCountdown();
 
         // Update countdown every second
-        // setInterval(updateCountdown, 1000);
+        setInterval(updateCountdown, 1000);
         @endif
     });
 </script>
