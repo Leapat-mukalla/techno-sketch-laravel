@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="مرحبا بك لعالم تكنوسكيتش الرقمي، حيث التقنية والفن يأخذانك لآفاق جديدة خلابة. في تجربة تقنية فنية فريدة من نوعها">
     <!-- Favicon icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/favicon/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets/favicon/favicon-32x32.png')}}">
@@ -15,8 +15,6 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <title>الرئيسية</title>
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
-
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 </head>
 <body>
@@ -121,20 +119,27 @@
                     <div class="col-12 col-lg-12 col-md-6 z-1 position-absolute top-0 pt-4 ">
                         <p class=" text-white" >إحصائيات تكنوسكيتش</p>
                     </div>
-                    <div class="col-12 col-lg-12 col-md-6 z-1 d-flex column-gap-5 justify-content-center align-items-cente pb-5">
-                        <div class=" d-flex  align-items-start flex-column">
-                            <span class="bold-font z-1" style="font-size: 45px; color:#0C23FB;">15</span>
-                            <div class=" text-white z-1">فنان تشكيلي</div>
+                    <div class=" row d-flex flex-wrap justify-content-center step-row row-gap-2 static-container">
+                        <div class=" col-4 col-lg-4 col-md-4">
+                            <div class=" d-flex  align-items-center flex-column">
+                                <span class="bold-font z-1 num" >15</span>
+                                <div class=" text-white z-1">فنان تشكيلي</div>
+                            </div>
                         </div>
-                        <div class=" d-flex  align-items-start flex-column column-gap-1">
-                            <span class="bold-font z-1" style="font-size: 45px; color:#0C23FB;">20</span>
-                            <div class=" text-white z-1">عمل فني</div>
+                        <div class="col-4 col-lg-4 col-md-4">
+                            <div class=" d-flex  align-items-center flex-column ">
+                                <span class="bold-font z-1 num">20</span>
+                                <div class=" text-white z-1">عمل فني</div>
+                            </div>
                         </div>
-                        <div class=" d-flex align-items-start flex-column column-gap-1">
-                            <span class="bold-font z-1" style="font-size: 45px; color:#0C23FB;">{{$visitorCount}}</span>
-                            <div class=" text-white z-1">زائر لمعرض تكنوسكيتش</div>
+                        <div class="col-4 col-lg-4 col-md-4">
+                            <div class=" d-flex align-items-start flex-column ">
+                                <span class="bold-font z-1 num">{{$visitorCount}}</span>
+                                <div class=" text-white z-1">زائر لمعرض تكنوسكيتش</div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="row landing-sec2">
