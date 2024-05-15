@@ -26,105 +26,69 @@
      </div>
 
      <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full" >
-         <header class="topbar" data-navbarbg="skin6">
-             <nav class="navbar top-navbar navbar-expand-lg">
-                 <div class="navbar-header" data-logobg="skin6">
+         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full" class="main-wrapper-visitor">
 
-                     <a class="nav-toggler waves-effect waves-light d-block d-lg-none" href="#">
-                         <i data-feather="menu" class="feather-icon"></i>
-
-                     </a>
-                     <!-- ============================================================== -->
-                     <!-- Logo -->
-                     <!-- ============================================================== -->
-                     <div class="navbar-brand">
-                         <a href="#">
-                             <img src="{{asset('assets/images/logo.png')}}" alt="" class="img-fluid" style="max-width: 55%;margin-right: 21px;">
-                         </a>
-                     </div>
-
-                     <a class="topbartoggler d-block d-lg-none waves-effect waves-light" href="javascript:void(0)"
-                         data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i data-feather="more-horizontal" class="feather-icon"></i>
-
-                     </a>
-
-                     {{-- @php
-                     $currentUserName = \App\Services\AccountService::getCurrentUserName();
-                     @endphp
-                     @if ($currentUserName)
-                     <p class="page-title text-nowrap text-dark font-weight-medium">    مرحباً، {{ $currentUserName }} </p>
-                     @else
-                     <p class="page-title text-nowrap text-dark font-weight-medium ">    مرحباً</p>
-                     @endif --}}
-                 </div>
-
-                 <div class="navbar-collapse collapse navbar-collapse-visitor" id="navbarSupportedContent">
-
-                     <ul class="navbar-nav float-end">
-
-
-                          <li class="nav-item d-flex align-items-center">
-                             <form method="POST" action="{{ route('logout') }}">
-                                 @csrf
-                             <a class="nav-link dropdown-toggle" href="#" onclick="event.preventDefault(); this.closest('form').submit();">
-                                 <i data-feather="power" class="svg-icon"></i>
-                             </a>
-                             </form>
-                         </li>
-
-                          </ul>
-                          <ul class="navbar-nav float-start me-auto ms-3 pe-1">
-
-
+         <header class="topbar-visitor " data-navbarbg="skin6">
+             <nav class="navbar top-navbar p-3 " style="flex-wrap: unset;">
+                {{-- <div class="position-absolute"> --}}
+                    <div class=" float-end w-25">
+                        <a href="#" class=" ">
+                            <img src="{{asset('assets/images/techno-logo.png')}}" alt="" class="img-fluid p-lg-4 p-md-4" style="min-width: 140px;">
+                        </a>
+                    </div>
+                    <div class=" float-start d-flex column-gap-2 justify-content-center align-items-center ">
                             @php
                             $currentUserName = \App\Services\AccountService::getCurrentUserName();
                             @endphp
+                                <a class=" text-white">
+                                    <span class=" ">اهلاً,</span>
+                                    @if ($currentUserName)
+                                        <span class="">{{ $currentUserName }}</span>
+                                    @else
+                                        <span>زائر</span>
+                                    @endif
+                                </a>
 
-                        <li class="nav-item ">
-                            <a class="nav-link ">
+                                <a class="dropdown-toggle" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal" >
+                                    <img src="{{asset('assets/images/out 1.png')}}" alt="" class="svg-icon">
+                                </a>
 
-                                <span class="d-none d-lg-inline-block">اهلاً,</span>
-                                @if ($currentUserName)
-                                    <span class="text-dark">{{ $currentUserName }}</span>
-                                @else
-                                    <span>زائر</span>
-                                @endif
-                            </a>
-                        </li>
-                         </ul>
-                 </div>
+
+
+                                <div id="logoutModal" class="modal fade" tabindex="-1" role="dialog"
+                                    aria-labelledby="fill-primary-modalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered ">
+                                        <div class="modal-content modal-filled bg-white" style="    border-radius: 8px;
+                                        ">
+                                            <div class="modal-header border-bottom border-dark-subtle ms-3 me-3">
+                                                <h4 class="modal-title medium-font font-20" id="fill-primary-modalLabel" style="color: #0C23FB"> تسجيل الخروج</h4>
+                                                {{-- <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-hidden="true"></button> --}}
+                                            </div>
+                                            <div class="modal-body">
+                                                <p class=" text-black">هل أنت متأكد من أنك تريد تسجيل الخروج؟</p>
+
+                                            </div>
+                                            <div class="modal-footer justify-content-center">
+                                                <form action="{{ route('logout') }}" method="POST">
+                                                    @csrf
+                                                    <div class="form-group text-center d-grid gap-2 ">
+                                                        <button type="submit" class="btn btn-light4 medium-font btn-r-p-custom">تسجيل الخروج</button>
+                                                        <button type="button" class="btn btn-light5 medium-font btn-r-p-custom" data-bs-dismiss="modal">إلغاء الأمر</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                {{-- </div> --}}
+
              </nav>
          </header>
-         <aside class="left-sidebar" data-sidebarbg="skin6">
-            <div class="scroll-sidebar" data-sidebarbg="skin6">
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li class="sidebar-item">
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf <!-- Add CSRF token -->
-                                <a class="sidebar-link sidebar-link" href="#" onclick="event.preventDefault(); this.closest('form').submit();">
-                                    <i data-feather="log-out" class="feather-icon"></i>
-                                    <span class="hide-menu">تسجيل الخروج</span>
-                                </a>
-                            </form>
-                        </li>
 
+         <div class="page-wrapper  page-wrapper-landing" >
 
-                    </ul>
-                </nav>
-            </div>
-        </aside>
-         <div class="page-wrapper page-wrapper-visitor" >
-            <div class="page-breadcrumb">
-                <div class="row">
-
-                    <div class="col-5 align-self-center">
-                    </div>
-                </div>
-            </div>
                     @yield('content')
 
              <footer class="footer text-center text-muted">
