@@ -53,21 +53,21 @@
                     <div id="event-container" class="col-12 text-center mt-3">
                         @if($event)
                             <div id="countdown" class="d-flex justify-content-center align-items-center mt-3 countdown" >
-                                <div class="countdown-section" >
-                                <span id="days" class="h1 days">-</span>
-                                <div class="text-center mt-2 ">أيام</div>
+                                <div class="countdown-section " >
+                                <span id="days" class="h1 days text-white">-</span>
+                                <div class="text-center mt-2 text-white">أيام</div>
                                 </div>
                                 <div class="countdown-section">
-                                <span id="hours" class="h1 hours">-</span>
-                                <div class="text-center mt-2 ">ساعات</div>
+                                <span id="hours" class="h1 hours text-white">-</span>
+                                <div class="text-center mt-2 text-white">ساعات</div>
                                 </div>
                                 <div class="countdown-section">
-                                <span id="minutes" class="h1 minutes">-</span>
-                                <div class="text-center mt-2 ">دقائق</div>
+                                <span id="minutes" class="h1 minutes text-white">-</span>
+                                <div class="text-center mt-2 text-white">دقائق</div>
                                 </div>
                                 <div class="countdown-section">
-                                <span id="seconds" class="h1 seconds">-</span>
-                                <div class="text-center mt-2 ">ثواني</div>
+                                <span id="seconds" class="h1 seconds text-white">-</span>
+                                <div class="text-center mt-2 text-white">ثواني</div>
                                 </div>
                             </div>
                         @else

@@ -10,23 +10,23 @@
             </div>
             <div id="event-container" class="col-12 text-center mt-3">
                 @if($event)
-                    <div id="countdown"  class="countdown" >
-                        <div id="countdown-container" class="d-flex justify-content-center align-items-center mt-3 ">
-                            <div class="countdown-section" >
-                                <span id="days" class="h1 days">-</span>
-                                <div class="text-center mt-2 ">أيام</div>
+                    <div id="countdown"  class="countdown d-flex justify-content-center align-items-center" >
+                        <div id="countdown-container" class="d-flex justify-content-center align-items-center text-white">
+                            <div class="countdown-section " >
+                                <span id="days" class="h1 days ">-</span>
+                                <div class="text-center mt-2 text-white">أيام</div>
                                 </div>
                                 <div class="countdown-section">
                                 <span id="hours" class="h1 hours">-</span>
-                                <div class="text-center mt-2 ">ساعات</div>
+                                <div class="text-center mt-2 text-white">ساعات</div>
                                 </div>
                                 <div class="countdown-section">
                                 <span id="minutes" class="h1 minutes">-</span>
-                                <div class="text-center mt-2 ">دقائق</div>
+                                <div class="text-center mt-2 text-white">دقائق</div>
                                 </div>
                                 <div class="countdown-section">
                                 <span id="seconds" class="h1 seconds">-</span>
-                                <div class="text-center mt-2 ">ثواني</div>
+                                <div class="text-center mt-2 text-white">ثواني</div>
                                 </div>
                         </div>
 
@@ -129,7 +129,9 @@ document.addEventListener("DOMContentLoaded", function() {
             var eventDate = new Date("{{ $event->end_date }} {{ $event->end_time }}").getTime();
             var eventStart = new Date("{{ $event->start_date }} {{ $event->start_time }}").getTime();
             var now = new Date().getTime();
-            const countdown_container = document.getElementById("countdown-container");
+            var countdown_container = document.getElementById("countdown-container");
+            var countdownElement = document.getElementById('countdown');
+
 
             // Check if the current time is after the start of the event
             if (now >= eventStart) {
@@ -144,6 +146,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     if(countdown_container){
                         countdown_container.style.display = "none";
                     }
+                    countdownElement.classList.remove('d-flex', 'justify-content-center', 'align-items-center');
+
                     document.getElementById("countdown").innerHTML = `
                     <div class="d-flex column-gap-2 justify-content-center align-items-center p-2">
                         <p class=" text-white">تعرف على فنانينا وأعمالهم بشكل مفصل عن طريق مسح رمز الاستجابة السريعة QR Code الموضوع بجانب كل عمل فني</p>
@@ -169,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             } else {
                 // Hide the countdown timer if the event has not started yet
-                document.getElementById("countdown").style.display = "none";
+                countdownElement.style.display = "none";
 
                 countdown_container.innerHTML = `<h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
                         <p> انتظرونا قريبا لنتحفكم بتجربة فنية لاتنسى</p>`;
