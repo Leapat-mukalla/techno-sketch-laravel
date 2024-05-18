@@ -129,35 +129,34 @@ document.addEventListener("DOMContentLoaded", function() {
             var eventDate = new Date("{{ $event->end_date }} {{ $event->end_time }}").getTime();
             var eventStart = new Date("{{ $event->start_date }} {{ $event->start_time }}").getTime();
             var now = new Date().getTime();
-            var countdown_container = document.getElementById("countdown-container");
-            var countdownElement = document.getElementById('countdown');
+            var event_container = document.getElementById("event-container");
+            var countdownElement = document.getElementById("countdown");
 
 
             // Check if the current time is after the start of the event
             if (now >= eventStart) {
                 // Display the countdown timer
-                if(countdown_container){
-                    countdown_container.style.display = "block";
+                if(countdownElement){
+                    countdownElement.style.display = "block";
                 }
 
                 // Check if the event has ended
                 if (now > eventDate) {
                     // Display a message indicating that the event has ended
-                    if(countdown_container){
-                        countdown_container.style.display = "none";
+                    if(countdownElement){
+                        countdownElement.style.display = "none";
                     }
-                    countdownElement.classList.remove('d-flex', 'justify-content-center', 'align-items-center');
+                    // countdownElement.classList.remove('d-flex', 'justify-content-center', 'align-items-center');
 
-                    document.getElementById("countdown").innerHTML = `
+                    event_container.innerHTML = `
                     <div class="d-flex column-gap-2 justify-content-center align-items-center p-2">
-                        <p class=" text-white">تعرف على فنانينا وأعمالهم بشكل مفصل عن طريق مسح رمز الاستجابة السريعة QR Code الموضوع بجانب كل عمل فني</p>
-                        <button type="button" class=" btn btn-light3 z-1  btn-r-p-custom2 d-flex justify-content-center align-items-center column-gap-2" style="width:340px; height: 45px;">
-                            <img src="{{asset('assets/images/qr-code 2.png')}}" width="20px" alt="">
-                            <span class=" medium-font"> إلى المسح</span>
-                        </button>
+                        <p class="event-container-text">تعرف على فنانينا وأعمالهم عن طريق <span class=" medium-font" >مسح رمز الاستجابة السريعة QR Code</span>  الموضوع بجانب كل عمل فني</p>
+                        <img src="{{asset('assets/images/QR Code.png')}}" width="80px" alt="">
+
                     </div>
                     `;
                 } else {
+
                     // Calculate the remaining time until the event ends
                     var distance = eventDate - now;
                     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -175,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Hide the countdown timer if the event has not started yet
                 countdownElement.style.display = "none";
 
-                countdown_container.innerHTML = `<h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
+                event_container.innerHTML = `<h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
                         <p> انتظرونا قريبا لنتحفكم بتجربة فنية لاتنسى</p>`;
             }
         }
