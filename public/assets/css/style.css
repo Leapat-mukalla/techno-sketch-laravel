@@ -272,6 +272,10 @@ body {
     filter: drop-shadow(-2px 2px 0px #0C23FB);
     letter-spacing: 2px;
 }
+.event-container-text{
+    color: #0C23FB;
+    text-align: start;
+}
 .btn-r-p-custom{
     border-radius: 8px !important;
     padding:8px 58px 8px 58px !important;
