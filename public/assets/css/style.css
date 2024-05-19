@@ -214,6 +214,17 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 
+
+}
+.login-header{
+    width: 100%;
+    background-image: url(../../assets/images/pattren3.png);
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #161616;
+    height: 73px;
+
 }
 .landing-sec1 .pattren{
     height: 195.03px;
@@ -256,7 +267,7 @@ body {
     width: 334px;
     height: 120px;
 }
-.landing-sec2, .artwork-page{
+.landing-sec2, .artwork-page , .login-container{
     background-color: #FBFBFB !important;
 }
 .landing-sec2 .sec2-icon-bg{
@@ -2788,7 +2799,7 @@ progress {
   color: #4F5467;
   background-color: transparent;
   background-clip: padding-box;
-  border: var(--bs-border-width) solid #d6e8ff;
+  border: var(--bs-border-width) solid #CAC9C9;
   appearance: none;
   border-radius: 2px;
   box-shadow: inset 0 1px 2px rgba(var(--bs-body-color-rgb), 0.075);
@@ -16322,7 +16333,6 @@ textarea.form-control-lg {
     /* background-position: center ; */
     /* background-repeat: no-repeat;
     background-size: cover; */
-
 }
 
 .page-wrapper {
