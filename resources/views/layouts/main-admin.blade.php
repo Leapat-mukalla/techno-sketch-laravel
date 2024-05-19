@@ -146,7 +146,7 @@
             @yield('content')
 
             <footer class="footer text-center text-muted">
-                &copy; 2024 بواسطة <a href="">تكنو سكيتش</a>
+                &copy; 2024 بواسطة <a href="">تكنوسكيتش</a>
             </footer>
 
         </div>

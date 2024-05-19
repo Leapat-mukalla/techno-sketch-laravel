@@ -53,16 +53,19 @@
                 // Toggle between thumbs-up and thumbs-down icons based on response
                 var likeButton = $('#likeButton');
                 var likeText = $('.like-text');
+                var likeIcon = likeButton.find('img');
                 if (response.liked) {
                     // Artwork is liked
                     likeButton.removeClass('btn-light7 ').addClass('btn-light6');
                     likeText.text('ألغِ إعجابك بالعمل');
+                    likeIcon.attr('src', '{{asset('assets/images/Like 1.png')}}');
                     // location.reload();
 
                 } else {
                     // Artwork is disliked
                     likeButton.removeClass('btn-light6').addClass('btn-light7 ');
                     likeText.text('أبدِ إعجابك بالعمل');
+                    likeIcon.attr('src', '{{asset('assets/images/Like 2.png')}}');
                     // location.reload();
                 }
             },
