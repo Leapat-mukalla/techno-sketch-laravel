@@ -29,8 +29,11 @@
 
 </head>
 <body>
-    <header class="login-header d-flex justify-content-center align-items-center">
-        <p class=" text-white medium-font font-20" style="margin-bottom:unset;">تسجيل الدخول</p>
+    <header >
+        <div class="login-header d-flex justify-content-center align-items-center">
+            <p class=" text-white medium-font font-20" style="margin-bottom:unset;">تسجيل الدخول</p>
+
+        </div>
     </header>
     <div class="container center-content login-container">
         <div class="col-12 col-lg-6 col-md-9 ">
