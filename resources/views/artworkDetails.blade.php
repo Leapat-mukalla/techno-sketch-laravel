@@ -28,7 +28,7 @@
             </button>
             @else
             <button  id="likeButton" onclick="toggleLikeArtwork({{ $artwork->id }})" type="button" class="btn btn-light7  btn-r-p-custom d-flex justify-content-center align-items-center column-gap-4 w-100" >
-                <img src="{{asset('assets/images/Like 2.png')}}" width="30" alt="" class="white-icon">
+                <img src="{{asset('assets/images/like 2.png')}}" width="30" alt="" class="white-icon">
                 <span class=" like-text">أبدِ إعجابك بالعمل</span>
             </button>
             @endif
@@ -65,7 +65,7 @@
                     // Artwork is disliked
                     likeButton.removeClass('btn-light6').addClass('btn-light7 ');
                     likeText.text('أبدِ إعجابك بالعمل');
-                    likeIcon.attr('src', '{{asset('assets/images/Like 2.png')}}');
+                    likeIcon.attr('src', '{{asset('assets/images/like 2.png')}}');
                     // location.reload();
                 }
             },
