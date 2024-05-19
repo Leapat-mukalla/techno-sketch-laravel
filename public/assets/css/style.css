@@ -267,7 +267,7 @@ body {
     width: 334px;
     height: 120px;
 }
-.landing-sec2, .artwork-page , .login-container{
+.landing-sec2, .artwork-page , .login-container, .register-container{
     background-color: #FBFBFB !important;
 }
 .landing-sec2 .sec2-icon-bg{
