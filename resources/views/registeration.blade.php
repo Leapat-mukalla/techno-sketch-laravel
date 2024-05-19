@@ -31,7 +31,6 @@
     <header class="login-header d-flex justify-content-center align-items-center">
         <p class=" text-white medium-font font-20" style="margin-bottom:unset;">إنشاء حساب</p>
     </header>
-
     <div class="container center-content register-container">
         <div class=" col-12 col-lg-6  col-md-9 ">
                 <div class="text-center mt-2 mb-4">
