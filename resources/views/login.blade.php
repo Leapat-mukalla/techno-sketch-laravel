@@ -29,15 +29,15 @@
 
 </head>
 <body>
-    <div class="container center-content">
-
-
-        <div class="card col-12 col-lg-6  col-md-9 ">
-            <div class="card-body">
-                <div class="text-center mt-2 mb-4">
+    <header class="login-header d-flex justify-content-center align-items-center">
+        <p class=" text-white medium-font font-20" style="margin-bottom:unset;">تسجيل الدخول</p>
+    </header>
+    <div class="container center-content login-container">
+        <div class="col-12 col-lg-6 col-md-9 ">
+                <div class="text-center mb-4">
                     <a  class="text-success">
                         <span>
-                            <img class="me-2" src="{{asset('assets/images/logo.png')}}" alt="" height="120">
+                            <img src="{{asset('assets/images/logo.png')}}" alt="" width="230px">
                         </span>
                     </a>
                 </div>
@@ -77,7 +77,7 @@
 
                     <div class="form-group mb-3">
                         <label class="form-label" for="phone">رقم الجوال</label>
-                        <input class="form-control" type="text" name="phone" id="phone" value="{{ old('phone') }}"
+                        <input class="form-control btn-r-p-custom2" type="text" name="phone" id="phone" value="{{ old('phone') }}"
                         pattern="^(77|78|73|70)[0-9]{7}$" maxlength="9" placeholder="" required>
                     </div>
 
@@ -85,32 +85,31 @@
 
                     <div class="form-group mb-3">
                         <label class="form-label" for="password">كلمة المرور</label>
-                        <input class="form-control" name="password" type="password" required
+                        <input class="form-control btn-r-p-custom2" name="password" type="password" required
                         minlength="8" maxlength="250" id="password" placeholder="">
                     </div>
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3 mt-5">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input"
+                            <input type="checkbox" class="custom-control-input" style="width: 20px;height: 20px; border-radius: 5px 0px 0px 0px; border-color: #CAC9C9;"
                                 id="remember" name="remember">
                             <label class="form-label" class="custom-control-label"
                                 for="remember">تذكرني </label>
                         </div>
                     </div>
 
-                    <div class="form-group mb-3 text-center">
-                        <button class="btn btn-primary" id="submitButton" type="submit">الدخول</button>
+                    <div class="form-group mb-3 text-center mt-5">
+                        <button class="btn btn-light4 medium-font btn-r-p-custom" id="submitButton" type="submit">تسجيل الدخول</button>
                     </div>
 
                 </form>
                 <div class="form-group text-center">
-                    لا يوجد لدي حساب ؟ <a href="{{route('register')}}" class="">التسجيل</a>
+                     ليس لديك حساب؟ <a href="{{route('register')}}" class=" text-decoration-underline">إنشاء حساب</a>
                 </div>
-
-            </div>
-
         </div>
-
     </div>
+    <footer class="footer text-center text-muted">
+        &copy; 2024 بواسطة <a href="#">تكنوسكيتش</a>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         document.getElementById('myForm').addEventListener('submit', function(event) {
