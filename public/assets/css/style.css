@@ -296,6 +296,30 @@ body {
     box-shadow: 2px 8px 20px 0px rgba(12, 35, 251, .2);
 
 }
+/* Initial hidden state */
+.animate-from-right {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.5s ease-out, transform 1s ease-out;
+}
+
+/* Final visible state */
+.animate-from-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+/* Initial hidden state for animation from the left */
+.animate-from-left {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.5s ease-out, transform 1s ease-out;
+}
+
+/* Final visible state for animation from the left */
+.animate-from-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
 .w-85 {
     width: 85% !important;
 }

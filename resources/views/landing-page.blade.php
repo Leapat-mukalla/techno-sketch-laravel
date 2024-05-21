@@ -77,7 +77,7 @@
                         @endif
                     </div>
                         <div class="row d-flex flex-wrap justify-content-center step-row mt-5 row-gap-2" style="margin: 0 auto;">
-                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center">
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center animate-from-right">
                                 <div class="d-flex flex-col column-gap-3">
                                     <div class="d-flex justify-content-center align-items-center bg-white sec2-icon-bg">
                                         <img src="{{asset('assets/images/enter 2.png')}}" width="35px" alt="">
@@ -88,7 +88,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center">
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center animate-from-left">
                                 <div class="d-flex flex-col column-gap-3 flex-md-row-reverse flex-lg-row-reverse">
                                     <div class="">
                                         <h3 class="bold-font text-black text-end">اكتشف المزيد</h3>
@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center">
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center animate-from-right">
                                 <div class="d-flex flex-col column-gap-3">
                                     <div class="d-flex justify-content-center align-items-center bg-white sec2-icon-bg">
                                         <img src="{{asset('assets/images/like 2.png')}}" width="35px" alt="">
@@ -238,6 +238,17 @@
         // Update countdown every second
         setInterval(updateCountdown, 1000);
         @endif
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+        document.querySelectorAll('.animate-from-right, .animate-from-left').forEach(element => {
+            observer.observe(element);
+        });
     });
     </script>
 
