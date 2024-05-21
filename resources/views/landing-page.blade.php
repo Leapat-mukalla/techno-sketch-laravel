@@ -24,9 +24,10 @@
 
         <div class="container-fluid-landing">
             <div class="row landing-sec1">
-                <img src="{{asset('assets/images/pattren.png')}}" alt="" class="pattren">
-                <img src="{{asset('assets/images/logo.png')}}"   alt="" class="logo">
-                <img src="{{asset('assets/images/Ellipse 48.png')}}" alt="" class="circle">
+                <img src="{{asset('assets/images/pattren.png')}}" alt="" class="pattren z-1">
+                <img src="{{asset('assets/images/logo.png')}}"   alt="" class="logo z-1">
+                {{-- <img src="{{asset('assets/images/Ellipse 48.png')}}" alt="" class="circle"> --}}
+                <div class="circle"></div>
                 <div class="container-fluid-inner">
                     <div class="col-12 col-lg-12 col-md-6 z-1 position-relative">
 
@@ -45,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row landing-sec2">
+            <div class="row landing-sec2 z-1 position-relative">
                 <div class="container-fluid-inner">
                     <div class="col-12 col-lg-12 col-md-6 position-relative">
                         <p class="text-black medium-font" >معرض تكنوسكيتش</p>
