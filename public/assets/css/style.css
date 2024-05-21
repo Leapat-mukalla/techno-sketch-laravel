@@ -250,7 +250,26 @@ body {
     background-color: #161616;
     position: relative;
 }
-.landing-sec1 .circle ,.landing-sec3 .circle{
+.landing-sec1 .circle{
+    top: 50%;
+    position: absolute;
+    height: 354px;
+    width: 354px;
+    transform: translate(-50%, -20%);
+    left: -24%;
+    background: #0C23FB;
+    filter: blur(110px);
+    animation: moveLeftToRight 5000ms ease-out infinite alternate;
+}
+@keyframes moveLeftToRight {
+    0% {
+        left: -24%;
+    }
+    100% {
+        left: 120%;
+    }
+}
+.landing-sec3 .circle{
     top: 50%;
     position: absolute;
     height: 100%;
