@@ -60,11 +60,6 @@ class User extends Authenticatable
         return $this->hasMany(Like::class);
     }
 
-    public function VisitorsScan()
-    {
-        return $this->hasOne(VisitorsScan::class);
-    }
-
     public function hasAnyRole($roles)
     {
         if (is_array($roles)) {
