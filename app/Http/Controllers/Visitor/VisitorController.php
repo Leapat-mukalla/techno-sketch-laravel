@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Carbon\Carbon;
 use App\Models\Event;
-use App\Models\VisitorsScan;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Artwork;
 use App\Models\Like;
