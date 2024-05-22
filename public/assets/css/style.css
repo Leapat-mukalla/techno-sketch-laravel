@@ -235,10 +235,10 @@ body {
 
 .landing-sec1 .logo{
     filter: brightness(0) invert(1);
-    top: 143px;
+    top: 148px;
     position: absolute;
-    height: 170px;
-    width: 290px !important;
+    height: 149px;
+    width: 230px !important;
     transform: translate(-50%, -50%);
     left: 50%;
 }
