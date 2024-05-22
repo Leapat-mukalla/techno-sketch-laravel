@@ -20,11 +20,16 @@ class VisitorController extends Controller
      */
     public function index()
     {
+        $user = auth()->user(); // Assuming you have authentication set up
+
         // Get the first (and presumably only) event from the database
         $event = Event::first();
         $visitorCount = VisitorsData::count();
 
-        return view('visitors-home', compact('event','visitorCount'));
+        // Check if the user's status is inactive
+        $userStatus = $user->VisitorsData->status;
+
+        return view('visitors-home', compact('event','visitorCount','userStatus'));
     }
 
     public function toggleLikeArtwork(Request $request)
@@ -87,7 +92,10 @@ class VisitorController extends Controller
         if (!$user->VisitorsData || !$user->VisitorsData->is_visitor) {
             $user->VisitorsData()->update(['is_visitor' => true]);
         }
-        return view('artworkDetails', ['artwork' => $artwork,'likedByUser'=>$likedByUser,'likeCount' => $likeCount]);
+        // Check if the user's status is inactive
+        $userStatus = $user->VisitorsData->status;
+
+        return view('artworkDetails', ['artwork' => $artwork,'likedByUser'=>$likedByUser,'likeCount' => $likeCount, 'userStatus' => $userStatus]);
     }
 
 
