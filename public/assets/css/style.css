@@ -259,7 +259,7 @@ body {
 
 @keyframes moveLeftToRight {
     0% {
-      transform: translateX(0vw);
+      transform: translateX(-50vw);
     }
     100% {
       transform: translateX(115vw);
