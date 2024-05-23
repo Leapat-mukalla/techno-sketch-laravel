@@ -228,34 +228,7 @@
     </div>
 </div>
 <script>
-// function copyArtworkURL(artworkId) {
-//     // Construct the artwork URL
-//     var artworkURL = "/artworks/" + artworkId;
-//     var toastMessage = document.querySelector('.toast-message');
-//     var toast = new bootstrap.Toast(document.querySelector('.toast'));
 
-//     // Create a temporary textarea element to hold the URL
-//     var textarea = document.createElement('textarea');
-//     textarea.value = artworkURL;
-
-//     // Append the textarea to the body
-//     document.body.appendChild(textarea);
-
-//     // Select the URL inside the textarea
-//     textarea.select();
-
-//     // Copy the URL to the clipboard
-//     document.execCommand('copy');
-
-//     // Remove the textarea from the body
-//     document.body.removeChild(textarea);
-
-//     // Show a message indicating that the URL has been copied (optional)
-//     // alert("تم نسخ رابط العمل بنجاح: " +artworkURL);
-
-//     toastMessage.innerText = 'تم نسخ رابط العمل بنجاح.';
-//     toast.show();
-// }
 function copyArtworkURL(artworkId) {
     try {
         // Construct the artwork URL

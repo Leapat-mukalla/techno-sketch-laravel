@@ -128,8 +128,8 @@ class ManageArtworksController extends Controller
 
 
             }
-            // return redirect()->back()->with('error', 'حدث خطأ أثناء إضافة العمل. يرجى المحاولة مرة أخرى.');
-            return redirect()->back()->with('error', $e->getMessage());
+            return redirect()->back()->with('error', 'حدث خطأ أثناء إضافة العمل. يرجى المحاولة مرة أخرى.');
+            // return redirect()->back()->with('error', $e->getMessage());
 
         }
     }

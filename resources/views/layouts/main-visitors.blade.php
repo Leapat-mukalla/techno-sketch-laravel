@@ -14,7 +14,7 @@
      <link rel="mask-icon" href="{{asset('assets/favicon/safari-pinned-tab.svg')}}" color="#5bbad5">
      <meta name="msapplication-TileColor" content="#da532c">
      <meta name="theme-color" content="#ffffff">
-     <title> تكنو سكيتش</title>
+     <title> تكنوسكيتش</title>
      <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
  </head>
  <body>
