@@ -256,20 +256,13 @@ body {
     background-color: #161616;
     position: relative;
 }
-@-webkit-keyframes moveLeftToRight {
-    0% {
-        left: -24%;
-    }
-    100% {
-        left: 50%;
-    }
-}
+
 @keyframes moveLeftToRight {
     0% {
-        left: -24%;
+      transform: translateX(0vw);
     }
     100% {
-        left: 120%;
+      transform: translateX(115vw);
     }
 }
 
@@ -282,10 +275,7 @@ body {
     left: -24%;
     background: #0C23FB;
     filter: blur(110px);
-    -webkit-filter: blur(110px); /* Safari */
     animation: moveLeftToRight 5000ms ease-out infinite alternate;
-    -webkit-animation: moveLeftToRight 5000ms ease-out infinite alternate; /* Safari */
-    will-change: left;
 }
 
 .landing-sec3 .circle{

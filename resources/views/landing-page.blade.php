@@ -26,7 +26,6 @@
             <div class="row landing-sec1">
                 <img src="{{asset('assets/images/pattren.png')}}" alt="" class="pattren z-1">
                 <img src="{{asset('assets/images/logo.png')}}"   alt="" class="logo z-1">
-                {{-- <img src="{{asset('assets/images/Ellipse 48.png')}}" alt="" class="circle"> --}}
                 <div class="circle"></div>
                 <div class="container-fluid-inner">
                     <div class="col-12 col-lg-12 col-md-6 z-1 position-relative">
@@ -162,7 +161,7 @@
         </div>
 
          <footer class="footer text-center text-muted">
-             &copy; 2024 بواسطة <a href="#">تكنوسكيتش</a>
+             &copy; 2024 بواسطة <a href="{{ route('landing.page') }}">تكنوسكيتش</a>
          </footer>
 
      </div>
