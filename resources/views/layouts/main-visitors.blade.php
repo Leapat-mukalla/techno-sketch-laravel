@@ -32,7 +32,7 @@
              <nav class="navbar top-navbar p-3 " style="flex-wrap: unset;">
                 {{-- <div class="position-absolute"> --}}
                     <div class=" float-end w-25">
-                        <a href="#" class=" ">
+                        <a href="{{ route('landing.page') }}" class=" ">
                             <img src="{{asset('assets/images/techno-logo.png')}}" alt="" class="img-fluid p-lg-4 p-md-4" style="min-width: 140px;">
                         </a>
                     </div>
@@ -92,7 +92,7 @@
                     @yield('content')
 
              <footer class="footer text-center text-muted">
-                 &copy; 2024 بواسطة <a href="#">تكنوسكيتش</a>
+                 &copy; 2024 بواسطة <a href="{{ route('landing.page') }}">تكنوسكيتش</a>
              </footer>
 
          </div>
