@@ -256,20 +256,6 @@ body {
     background-color: #161616;
     position: relative;
 }
-.landing-sec1 .circle{
-    top: 50%;
-    position: absolute;
-    height: 354px;
-    width: 354px;
-    transform: translate(-50%, -20%);
-    left: -24%;
-    background: #0C23FB;
-    filter: blur(110px);
-    -webkit-filter: blur(110px); /* Safari */
-    animation: moveLeftToRight 5000ms ease-out infinite alternate;
-    -webkit-animation: moveLeftToRight 5000ms ease-out infinite alternate; /* Safari */
-    will-change: left;
-}
 @-webkit-keyframes moveLeftToRight {
     0% {
         left: -24%;
@@ -286,6 +272,22 @@ body {
         left: 120%;
     }
 }
+
+.landing-sec1 .circle{
+    top: 50%;
+    position: absolute;
+    height: 354px;
+    width: 354px;
+    transform: translate(-50%, -20%);
+    left: -24%;
+    background: #0C23FB;
+    filter: blur(110px);
+    -webkit-filter: blur(110px); /* Safari */
+    animation: moveLeftToRight 5000ms ease-out infinite alternate;
+    -webkit-animation: moveLeftToRight 5000ms ease-out infinite alternate; /* Safari */
+    will-change: left;
+}
+
 .landing-sec3 .circle{
     top: 50%;
     position: absolute;
