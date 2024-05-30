@@ -115,10 +115,10 @@
                     <p class="text-black medium-font" >شركاء تكنوسكيتش</p>
                 </div>
                 <div class="col-12 d-flex justify-content-start justify-content-lg-center align-items-center mt-3 me-3">
-                    <img src="{{asset('assets/images/Leapat.png')}}" width="85" alt="" class="">
-                    <img src="{{asset('assets/images/Seraj.png')}}" width="85" alt="" class="">
-                    <img src="{{asset('assets/images/HCF.png')}}" width="85" alt="" class="">
-                    <img src="{{asset('assets/images/BC-LOGO.png')}}" width="85" alt="" class="">
+                    <img src="{{asset('assets/images/Leapat.png')}}" width="75" alt="" class="">
+                    <img src="{{asset('assets/images/Seraj.png')}}" width="75" alt="" class="">
+                    <img src="{{asset('assets/images/HCF.png')}}" width="75" alt="" class="">
+                    <img src="{{asset('assets/images/BC-LOGO.png')}}" width="75" alt="" class="me-2">
                 </div>
                 <div class=" d-flex me-3 mt-2 justify-content-lg-center">
                     مشروع "تكنوسكيتش" يأتي بدعم من برنامج منح مسارات اليمن المقدمة من المجلس الثقافي البريطاني وبالشراكة مع مؤسسة حضرموت للثقافة.
