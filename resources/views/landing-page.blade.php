@@ -148,12 +148,12 @@
                         <p class="text-black medium-font" >شركاء تكنوسكيتش</p>
                     </div>
                     <div class="col-12 d-flex justify-content-start justify-content-lg-center align-items-center mt-3 me-3">
-                        <img src="{{asset('assets/images/Leapat.png')}}" width="100" alt="" class="">
-                        <img src="{{asset('assets/images/Seraj.png')}}" width="100" alt="" class="">
-                        <img src="{{asset('assets/images/HCF.png')}}" width="100" alt="" class="">
+                        <img src="{{asset('assets/images/Leapat.png')}}" width="85" alt="" class="">
+                        <img src="{{asset('assets/images/Seraj.png')}}" width="85" alt="" class="">
+                        <img src="{{asset('assets/images/HCF.png')}}" width="85" alt="" class="">
                     </div>
                     <div class=" d-flex me-3 mt-2 justify-content-lg-center">
-                        يتم تنفيذ مشروع "تكنوسكيتش" من قبل مبادرة سراج ومبادرة ليبات ضمن إطار برنامج منح مسارات اليمن المقدم من مؤسسة حضرموت للثقافة.
+                        مشروع "تكنوسكيتش" يأتي بدعم من برنامج منح مسارات اليمن المقدمة من المجلس الثقافي البريطاني وبالشراكة مع مؤسسة حضرموت للثقافة.
                     </div>
 
                 </div>
