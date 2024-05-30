@@ -34,7 +34,7 @@
     <div class="container center-content register-container">
         <div class=" col-12 col-lg-6  col-md-9 ">
                 <div class="text-center mt-2 mb-4">
-                    <a  class="text-success">
+                    <a href="{{ route('landing.page') }}"  class="text-success">
                         <span>
                             <img class="me-2" src="{{asset('assets/images/logo.png')}}" alt="" width="230px">
                         </span>
@@ -134,7 +134,7 @@
         </div>
     </div>
     <footer class="footer text-center text-muted">
-        &copy; 2024 بواسطة <a href="#">تكنوسكيتش</a>
+        &copy; 2024 بواسطة <a href="{{ route('landing.page') }}">تكنوسكيتش</a>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
