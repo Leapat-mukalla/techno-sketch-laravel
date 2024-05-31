@@ -94,7 +94,7 @@
                     <div class="form-group mb-3 mt-5">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" style="width: 20px;height: 20px; border-radius: 5px 0px 0px 0px; border-color: #CAC9C9;"
-                                id="remember" name="remember">
+                                id="remember" name="remember" checked>
                             <label class="form-label" class="custom-control-label"
                                 for="remember">تذكرني </label>
                         </div>
