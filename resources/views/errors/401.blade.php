@@ -30,7 +30,7 @@
                 </h2>
                 <h3 class="h2 mb-2">عذراً! زائرنا العزيز</h3>
                 <p class="mb-5 mt-3 h3">غير مصرح لك بالوصول إلى هذه الصفحة.</p>
-                <a class="btn bsb-btn-5xl btn-primary rounded-pill px-5 fs-6 m-0" href="#" role="button">العودة إلى الصفحة الرئيسية</a>
+                <a class="btn bsb-btn-5xl btn-primary rounded-pill px-5 fs-6 m-0" href="{{ route('landing.page') }}" role="button">العودة إلى الصفحة الرئيسية</a>
             </div>
             </div>
         </div>
