@@ -41,6 +41,8 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+use Sentry\Laravel\Integration;
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
