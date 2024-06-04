@@ -25,6 +25,15 @@ Then run:
 WIP
 ```
 
+#### ENV
+
+```sh
+touch .env
+```
+
+> Take the keys from one of the current developers and add them to .env
+
+
 ### Seed
 ```powershell
 $ WIP
