@@ -16,6 +16,10 @@ php artisan migrate
 ```bash
 php artisan db:seed
 ```
+### INSTALL ALL DEPENDENCIES (in composer.json):
+```bash
+composer install
+```
 ## Dependencies
 - PHP
 - Composer
