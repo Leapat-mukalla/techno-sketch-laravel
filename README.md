@@ -5,7 +5,17 @@ Techno Sketch is the registration platform for Techno Sketch events
 ![Alt text](https://technosketch.art/assets/images/logo.png)
 
 # Developer Guide
-
+### RUN PROJECT:
+```bash
+php artisan serve
+```
+### CONFIGURE DB:
+```bash
+php artisan migrate
+```
+```bash
+php artisan db:seed
+```
 ## Dependencies
 - PHP
 - Composer
