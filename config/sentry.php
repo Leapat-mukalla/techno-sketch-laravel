@@ -10,10 +10,7 @@ return [
     // @see https://docs.sentry.io/product/sentry-basics/dsn-explainer/
 
     // Enable the first one
-    // 'dsn' => env('SENTRY_LARAVEL_DSN', env('SENTRY_DSN')),
-    'dsn' => env('SENTRY_LARAVEL_DSN', 'https://9638e3efbdd0dd8447d4f1827b78713f@o4507363105570816.ingest.de.sentry.io/4507368557772880'),
-
-
+    'dsn' => env('SENTRY_LARAVEL_DSN', env('SENTRY_DSN')),
     // @see: https://docs.sentry.io/platforms/php/guides/laravel/configuration/options/#logger
     // 'logger' => Sentry\Logger\DebugFileLogger::class, // By default this will log to `storage_path('logs/sentry.log')`
 
@@ -28,10 +25,10 @@ return [
     'sample_rate' => env('SENTRY_SAMPLE_RATE') === null ? 1.0 : (float)env('SENTRY_SAMPLE_RATE'),
 
     // @see: https://docs.sentry.io/platforms/php/guides/laravel/configuration/options/#traces-sample-rate
-    'traces_sample_rate' => env('SENTRY_TRACES_SAMPLE_RATE') === null ? null : (float)1.0,
+    'traces_sample_rate' => env('SENTRY_TRACES_SAMPLE_RATE') === null ? null : (float)env('SENTRY_TRACES_SAMPLE_RATE'),
 
     // @see: https://docs.sentry.io/platforms/php/guides/laravel/configuration/options/#profiles-sample-rate
-    'profiles_sample_rate' => env('SENTRY_PROFILES_SAMPLE_RATE') === null ? null : (float)1.0,
+    'profiles_sample_rate' => env('SENTRY_PROFILES_SAMPLE_RATE') === null ? null : (float)env('SENTRY_PROFILES_SAMPLE_RATE'),
 
     // @see: https://docs.sentry.io/platforms/php/guides/laravel/configuration/options/#send-default-pii
     'send_default_pii' => env('SENTRY_SEND_DEFAULT_PII', false),
