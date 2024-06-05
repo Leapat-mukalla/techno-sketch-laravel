@@ -5,38 +5,24 @@ Techno Sketch is the registration platform for Techno Sketch events
 ![Alt text](https://technosketch.art/assets/images/logo.png)
 
 # Developer Guide
-### RUN PROJECT:
-```bash
-php artisan serve
-```
-### CONFIGURE DB:
-```bash
-php artisan migrate
-```
-```bash
-php artisan db:seed
-```
-### INSTALL ALL DEPENDENCIES (in composer.json):
-```bash
-composer install
-```
+
 ## Dependencies
 - PHP
 - Composer
 - Mysql
 - Redis
-- ETC(WIP)
 
 ### Setup
+
 ```powershell
-$ git@github.com:Leapat-mukalla/techno-sketch-laravel.git
-$ cd techno-sketch-laravel
+git@github.com:Leapat-mukalla/techno-sketch-laravel.git
+cd techno-sketch-laravel
 ```
 
-Then run:
+Then install the dependencies by runing:
 
 ```powershell
-WIP
+composer install
 ```
 
 #### ENV
@@ -47,11 +33,22 @@ touch .env
 
 > Take the keys from one of the current developers and add them to .env
 
+### Migrate DB and Seed data
 
-### Seed
-```powershell
-$ WIP
+```bash
+php artisan migrate
 ```
+
+```bash
+php artisan db:seed
+```
+
+### Run the local server
+
+```bash
+php artisan serve
+```
+
 
 ### Branches
 
