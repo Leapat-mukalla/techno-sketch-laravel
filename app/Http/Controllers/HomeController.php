@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\VisitorsData;
+use Auth;
+use App\Http\Controllers\Visitor\VisitorController;
+
 
 class HomeController extends Controller
 {
@@ -14,6 +17,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (Auth::check()) {
+            // return redirect()->action('VisitorController@index');
+            return redirect()->action([VisitorController::class, 'index']);
+
+        }
         // Get the first (and presumably only) event from the database
         $event = Event::first();
         $visitorCount = VisitorsData::count();

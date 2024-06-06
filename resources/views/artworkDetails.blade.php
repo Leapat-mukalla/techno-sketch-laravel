@@ -64,14 +64,14 @@
                     likeButton.removeClass('btn-light7 ').addClass('btn-light6');
                     likeText.text('ألغِ إعجابك بالعمل');
                     likeIcon.attr('src', '{{asset('assets/images/Like 1.png')}}');
-                    // location.reload();
+                    location.reload();
 
                 } else {
                     // Artwork is disliked
                     likeButton.removeClass('btn-light6').addClass('btn-light7 ');
                     likeText.text('أبدِ إعجابك بالعمل');
                     likeIcon.attr('src', '{{asset('assets/images/like 2.png')}}');
-                    // location.reload();
+                    location.reload();
                 }
             },
             error: function(xhr, status, error) {

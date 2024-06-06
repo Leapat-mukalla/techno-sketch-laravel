@@ -92,7 +92,7 @@
                     @yield('content')
 
              <footer class="footer text-center text-muted">
-                 &copy; 2024 بواسطة <a href="{{ route('landing.page') }}">تكنوسكيتش</a>
+                 &copy; 2024 بواسطة <a href="#">تكنوسكيتش</a>
              </footer>
 
          </div>
