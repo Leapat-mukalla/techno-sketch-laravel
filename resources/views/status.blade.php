@@ -25,7 +25,7 @@
         <div class="container-fluid-landing position-relative">
             <div class="row landing-sec1 z-1 pb-3" style="overflow: hidden;">
                 <img src="{{asset('assets/images/Rectangle (1).png')}}" alt="" class="pattren z-1">
-                <img src="{{asset('assets/images/logo.png')}}"   alt="" class="logo z-1">
+                <img src="{{asset('assets/images/logo.png')}}"   alt="" class="logo-status z-1">
                 <div class="circle-status"></div>
                 <div class="container-fluid-inner">
                     <div class="col-12 col-lg-12 col-md-6 z-1 position-relative">

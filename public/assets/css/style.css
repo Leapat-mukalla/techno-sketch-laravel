@@ -242,6 +242,15 @@ body {
     transform: translate(-50%, -50%);
     left: 50%;
 }
+.landing-sec1 .logo-status{
+    height: 268.2px !important;
+    width: 414px !important;
+    filter: brightness(0) invert(1);
+    top: 148px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+}
 .visitor-name{
     max-width: 120px;
     text-overflow: ellipsis;
