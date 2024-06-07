@@ -38,7 +38,7 @@
 
                     <div class="col-12 col-lg-6 col-md-6 text-center ">
                         <div class="form-group text-center d-grid gap-2 mt-5 m-5">
-                            <a href="{{ route('register') }}" class="btn btn-light z-1 medium-font btn-r-p-custom" role="button" > إنشاء حساب</a>
+                            {{-- <a href="#" class="btn btn-light z-1 medium-font btn-r-p-custom" role="button" > إنشاء حساب</a> --}}
                             <a href="{{ route('login') }}" class="btn btn-light2 z-1 medium-font btn-r-p-custom" role="button" >تسجيل الدخول</a>
                         </div>
 
@@ -228,8 +228,10 @@
                 // Hide the countdown timer if the event has not started yet
                 countdown.style.display = "none";
 
-                document.getElementById("event-container").innerHTML = `<h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
-                        <p> انتظرونا قريبا لنتحفكم بتجربة فنية لاتنسى</p>`;
+                // document.getElementById("event-container").innerHTML = `<h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
+                //         <p> انتظرونا قريبا لنتحفكم بتجربة فنية لاتنسى</p>`;
+                document.getElementById("event-container").innerHTML = `<h3 class="medium-font">انتهى المعرض</h3>
+                        <p> تابعونا لمعرفة المزيد عن فعالياتنا القادمة</p>`;
             }
         }
         // Call the updateCountdown function immediately
