@@ -21,6 +21,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 Route::get('/', [HomeController::class, 'index'])->name('landing.page');
+Route::get('/status', [HomeController::class, 'status'])->name('status.page');
 
 Route::get('/register', [RegisterationController::class, 'index'])->name('register');
 Route::post('/register', [RegisterationController::class, 'store']);
