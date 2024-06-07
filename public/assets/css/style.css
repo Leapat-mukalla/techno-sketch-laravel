@@ -278,14 +278,16 @@ body {
     animation: moveLeftToRight 5000ms ease-out infinite alternate;
 }
 .landing-sec1 .circle-status{
-    top: 10%;
+    top: 20%;
     position: absolute;
-    width: 50%;
-    height: 50%;
+    /* width: 60%;
+    height: 60%; */
+    width: 877.89px;
+    height: 935.29px;
     transform: translate(-50%, -20%);
     left: -24%;
     background: #0C23FB;
-    filter: blur(110px);
+    filter: blur(500px);
     animation: moveLeftToRight 10000ms ease-out infinite alternate;
 }
 .landing-sec3 .circle{
@@ -314,6 +316,14 @@ body {
     border-radius: 8px;
     box-shadow: 2px 8px 20px 0px rgba(12, 35, 251, .2);
 
+}
+.underline-head{
+    /* text-decoration: underline;
+    text-decoration-color: rgba(12, 35, 251, 1);
+    text-decoration-thickness: 6px;
+    z-index: 1; */
+    /* border-bottom: 11px solid rgba(12, 35, 251, 1);
+    width: 150px; */
 }
 .column-gap-70 {
     column-gap: 70px !important;

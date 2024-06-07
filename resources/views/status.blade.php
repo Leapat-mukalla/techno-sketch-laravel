@@ -32,12 +32,12 @@
                         <h1 class="mt-5 text-white w-85 bold-font font-21">
                             مرحبا بكم في معرض تكنوسكيتش!
                         </h1>
-                        <p class=" text-white w-50" >
+                        <p class=" text-white w-50 pt-2 font-18" >
                             نحن سعداء بوجودكم معنا في معرض تكنوسكيتش، حيث التقنية والفن يأخذانك لآفاق جديدة خلابة. استمتعوا بـ تجربة تقنية فنية فريدة من نوعها.                        </p>
                     </div>
 
-                    <div class="col-12 col-lg-12 col-md-6 z-1 top-0 pt-4 mt-4  position-relative">
-                        <p class=" text-white medium-font " style="border-bottom: 11px #0C23FB" >إحصائيات تكنوسكيتش</p>
+                    <div class="col-12 col-lg-12 col-md-6 z-1 top-0 pt-2  position-relative">
+                        <p class=" text-white medium-font underline-head "  >إحصائيات تكنوسكيتش</p>
                     </div>
                     <div class=" row d-flex flex-wrap justify-content-center step-row row-gap-2 static-container">
                         <div class="col-4 col-lg-4 col-md-4">
@@ -61,8 +61,8 @@
                     </div>
 
 
-                    <div class="col-12 col-lg-12 col-md-6 top-0 pt-4  position-relative mt-4">
-                        <p class="text-white  medium-font" >إرشادات المعرض</p>
+                    <div class="col-12 col-lg-12 col-md-6 top-0 pt-2  position-relative ">
+                        <p class="text-white  medium-font underline-head" >إرشادات المعرض</p>
                     </div>
                         <div class="row d-flex flex-wrap justify-content-center step-row mt-5 row-gap-2 z-1  position-relative me-4" style="margin: 0 auto;">
                             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center ">
@@ -103,8 +103,8 @@
 
 
 
-                    <div class="col-12 col-lg-12 col-md-6 position-relative mt-4">
-                        <p class="text-white medium-font" >شركاء تكنوسكيتش</p>
+                    <div class="col-12 col-lg-12 col-md-6 position-relative pt-2">
+                        <p class="text-white medium-font underline-head" >شركاء تكنوسكيتش</p>
                     </div>
                     <div class="col-12 d-flex justify-content-start justify-content-lg-center align-items-center mt-3 me-3 column-gap-70">
                         <img src="{{asset('assets/images/Leapat.png')}}" width="150" alt="" class="white-icon">
@@ -137,7 +137,9 @@
 
 
     <script>
-
+        setTimeout(function() {
+                    location.reload();
+                }, 180000);
     </script>
 
 
