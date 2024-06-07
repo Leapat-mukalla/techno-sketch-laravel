@@ -71,8 +71,10 @@
                                 </div>
                             </div>
                         @else
-                        <h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
-                        <p> انتظرونا قريبا لنتحفكم بتجربة فنية لاتنسى</p>
+                        {{-- <h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
+                        <p> انتظرونا قريبا لنتحفكم بتجربة فنية لاتنسى</p> --}}
+                        <h3 class="medium-font">انتهى المعرض</h3>
+                        <p> تابعونا لمعرفة المزيد عن فعالياتنا القادمة</p>
                         @endif
                     </div>
                         <div class="row d-flex flex-wrap justify-content-center step-row mt-5 row-gap-2" style="margin: 0 auto;">
