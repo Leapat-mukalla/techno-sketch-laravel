@@ -38,7 +38,7 @@
 
                     <div class="col-12 col-lg-6 col-md-6 text-center ">
                         <div class="form-group text-center d-grid gap-2 mt-5 m-5">
-                            <a href="#" class="btn btn-light z-1 medium-font btn-r-p-custom" role="button" > إنشاء حساب</a>
+                            {{-- <a href="#" class="btn btn-light z-1 medium-font btn-r-p-custom" role="button" > إنشاء حساب</a> --}}
                             <a href="{{ route('login') }}" class="btn btn-light2 z-1 medium-font btn-r-p-custom" role="button" >تسجيل الدخول</a>
                         </div>
 
