@@ -8,7 +8,7 @@ use App\Models\Event;
 use App\Models\VisitorsData;
 use Auth;
 use App\Http\Controllers\Visitor\VisitorController;
-
+use App\Models\Like;
 
 class HomeController extends Controller
 {
@@ -29,7 +29,17 @@ class HomeController extends Controller
         return view('landing-page', compact('event','visitorCount'));
 
     }
+    public function status()
+    {
 
+        // Count the likes from the likes table
+        $likesCount = Like::count();
+        // Count the users from the VisitorsData table
+        $visitorCount = VisitorsData::count();
+
+        // Pass the likes count to the view
+        return view('status', compact('likesCount', 'visitorCount'));
+    }
     /**
      * Show the form for creating a new resource.
      */

@@ -277,7 +277,17 @@ body {
     filter: blur(110px);
     animation: moveLeftToRight 5000ms ease-out infinite alternate;
 }
-
+.landing-sec1 .circle-status{
+    top: 10%;
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    transform: translate(-50%, -20%);
+    left: -24%;
+    background: #0C23FB;
+    filter: blur(110px);
+    animation: moveLeftToRight 10000ms ease-out infinite alternate;
+}
 .landing-sec3 .circle{
     top: 50%;
     position: absolute;
@@ -297,12 +307,23 @@ body {
 .landing-sec2, .artwork-page , .login-container, .register-container{
     background-color: #FBFBFB !important;
 }
-.landing-sec2 .sec2-icon-bg{
+.landing-sec2 .sec2-icon-bg, .sec2-icon-bg{
     width: 68px !important;
     min-width: 68px;
     height: 63px !important;
     border-radius: 8px;
     box-shadow: 2px 8px 20px 0px rgba(12, 35, 251, .2);
+
+}
+.column-gap-70 {
+    column-gap: 70px !important;
+}
+ .sec2-icon-bg{
+    width: 68px !important;
+    min-width: 68px;
+    height: 63px !important;
+    border-radius: 8px;
+    box-shadow: 0px 8px 20px 0px rgba(12, 35, 251, 1);
 
 }
 /* Initial hidden state */
