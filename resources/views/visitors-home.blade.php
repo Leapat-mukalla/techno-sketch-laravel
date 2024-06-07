@@ -180,8 +180,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Hide the countdown timer if the event has not started yet
                 countdownElement.style.display = "none";
 
-                event_container.innerHTML = `<h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
-                        <p> انتظرونا قريبا لنتحفكم بتجربة فنية لاتنسى</p>`;
+                // event_container.innerHTML = `<h3 class="medium-font">لم يبدأ العد التنازلي للمعرض !</h3>
+                //         <p> انتظرونا قريبا لنتحفكم بتجربة فنية لاتنسى</p>`;
+                document.getElementById("event-container").innerHTML = `<h3 class="medium-font">انتهى المعرض</h3>
+                        <p> تابعونا لمعرفة المزيد عن فعالياتنا القادمة</p>`;
             }
         }
         // Call the updateCountdown function immediately
