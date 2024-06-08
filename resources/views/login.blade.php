@@ -105,9 +105,9 @@
                     </div>
 
                 </form>
-                <div class="form-group text-center">
+                {{-- <div class="form-group text-center">
                      ليس لديك حساب؟ <a href="{{route('register')}}" class=" text-decoration-underline">إنشاء حساب</a>
-                </div>
+                </div> --}}
         </div>
     </div>
     <footer class="footer text-center text-muted">
